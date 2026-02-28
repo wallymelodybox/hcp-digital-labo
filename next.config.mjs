@@ -7,7 +7,7 @@ const __dirname = path.dirname(__filename);
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   turbopack: {
-    root: 'C:\\Users\\wally\\OneDrive\\Documents\\GitHub',
+    root: __dirname,
   },
   images: {
     remotePatterns: [
