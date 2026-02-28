@@ -541,15 +541,15 @@ export default function StrategiePage() {
                 <div className="grid gap-4 md:grid-cols-2">
                   <div>
                     <label className="text-xs font-semibold tracking-[0.22em] text-white/60">Nom</label>
-                    <input className="mt-2 w-full rounded-xl border border-white/10 bg-black/20 px-4 py-3 text-sm text-white placeholder:text-white/35 focus:outline-none focus:ring-2 focus:ring-emerald-400/40" placeholder="Votre nom" />
+                    <input suppressHydrationWarning className="mt-2 w-full rounded-xl border border-white/10 bg-black/20 px-4 py-3 text-sm text-white placeholder:text-white/35 focus:outline-none focus:ring-2 focus:ring-emerald-400/40" placeholder="Votre nom" />
                   </div>
                   <div>
                     <label className="text-xs font-semibold tracking-[0.22em] text-white/60">Téléphone</label>
-                    <input className="mt-2 w-full rounded-xl border border-white/10 bg-black/20 px-4 py-3 text-sm text-white placeholder:text-white/35 focus:outline-none focus:ring-2 focus:ring-emerald-400/40" placeholder="+225 ..." />
+                    <input suppressHydrationWarning className="mt-2 w-full rounded-xl border border-white/10 bg-black/20 px-4 py-3 text-sm text-white placeholder:text-white/35 focus:outline-none focus:ring-2 focus:ring-emerald-400/40" placeholder="+225 ..." />
                   </div>
                   <div className="md:col-span-2">
                     <label className="text-xs font-semibold tracking-[0.22em] text-white/60">Besoin</label>
-                    <textarea className="mt-2 min-h-30 w-full rounded-xl border border-white/10 bg-black/20 px-4 py-3 text-sm text-white placeholder:text-white/35 focus:outline-none focus:ring-2 focus:ring-emerald-400/40" placeholder="Objectif, délai, budget indicatif" />
+                    <textarea suppressHydrationWarning className="mt-2 min-h-30 w-full rounded-xl border border-white/10 bg-black/20 px-4 py-3 text-sm text-white placeholder:text-white/35 focus:outline-none focus:ring-2 focus:ring-emerald-400/40" placeholder="Objectif, délai, budget indicatif" />
                   </div>
                 </div>
 

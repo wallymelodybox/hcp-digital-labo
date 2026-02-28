@@ -124,6 +124,7 @@ export default function ContactPage() {
                     <input
                       id="name"
                       type="text"
+                      suppressHydrationWarning
                       className="w-full rounded-xl border border-white/10 bg-black/20 px-4 py-3 text-sm text-white placeholder:text-white/20 focus:outline-none focus:ring-2 focus:ring-emerald-400/40"
                       placeholder="Votre nom"
                     />
@@ -133,6 +134,7 @@ export default function ContactPage() {
                     <input
                       id="company"
                       type="text"
+                      suppressHydrationWarning
                       className="w-full rounded-xl border border-white/10 bg-black/20 px-4 py-3 text-sm text-white placeholder:text-white/20 focus:outline-none focus:ring-2 focus:ring-emerald-400/40"
                       placeholder="Votre entreprise"
                     />
@@ -144,6 +146,7 @@ export default function ContactPage() {
                   <input
                     id="email"
                     type="email"
+                    suppressHydrationWarning
                     className="w-full rounded-xl border border-white/10 bg-black/20 px-4 py-3 text-sm text-white placeholder:text-white/20 focus:outline-none focus:ring-2 focus:ring-emerald-400/40"
                     placeholder="votre@email.com"
                   />
@@ -153,6 +156,7 @@ export default function ContactPage() {
                   <label htmlFor="pole" className="text-xs font-semibold tracking-widest uppercase text-white/40">Pôle d'intérêt</label>
                   <select
                     id="pole"
+                    suppressHydrationWarning
                     className="w-full rounded-xl border border-white/10 bg-black/20 px-4 py-3 text-sm text-white/60 focus:outline-none focus:ring-2 focus:ring-emerald-400/40 appearance-none"
                   >
                     <option value="">Sélectionnez un pôle</option>
@@ -169,6 +173,7 @@ export default function ContactPage() {
                   <textarea
                     id="message"
                     rows={5}
+                    suppressHydrationWarning
                     className="w-full rounded-xl border border-white/10 bg-black/20 px-4 py-3 text-sm text-white placeholder:text-white/20 focus:outline-none focus:ring-2 focus:ring-emerald-400/40 resize-none"
                     placeholder="Décrivez votre besoin, vos objectifs et vos délais..."
                   />
