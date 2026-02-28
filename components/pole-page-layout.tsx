@@ -114,7 +114,7 @@ export function PolePageLayout({
               transition={{ duration: 0.55, delay: 0.2 }}
               className="lg:col-span-5"
             >
-              <div className="relative aspect-[4/5] overflow-hidden rounded-[32px] border border-white/10 bg-white/[0.035] shadow-2xl">
+              <div className="relative aspect-4/5 overflow-hidden rounded-4xl border border-white/10 bg-white/3.5 shadow-2xl">
                 <Image
                   src={image}
                   alt={title}
@@ -122,7 +122,7 @@ export function PolePageLayout({
                   className="object-cover transition-transform duration-700 hover:scale-105"
                   priority
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#06090A]/80 via-transparent to-transparent" />
+                <div className="absolute inset-0 bg-linear-to-t from-[#06090A]/80 via-transparent to-transparent" />
                 <div className="absolute bottom-8 left-8 right-8">
                   <div className="inline-flex items-center gap-2 rounded-full border border-emerald-400/30 bg-emerald-400/10 px-4 py-2 text-xs font-bold tracking-widest text-emerald-300 backdrop-blur-md uppercase">
                     Pôle {number}

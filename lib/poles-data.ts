@@ -203,13 +203,13 @@ export const poles = [
       {
         name: "Accompagnement transformation digitale",
         detail:
-          "Audit, roadmap et conduite du changement pour reussir votre virage numerique.",
+          "Diagnostic de maturite numerique et feuille de route pour moderniser votre organisation.",
       },
     ],
     stats: [
-      { value: "500+", label: "Professionnels formes" },
-      { value: "40+", label: "Programmes disponibles" },
-      { value: "4.8/5", label: "Note moyenne" },
+      { value: "100+", label: "Personnes formees" },
+      { value: "20+", label: "Ateliers animes" },
+      { value: "98%", label: "Satisfaction apprenants" },
     ],
   },
-] as const
+]
