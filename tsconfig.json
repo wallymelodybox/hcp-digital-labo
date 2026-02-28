@@ -6,7 +6,8 @@
       "esnext"
     ],
     "allowJs": true,
-    "target": "ES6",
+    "target": "ESNext",
+    "baseUrl": ".",
     "skipLibCheck": true,
     "strict": true,
     "noEmit": true,
@@ -24,6 +25,7 @@
     ],
     "paths": {
       "@/*": [
+        "./app/*",
         "./*"
       ]
     }
