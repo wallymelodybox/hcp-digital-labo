@@ -530,7 +530,7 @@ export default function StrategiePage() {
               </p>
 
               <div className="mt-6 space-y-3 rounded-3xl border border-white/10 bg-white/3 p-6">
-                <div className="text-sm"><span className="text-white/60">Email :</span> <span className="font-semibold">contact@hcp-digitallabo.com</span></div>
+                <div className="text-sm"><span className="text-white/60">Email :</span> <span className="font-semibold">contact@hcp-digital-lab.org</span></div>
                 <div className="text-sm"><span className="text-white/60">Téléphone :</span> <span className="font-semibold">+225 XX XX XX XX XX</span></div>
                 <div className="text-sm"><span className="text-white/60">Localisation :</span> <span className="font-semibold">Abidjan, Côte d’Ivoire</span></div>
               </div>

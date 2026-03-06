@@ -4,6 +4,7 @@ import { Navbar } from '@/components/navbar'
 import { Footer } from '@/components/footer'
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://hcp-digital-lab.org'),
   title: 'HCP Digital Labo | Agence Premium de Transformation Digitale',
   description:
     'HCP Digital Labo - Votre partenaire structurant pour la strategie, le digital, l\'evenementiel, la production et la formation. Performance. Impact. Innovation.',

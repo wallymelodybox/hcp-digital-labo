@@ -69,7 +69,7 @@ export default function ContactPage() {
 
             <div className="space-y-4">
               {[
-                { icon: Mail, label: "Email", value: "contact@hcp-digitallabo.com" },
+                { icon: Mail, label: "Email", value: "contact@hcp-digital-lab.org" },
                 { icon: Phone, label: "Téléphone", value: "+225 XX XX XX XX XX" },
                 { icon: MapPin, label: "Adresse", value: "Abidjan, Côte d'Ivoire" },
               ].map((item) => (
