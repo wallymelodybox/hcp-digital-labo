@@ -531,7 +531,7 @@ export default function StrategiePage() {
 
               <div className="mt-6 space-y-3 rounded-3xl border border-white/10 bg-white/3 p-6">
                 <div className="text-sm"><span className="text-white/60">Email :</span> <span className="font-semibold">contact@hcp-digital-lab.org</span></div>
-                <div className="text-sm"><span className="text-white/60">Téléphone :</span> <span className="font-semibold">+225 XX XX XX XX XX</span></div>
+                <div className="text-sm"><span className="text-white/60">Téléphone :</span> <span className="font-semibold">07 68 30 70 80</span></div>
                 <div className="text-sm"><span className="text-white/60">Localisation :</span> <span className="font-semibold">Abidjan, Côte d’Ivoire</span></div>
               </div>
             </div>
@@ -545,7 +545,7 @@ export default function StrategiePage() {
                   </div>
                   <div>
                     <label className="text-xs font-semibold tracking-[0.22em] text-white/60">Téléphone</label>
-                    <input suppressHydrationWarning className="mt-2 w-full rounded-xl border border-white/10 bg-black/20 px-4 py-3 text-sm text-white placeholder:text-white/35 focus:outline-none focus:ring-2 focus:ring-emerald-400/40" placeholder="+225 ..." />
+                    <input suppressHydrationWarning className="mt-2 w-full rounded-xl border border-white/10 bg-black/20 px-4 py-3 text-sm text-white placeholder:text-white/35 focus:outline-none focus:ring-2 focus:ring-emerald-400/40" placeholder="07 68 30 70 80" />
                   </div>
                   <div className="md:col-span-2">
                     <label className="text-xs font-semibold tracking-[0.22em] text-white/60">Besoin</label>

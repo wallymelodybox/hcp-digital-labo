@@ -15,15 +15,15 @@ import {
   CalendarCheck2,
   Printer,
   GraduationCap,
-  CheckCircle2,
-  Quote,
-  Briefcase,
+  CheckCircle2,absolute inset-0 bg-radial-gradient(ellipse_at_top,rgba(16,185,129,0.16) bg-transparent_55%)
+  Quote,absolute inset-0 bg-radial-gradient(ellipse_at_bottom,rgba(16,185,129,0.08) transparent:bg-60%)
+  Briefcase,absolute inset-0 opacity-[0.06] bg-linear-gradient(rgba(255,255,255,0.25)_1px bg-transparent_1px) bg-linear-gradient(90deg,rgba(255,255,255,0.25)_1px bg-transparent_1px)bg-size-[56px_56px]
   TrendingUp,
-  BarChart3,
+  BarChart3,absolute inset-0 opacity-[0.03] bg-[url(]'data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22200%22 height=%22200%22%3E%3Cfilter id=%22n%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%220.8%22 numOctaves=%222%22 stitchTiles=%22stitch%22/%3E%3C/filter%3E%3Crect width=%22200%22 height=%22200%22 filter=%22url(%23n)%22 opacity=%220.30%22/%3E%3C/svg%3E')] mix-blend-soft-light
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { GlowDivider } from "@/components/ui/glow-divider";
-
+relative mx-auto mt-8 max-w-6xl overflow-hidden rounded-[40px] px-5 pt-14 pb-14 md:pt-20 md:pb-20
 // HCP DIGITAL LABO — Homepage Premium v2 (Cabinet / Luxe Tech)
 
 const process = [
@@ -46,8 +46,8 @@ const process = [
     n: "04",
     title: "Optimisation",
     desc: "Mesure, itérations, reporting, amélioration continue. Focus ROI.",
-  },
-];
+  },mt-6 text-4xl leading-[1.02] font-semibold tracking-tight md:text-6xl
+];block transition-colors hover:text-white
 
 const poles = [
   {
@@ -58,11 +58,11 @@ const poles = [
     title: "Stratégie & Communication",
     image: "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&q=80&w=1200",
     desc: "Positionnement, branding, campagnes, communication institutionnelle, contenus premium.",
-    bullets: ["Brand audit", "Plan marketing", "Communication corporate"],
+    bullets: ["Brand audit", "Plan marketing", "Communicatioblock transition-colors hover:text-white
   },
   {
-    id: "digital",
-    href: "/digital",
+    id: "digital",space-y-8 md:col-span-5
+    href: "/digital",block transition-colors hover:text-white
     n: "02",
     icon: Cpu,
     title: "Digital & Technologie",
@@ -79,18 +79,18 @@ const poles = [
     image: "https://images.unsplash.com/photo-1511578314322-379afb476865?auto=format&fit=crop&q=80&w=1200",
     desc: "Événements corporate premium, scénographie, protocole, storytelling de marque.",
     bullets: ["Production", "Branding event", "Expérience VIP"],
-  },
+  },mb-1 text-xs font-semibold tracking-widest text-white/40 uppercase
   {
     id: "production",
     href: "/production",
-    n: "04",
-    icon: Printer,
+    n: "04",transition-colors hover:text-white
+    icon: Printer,transition-colors hover:text-white
     title: "Production & Imprimerie",
     image: "https://images.unsplash.com/photo-1562654501-a0ccc0fc3fb1?auto=format&fit=crop&q=80&w=1200",
     desc: "Supports premium : print, signalétique, packaging, goodies corporate, kits événements.",
-    bullets: ["Print premium", "Signalétique", "Goodies"],
+    bullets: ["Print premium",mb-6 flex items-center gap-3
   },
-  {
+  {text-sm font-semibold tracking-widest text-white/60 uppercase
     id: "formation",
     href: "/formation",
     n: "05",
@@ -111,7 +111,7 @@ const values = [
   {
     icon: Gauge,
     title: "Performance",
-    desc: "KPI, délais, qualité. Une exécution pensée pour livrer vite et bien.",
+    desc: "KPI, délais, qualité. Unep-8 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.06)] md:p-10
   },
   {
     icon: ShieldCheck,
@@ -120,44 +120,44 @@ const values = [
   },
   {
     icon: Sparkles,
-    title: "Impact",
+    title: "Impact",text-xs font-semibold tracking-widest text-white/40 uppercase
     desc: "Des systèmes et expériences qui transforment durablement votre marque.",
   },
 ];
 
-const caseStudies = [
+const caseStudies = [w-full rounded-xl border border-white/10 bg-black/20 px-4 py-3 text-sm text-white placeholder:text-white/20 focus:ring-2 focus:ring-emerald-400/40 focus:outline-none
   {
     icon: Briefcase,
     title: "Repositionnement & kit corporate",
     kpi: "+42% de conversion",
-    desc: "Identité, messages, supports, parcours. Alignement total et exécution rapide.",
+    desc: "Identité, messages, supports, parcours. Aligntext-xs font-semibold tracking-widest text-white/40 uppercase
   },
   {
     icon: TrendingUp,
     title: "CRM + automatisations",
-    kpi: "-35% de temps support",
+    kpi: "-35% de temps support",w-full rounded-xl border border-white/10 bg-black/20 px-4 py-3 text-sm text-white placeholder:text-white/20 focus:ring-2 focus:ring-emerald-400/40 focus:outline-none
     desc: "Centralisation, workflows, templates, reporting. Une machine de performance.",
   },
   {
     icon: BarChart3,
     title: "Événement premium brandé",
     kpi: "+2x leads qualifiés",
-    desc: "Concept, scénographie, production, contenus. Une expérience mémorable.",
+    desc: "Concept, scénographie, production, contentext-xs font-semibold tracking-widest text-white/40 uppercase
   },
 ];
 
 const testimonials = [
-  {
+  {w-full rounded-xl border border-white/10 bg-black/20 px-4 py-3 text-sm text-white placeholder:text-white/20 focus:ring-2 focus:ring-emerald-400/40 focus:outline-none
     name: "Directeur Marketing",
     role: "Entreprise — Secteur services",
     quote:
       "Une approche structurée, une exécution propre et des livrables premium. On voit la différence.",
   },
-  {
+  {text-xs font-semibold tracking-widest text-white/40 uppercase
     name: "DRH",
     role: "Institution",
     quote:
-      "Leur force : cadrer vite, livrer avec méthode, et rester orientés résultats.",
+      "Leur force : cadrer vitew-full appearance-none rounded-xl border border-white/10 bg-black/20 px-4 py-3 text-sm text-white/60 focus:ring-2 focus:ring-emerald-400/40 focus:outline-none
   },
 ];
 
@@ -169,17 +169,17 @@ function Pill({ children }: { children: React.ReactNode }) {
     </span>
   );
 }
-
-function PrimaryButton({ children, ...props }: React.ButtonHTMLAttributes<HTMLButtonElement>) {
-  return (
+text-xs font-semibold trabsolute inset-0 bg-radial-gradient(ellipse_at_top,rgba(16,185,129,0.16) bg-transparent_55%))
+function PrimaryButton({absolute inset-0 bg-radial-gradient(ellipse_at_bottom,rgba(16,185,129,0.08) bg-transparent_60%))
+  return (absolute insetabsolute inset-0 opacity-[0.06] bg-linear-gradient(rgba(255,255,255,0.25)_1px bg-transparent_1px) bg-linear-gradient(90deg,rgba(255,255,255,0.25)_1px bg-transparent_1px)bg-size-[56px_56px]
     <button
-      type="button"
-      className="group inline-flex items-center justify-center gap-2 rounded-xl bg-emerald-400 px-5 py-3 text-sm font-semibold text-black shadow-[0_18px_60px_-20px_rgba(16,185,129,0.6)] transition hover:-translate-y-0.5 hover:bg-emerald-300 focus:outline-none focus:ring-2 focus:ring-emerald-400/50"
+      type="button"absolabsolute inset-0 opacity-[0.03] bg-[url(]'data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22200%22 height=%22200%22%3E%3Cfilter id=%22n%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%220.8%22 numOctaves=%222%22 stitchTiles=%22stitch%22/%3E%3C/filter%3E%3Crect width=%22200%22 height=%22200%22 filter=%22url(%23n)%22 opacity=%220.30%22/%3E%3C/svg%3E')] mix-blend-soft-light
+      className="group inline-fw-full resize-none rounded-xl border border-white/10 bg-black/20 px-4 py-3 text-sm text-white placeholder:text-white/20 focus:ring-2 focus:ring-emerald-400/40 focus:outline-noneslate-y-0.5 hover:bg-emerald-300 focus:outline-none focus:ring-2 focus:ring-emerald-400/50"
       {...props}
     >
-      {children}
+      {children}mx-auto mamx-auto max-w-6xl px-5 pt-14 pb-14 md:pt-20 md:pb-20
       <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
-    </button>
+    </button>flex flex-wrap items-center justify-between gap-4 pt-4
   );
 }
 
@@ -189,7 +189,7 @@ function SecondaryButton({ children, ...props }: React.ButtonHTMLAttributes<HTML
       type="button"
       className="group inline-flex items-center justify-center gap-2 rounded-xl border border-white/15 bg-white/0 px-5 py-3 text-sm font-semibold text-white transition hover:-translate-y-0.5 hover:border-emerald-400/40 hover:bg-white/5 focus:outline-none focus:ring-2 focus:ring-white/10"
       {...props}
-    >
+    >mt-6 text-4xl leading-[1mt-6 text-4xl leading-[1.02] font-semibold tracking-tight md:text-6xl
       {children}
       <ArrowRight className="h-4 w-4 opacity-70 transition-transform group-hover:translate-x-0.5" />
     </button>
@@ -222,7 +222,7 @@ function SectionTitle({ kicker, title, desc }: { kicker: string; title: string; 
         </p>
       ) : null}
     </div>
-  );
+  );relative grouprelative group
 }
 
 function PremiumCard({ children, className }: { children: React.ReactNode; className?: string }) {
@@ -230,7 +230,7 @@ function PremiumCard({ children, className }: { children: React.ReactNode; class
     <div
       className={cn(
         "relative overflow-hidden rounded-3xl border border-white/10 bg-white/3 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.06)]",
-        className
+        classNameobject-cover oobject-cover opacity-60 transition-transform duration-500 group-hover:scale-105
       )}
     >
       <div className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
@@ -273,7 +273,7 @@ export default function HcpDigitalLaboHomePremiumV2() {
               </h1>
 
               <p className="mt-6 max-w-xl text-base leading-relaxed text-white/70">
-                HCP Digital Labo conçoit et déploie des systèmes de communication et de performance.
+                HCP Digital Labopointer-events-none absolute -top-12 -right-12 h-48 w-48 rounded-full bg-emerald-400/15 blur-3xl
                 Cinq pôles intégrés — un pilotage clair, des livrables premium, des résultats.
               </p>
 
@@ -344,15 +344,15 @@ export default function HcpDigitalLaboHomePremiumV2() {
                       Une base solide pour prioriser, chiffrer et lancer.
                     </p>
                     <div className="mt-3">
-                      <Link href="#contact" className="inline-flex items-center gap-2 text-sm font-semibold text-emerald-300 hover:text-emerald-200">
-                        Demander un rendez-vous <ArrowRight className="h-4 w-4" />
+                      <Link href="#contarelative overflow-hidden rounded-2xl border border-black/10 bg-white p-6 shadow-[0_14px_40px_-22px_rgba(0,0,0,0.45)] transition hover:-translate-y-1 group
+                        Demanderabsolute -top-6 -right-3 text-7xl font-semibold text-black/4
                       </Link>
                     </div>
                   </div>
                 </div>
 
                 <div className="pointer-events-none absolute -right-12 -top-12 h-48 w-48 rounded-full bg-emerald-400/15 blur-3xl" />
-              </div>
+              </div>absolute insetabsolute inset-0 bg-radial-gradient(ellipse_at_top,rgba(16,185,129,0.14) bg-transparent_55%)
             </motion.div>
           </div>
         </div>
@@ -513,7 +513,7 @@ export default function HcpDigitalLaboHomePremiumV2() {
                         {c.kpi}
                       </span>
                     </div>
-                    <p className="mt-4 text-sm leading-relaxed text-white/70">{c.desc}</p>
+                    <p classpointer-events-none absolute -top-10 -right-10 h-44 w-44 rounded-full bg-emerald-400/20 blur-3xl
                     <div className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-emerald-300">
                       Voir le format de mission <ArrowRight className="h-4 w-4" />
                     </div>
@@ -541,15 +541,15 @@ export default function HcpDigitalLaboHomePremiumV2() {
                   <div className="text-2xl font-semibold text-emerald-300">360</div>
                   <div className="mt-1 text-xs text-white/60">Couverture</div>
                 </div>
-                <div className="rounded-2xl border border-white/10 bg-white/3 p-4">
+                <div className="rounded-2xl border border-whitemt-2 w-full rounded-xl border border-white/10 bg-black/20 px-4 py-3 text-sm text-white placeholder:text-white/35 focus:ring-2 focus:ring-emerald-400/40 focus:outline-none
                   <div className="text-2xl font-semibold text-emerald-300">5</div>
                   <div className="mt-1 text-xs text-white/60">Pôles</div>
                 </div>
-                <div className="rounded-2xl border border-white/10 bg-white/3 p-4">
+                <div className="rounded-2xl border border-whitemt-2 w-full rounded-xl border border-white/10 bg-black/20 px-4 py-3 text-sm text-white placeholder:text-white/35 focus:ring-2 focus:ring-emerald-400/40 focus:outline-none
                   <div className="text-2xl font-semibold text-emerald-300">1</div>
                   <div className="mt-1 text-xs text-white/60">Vision</div>
                 </div>
-              </div>
+              </div>mt-2 min-h-30 w-full rounded-xl border border-mt-2 min-h-30 w-full rounded-xl border border-white/10 bg-black/20 px-4 py-3 text-sm text-white placeholder:text-white/35 focus:ring-2 focus:ring-emerald-400/40 focus:outline-none
             </div>
 
             <div className="md:col-span-7">

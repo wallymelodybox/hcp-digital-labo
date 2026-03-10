@@ -70,7 +70,7 @@ export function Footer() {
             <div className="text-xs font-semibold tracking-[0.26em] text-white/60 uppercase">CONTACT</div>
             <div className="mt-4 space-y-2 text-sm text-white/60">
               <div className="text-emerald-300">contact@hcp-digital-lab.org</div>
-              <div>+225 XX XX XX XX XX</div>
+              <div>07 68 30 70 80</div>
               <div>Abidjan, Côte d’Ivoire</div>
             </div>
           </div>

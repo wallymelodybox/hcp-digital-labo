@@ -70,7 +70,7 @@ export default function ContactPage() {
             <div className="space-y-4">
               {[
                 { icon: Mail, label: "Email", value: "contact@hcp-digital-lab.org" },
-                { icon: Phone, label: "Téléphone", value: "+225 XX XX XX XX XX" },
+                { icon: Phone, label: "Téléphone", value: "07 68 30 70 80" },
                 { icon: MapPin, label: "Adresse", value: "Abidjan, Côte d'Ivoire" },
               ].map((item) => (
                 <PremiumCard key={item.label} className="p-6">
