@@ -4,6 +4,8 @@ import {
   PartyPopper,
   Printer,
   GraduationCap,
+  Truck,
+  Car,
 } from "lucide-react"
 
 export const poles = [
@@ -210,6 +212,84 @@ export const poles = [
       { value: "100+", label: "Personnes formees" },
       { value: "20+", label: "Ateliers animes" },
       { value: "98%", label: "Satisfaction apprenants" },
+    ],
+  },
+  {
+    id: "livraison",
+    slug: "/livraison",
+    number: "06",
+    title: "Livraison & Logistique",
+    image: "https://images.unsplash.com/photo-1566576912321-d58ddd7a6088?auto=format&fit=crop&q=80&w=1200",
+    icon: Truck,
+    shortDescription:
+      "Assurer la livraison rapide et fiable de vos colis et marchandises avec un service sur mesure.",
+    description:
+      "Nous assurons un service de livraison rapide, fiable et professionnel pour vos colis et marchandises. Que ce soit pour des livraisons ponctuelles ou regulieres, notre equipe garantit un acheminement soigne et dans les delais, avec un suivi en temps reel et une flexibilite adaptee a vos besoins.",
+    services: [
+      {
+        name: "Livraison express",
+        detail:
+          "Service de livraison le jour meme ou en quelques heures pour vos envois urgents dans la region.",
+      },
+      {
+        name: "Livraison programmee",
+        detail:
+          "Planification de livraisons regulieres avec des creneaux horaires adaptes a vos contraintes.",
+      },
+      {
+        name: "Transport de marchandises",
+        detail:
+          "Prise en charge et acheminement securise de vos marchandises, du petit colis au volume important.",
+      },
+      {
+        name: "Suivi en temps reel",
+        detail:
+          "Tracabilite complete de vos envois avec notifications et mise a jour en direct de l'avancement.",
+      },
+    ],
+    stats: [
+      { value: "500+", label: "Livraisons effectuees" },
+      { value: "99%", label: "Livraisons a l'heure" },
+      { value: "<2h", label: "Delai express moyen" },
+    ],
+  },
+  {
+    id: "vtc",
+    slug: "/vtc",
+    number: "07",
+    title: "VTC & Transport prive",
+    image: "https://images.unsplash.com/photo-1549317661-bd32c8ce0afa?auto=format&fit=crop&q=80&w=1200",
+    icon: Car,
+    shortDescription:
+      "Offrir un service de transport prive premium pour vos deplacements professionnels et personnels.",
+    description:
+      "Nous offrons un service de VTC premium pour tous vos deplacements professionnels et personnels. Vehicules haut de gamme, chauffeurs experimentes et ponctualite irreprochable : nous vous garantissons un transport confortable, discret et adapte a toutes vos exigences, que ce soit pour des transferts aeroport, des rendez-vous d'affaires ou des evenements.",
+    services: [
+      {
+        name: "Transferts aeroport & gare",
+        detail:
+          "Prise en charge et depot a l'aeroport ou en gare avec suivi des vols et des horaires de train en temps reel.",
+      },
+      {
+        name: "Deplacements professionnels",
+        detail:
+          "Transport prive pour vos rendez-vous d'affaires, seminaires et evenements corporate avec ponctualite garantie.",
+      },
+      {
+        name: "Mise a disposition",
+        detail:
+          "Vehicule avec chauffeur a votre disposition pour une demi-journee, une journee complete ou un evenement.",
+      },
+      {
+        name: "Transport evenementiel",
+        detail:
+          "Organisation du transport de vos invites et collaborateurs pour vos evenements, galas et soirees.",
+      },
+    ],
+    stats: [
+      { value: "1000+", label: "Courses realisees" },
+      { value: "100%", label: "Ponctualite" },
+      { value: "4.9/5", label: "Note moyenne" },
     ],
   },
 ]

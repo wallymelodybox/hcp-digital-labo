@@ -44,10 +44,10 @@ export default function AdminPage() {
             <h3 className="text-lg font-semibold text-white">Demandes contact</h3>
           </div>
           <p className="mt-4 text-sm leading-relaxed text-white/55">
-            Le formulaire public est prêt, mais l'enregistrement serveur n'est pas encore connecté. Les demandes ne doivent pas être considérées comme stockées tant qu'une table ou API n'est pas branchée.
+            Les formulaires publics enregistrent maintenant les messages côté serveur et les demandes apparaissent dans la page dédiée du BO.
           </p>
           <div className="mt-5 rounded-2xl border border-amber-400/20 bg-amber-400/10 p-4 text-sm text-amber-100">
-            Action suivante : créer la table des demandes ou une route API d'envoi email.
+            Action suivante : brancher un envoi email ou migrer le stockage vers Supabase si besoin.
           </div>
         </PremiumCard>
 
@@ -74,3 +74,4 @@ export default function AdminPage() {
     </div>
   );
 }
+

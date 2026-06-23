@@ -8,6 +8,8 @@ import {
   Settings,
   LogOut,
   Home,
+  ImageIcon,
+  FileText,
 } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -35,6 +37,16 @@ const navItems = [
     title: "Gestion des Pôles",
     url: "/admin/poles",
     icon: Layers,
+  },
+  {
+    title: "Images du site",
+    url: "/admin/images",
+    icon: ImageIcon,
+  },
+  {
+    title: "Offres Stratégie",
+    url: "/admin/offres",
+    icon: FileText,
   },
   {
     title: "Demandes Contact",
@@ -67,15 +79,15 @@ export function AdminSidebar() {
             <span className="text-xs font-bold uppercase">HCP</span>
           </div>
           <div className="flex flex-col">
-            <span className="text-sm font-bold text-white tracking-tight">ADMIN PANEL</span>
-            <span className="text-[10px] text-emerald-400 font-semibold uppercase tracking-widest">Digital Labo</span>
+            <span className="text-sm font-bold tracking-tight text-white">ADMIN PANEL</span>
+            <span className="text-[10px] font-semibold uppercase tracking-widest text-emerald-400">Digital Labo</span>
           </div>
         </div>
       </SidebarHeader>
-      
+
       <SidebarContent className="p-2">
         <SidebarGroup>
-          <SidebarGroupLabel className="text-white/40 px-4 text-[10px] font-bold tracking-[0.2em] uppercase">Navigation</SidebarGroupLabel>
+          <SidebarGroupLabel className="px-4 text-[10px] font-bold uppercase tracking-[0.2em] text-white/40">Navigation</SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu>
               {navItems.map((item) => (
@@ -83,7 +95,7 @@ export function AdminSidebar() {
                   <SidebarMenuButton
                     asChild
                     isActive={pathname === item.url}
-                    className="text-white/70 hover:text-white hover:bg-white/5 transition-colors"
+                    className="text-white/70 transition-colors hover:bg-white/5 hover:text-white"
                   >
                     <Link href={item.url}>
                       <item.icon className="h-4 w-4" />
@@ -97,7 +109,7 @@ export function AdminSidebar() {
         </SidebarGroup>
 
         <SidebarGroup className="mt-auto">
-          <SidebarGroupLabel className="text-white/40 px-4 text-[10px] font-bold tracking-[0.2em] uppercase">Système</SidebarGroupLabel>
+          <SidebarGroupLabel className="px-4 text-[10px] font-bold uppercase tracking-[0.2em] text-white/40">Système</SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu>
               {secondaryItems.map((item) => (
@@ -105,7 +117,7 @@ export function AdminSidebar() {
                   <SidebarMenuButton
                     asChild
                     isActive={pathname === item.url}
-                    className="text-white/70 hover:text-white hover:bg-white/5 transition-colors"
+                    className="text-white/70 transition-colors hover:bg-white/5 hover:text-white"
                   >
                     <Link href={item.url}>
                       <item.icon className="h-4 w-4" />
@@ -122,7 +134,7 @@ export function AdminSidebar() {
       <SidebarFooter className="border-t border-white/10 p-4">
         <SidebarMenu>
           <SidebarMenuItem>
-            <SidebarMenuButton className="text-red-400 hover:text-red-300 hover:bg-red-400/10 transition-colors">
+            <SidebarMenuButton className="text-red-400 transition-colors hover:bg-red-400/10 hover:text-red-300">
               <LogOut className="h-4 w-4" />
               <span>Déconnexion</span>
             </SidebarMenuButton>
@@ -132,3 +144,5 @@ export function AdminSidebar() {
     </Sidebar>
   );
 }
+
+

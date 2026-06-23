@@ -43,8 +43,8 @@ export const adminOperationalItems = [
   },
   {
     title: "Demandes contact",
-    status: "À connecter",
-    detail: "Le formulaire est prêt côté interface, mais aucun stockage serveur n'est encore branché.",
+    status: "Connecté",
+    detail: "Les formulaires publics enregistrent les demandes et elles sont visibles dans le BO.",
   },
   {
     title: "Sécurité BO",

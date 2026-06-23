@@ -9,10 +9,13 @@ import { PrimaryButton } from "@/components/ui/primary-button"
 import { PremiumCard } from "@/components/ui/premium-card"
 import { SectionTitle } from "@/components/ui/section-title"
 import { GlowDivider } from "@/components/ui/glow-divider"
-import { poles } from "@/lib/poles-data"
 import { siteContact } from "@/lib/site-data"
+import { ContactForm } from "@/components/contact-form"
+import { useSiteImages } from "@/hooks/use-site-images"
 
 export default function ContactPage() {
+  const siteImages = useSiteImages();
+
   return (
     <div className="min-h-screen bg-[#06090A] text-white">
       {/* Background elements */}
@@ -28,7 +31,7 @@ export default function ContactPage() {
       <section className="relative mx-auto max-w-6xl px-5 pt-14 pb-14 md:pt-20 md:pb-20 overflow-hidden rounded-[40px] mt-8">
         <div className="absolute inset-0 -z-10">
           <Image 
-            src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80&w=2000" 
+            src={siteImages.contactHero || "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80&w=2000"} 
             alt="Contact Background" 
             fill
             className="object-cover opacity-10"
@@ -119,71 +122,7 @@ export default function ContactPage() {
                 <p className="mt-2 text-sm text-white/50">Remplissez le formulaire et nous reviendrons vers vous avec une proposition structurée.</p>
               </div>
 
-              <form className="space-y-6" onSubmit={(e) => e.preventDefault()}>
-                <div className="grid gap-6 md:grid-cols-2">
-                  <div className="space-y-2">
-                    <label htmlFor="name" className="text-xs font-semibold tracking-widest uppercase text-white/40">Nom complet</label>
-                    <input
-                      id="name"
-                      type="text"
-                      suppressHydrationWarning
-                      className="w-full rounded-xl border border-white/10 bg-black/20 px-4 py-3 text-sm text-white placeholder:text-white/20 focus:outline-none focus:ring-2 focus:ring-emerald-400/40"
-                      placeholder="Votre nom"
-                    />
-                  </div>
-                  <div className="space-y-2">
-                    <label htmlFor="company" className="text-xs font-semibold tracking-widest uppercase text-white/40">Entreprise</label>
-                    <input
-                      id="company"
-                      type="text"
-                      suppressHydrationWarning
-                      className="w-full rounded-xl border border-white/10 bg-black/20 px-4 py-3 text-sm text-white placeholder:text-white/20 focus:outline-none focus:ring-2 focus:ring-emerald-400/40"
-                      placeholder="Votre entreprise"
-                    />
-                  </div>
-                </div>
-
-                <div className="space-y-2">
-                  <label htmlFor="email" className="text-xs font-semibold tracking-widest uppercase text-white/40">Email professionnel</label>
-                  <input
-                    id="email"
-                    type="email"
-                    suppressHydrationWarning
-                    className="w-full rounded-xl border border-white/10 bg-black/20 px-4 py-3 text-sm text-white placeholder:text-white/20 focus:outline-none focus:ring-2 focus:ring-emerald-400/40"
-                    placeholder="votre@email.com"
-                  />
-                </div>
-
-                <div className="space-y-2">
-                  <label htmlFor="pole" className="text-xs font-semibold tracking-widest uppercase text-white/40">Pôle d'intérêt</label>
-                  <select
-                    id="pole"
-                    suppressHydrationWarning
-                    className="w-full rounded-xl border border-white/10 bg-black/20 px-4 py-3 text-sm text-white/60 focus:outline-none focus:ring-2 focus:ring-emerald-400/40 appearance-none"
-                  >
-                    <option value="">Sélectionnez un pôle</option>
-                    {poles.map((pole) => (
-                      <option key={pole.id} value={pole.id}>{pole.title}</option>
-                    ))}
-                  </select>
-                </div>
-
-                <div className="space-y-2">
-                  <label htmlFor="message" className="text-xs font-semibold tracking-widest uppercase text-white/40">Message</label>
-                  <textarea
-                    id="message"
-                    rows={5}
-                    suppressHydrationWarning
-                    className="w-full rounded-xl border border-white/10 bg-black/20 px-4 py-3 text-sm text-white placeholder:text-white/20 focus:outline-none focus:ring-2 focus:ring-emerald-400/40 resize-none"
-                    placeholder="Décrivez votre besoin, vos objectifs et vos délais..."
-                  />
-                </div>
-
-                <div className="pt-4 flex flex-wrap items-center justify-between gap-4">
-                  <p className="text-xs text-white/40 italic">Réponse sous {siteContact.responseTime}.</p>
-                  <PrimaryButton>Envoyer la demande</PrimaryButton>
-                </div>
-              </form>
+              <ContactForm source="contact" />
             </PremiumCard>
           </div>
         </div>
@@ -191,6 +130,9 @@ export default function ContactPage() {
     </div>
   )
 }
+
+
+
 
 
 

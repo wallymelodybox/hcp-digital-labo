@@ -4,7 +4,7 @@ export function middleware(req: NextRequest) {
   const { pathname } = req.nextUrl
 
   // Check if the request is for the admin dashboard
-  if (pathname.startsWith('/admin')) {
+  if (pathname.startsWith('/admin') || pathname.startsWith('/api/admin')) {
     const basicAuth = req.headers.get('authorization')
 
     if (basicAuth) {
@@ -31,5 +31,6 @@ export function middleware(req: NextRequest) {
 }
 
 export const config = {
-  matcher: '/admin/:path*',
+  matcher: ['/admin/:path*', '/api/admin/:path*'],
 }
+

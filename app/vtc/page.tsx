@@ -3,10 +3,9 @@
 import { poles } from "@/lib/poles-data"
 import { PolePageLayout } from "@/components/pole-page-layout"
 
-export default function FormationPage() {
-  const pole = poles[4]
-  const prevPole = poles[3]
-  const nextPole = poles[5]
+export default function VtcPage() {
+  const pole = poles[6]
+  const prevPole = poles[5]
 
   return (
     <PolePageLayout
@@ -18,7 +17,7 @@ export default function FormationPage() {
       services={[...pole.services]}
       stats={[...pole.stats]}
       prevPole={{ title: prevPole.title, slug: prevPole.slug }}
-      nextPole={{ title: nextPole.title, slug: nextPole.slug }}
+      nextPole={null}
     />
   )
 }

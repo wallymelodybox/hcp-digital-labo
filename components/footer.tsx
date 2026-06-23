@@ -28,7 +28,7 @@ export function Footer() {
               </div>
             </div>
             <p className="mt-4 text-sm text-white/60">
-              Votre partenaire structurant pour la strategie, le digital, l'evenementiel, la production et la formation.
+              Votre partenaire structurant pour la strategie, le digital, l'evenementiel, la production, la formation, la livraison et le VTC.
             </p>
           </div>
 

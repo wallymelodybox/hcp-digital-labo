@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import {
@@ -26,35 +26,13 @@ import { PrimaryButton } from "../../components/ui/primary-button";
 import { SecondaryButton } from "../../components/ui/secondary-button";
 import { PremiumCard } from "../../components/ui/premium-card";
 import { SectionTitle } from "../../components/ui/section-title";
+import { ContactForm } from "@/components/contact-form";
+import { useSiteImages } from "@/hooks/use-site-images";
+import { defaultStrategyOffers, strategyOfferIcons, type StrategyOffer } from "@/lib/strategy-offers";
 
 
 
-const offers = [
-  {
-    icon: Target,
-    title: "Positionnement & Messages",
-    desc: "Clarifier votre proposition de valeur, vos cibles et vos messages clés. Aligner l’équipe sur une direction unique.",
-    bullets: ["Proposition de valeur", "Personas", "Message house"],
-  },
-  {
-    icon: PenTool,
-    title: "Branding & Identité",
-    desc: "Consolider une identité premium : ton, codes, charte et système visuel cohérent sur tous les supports.",
-    bullets: ["Audit marque", "Charte", "Système visuel"],
-  },
-  {
-    icon: LineChart,
-    title: "Plan Marketing & Go-to-market",
-    desc: "Construire un plan exécutable avec priorités, calendrier, budget, canaux, et KPIs suivis.",
-    bullets: ["Roadmap", "Canaux", "KPI"],
-  },
-  {
-    icon: FileText,
-    title: "Communication Corporate",
-    desc: "Structurer vos contenus et prises de parole : institutionnel, partenaires, RH, communication interne.",
-    bullets: ["Narratif", "Contenus", "Templates"],
-  },
-];
+
 
 const method = [
   {
@@ -163,7 +141,26 @@ const faqs = [
 
 export default function StrategiePage() {
   const [openFaq, setOpenFaq] = useState<number | null>(0);
+  const siteImages = useSiteImages();
+  const [offers, setOffers] = useState<StrategyOffer[]>(defaultStrategyOffers);
   const year = new Date().getFullYear();
+
+  useEffect(() => {
+    let active = true;
+
+    fetch("/api/strategy-offers")
+      .then((res) => (res.ok ? res.json() : defaultStrategyOffers))
+      .then((data) => {
+        if (active && Array.isArray(data) && data.length) {
+          setOffers(data);
+        }
+      })
+      .catch(() => undefined);
+
+    return () => {
+      active = false;
+    };
+  }, []);
 
   return (
     <div id="top" className="min-h-screen bg-[#06090A] text-white">
@@ -227,7 +224,7 @@ export default function StrategiePage() {
               <div className="relative overflow-hidden rounded-[26px] border border-white/10 bg-white/3 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.06)]">
                 <div className="relative h-48 w-full overflow-hidden">
                   <Image 
-                    src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=1200" 
+                    src={siteImages.strategie || "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=1200"} 
                     alt="Stratégie et Analyse" 
                     fill
                     className="object-cover transition-transform duration-500 group-hover:scale-105 opacity-60"
@@ -290,7 +287,7 @@ export default function StrategiePage() {
 
         <div className="mt-10 grid gap-4 md:grid-cols-2">
           {offers.map((o) => {
-            const Icon = o.icon;
+            const Icon = strategyOfferIcons[o.icon] || FileText;
             return (
               <div key={o.title} className="group">
                 <PremiumCard className="p-6 transition hover:-translate-y-1 hover:border-emerald-400/35">
@@ -567,3 +564,7 @@ export default function StrategiePage() {
     </div>
   );
 }
+
+
+
+

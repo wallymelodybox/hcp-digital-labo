@@ -19,6 +19,8 @@ import { PremiumCard } from "@/components/ui/premium-card";
 import { PrimaryButton } from "@/components/ui/primary-button";
 import { SecondaryButton } from "@/components/ui/secondary-button";
 import { SectionTitle } from "@/components/ui/section-title";
+import { ContactForm } from "@/components/contact-form";
+import { useSiteImages } from "@/hooks/use-site-images";
 
 const proofItems = [
   "Gouvernance et jalons clairs",
@@ -50,6 +52,8 @@ function Stat({ value, label }: { value: string; label: string }) {
 }
 
 export default function HomePage() {
+  const siteImages = useSiteImages();
+
   return (
     <div className="min-h-screen bg-[#06090A] text-white">
       <div className="pointer-events-none fixed inset-0 -z-10">
@@ -100,7 +104,7 @@ export default function HomePage() {
               <div className="relative overflow-hidden rounded-[26px] border border-white/10 bg-white/[0.035] shadow-[inset_0_1px_0_0_rgba(255,255,255,0.06)]">
                 <div className="relative h-52 w-full overflow-hidden">
                   <Image
-                    src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=1200"
+                    src={siteImages.homeHero || "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=1200"}
                     alt="Espace de travail HCP Digital Labo"
                     fill
                     priority
@@ -191,7 +195,7 @@ export default function HomePage() {
               <Link id={pole.id} key={pole.id} href={pole.slug} className="group scroll-mt-28">
                 <PremiumCard className="h-full p-0 transition hover:-translate-y-1 hover:border-emerald-400/35">
                   <div className="relative h-40 w-full overflow-hidden">
-                    <Image src={pole.image} alt={pole.title} fill className="object-cover opacity-50 transition-transform duration-500 group-hover:scale-110" />
+                    <Image src={siteImages[pole.id] || pole.image} alt={pole.title} fill className="object-cover opacity-50 transition-transform duration-500 group-hover:scale-110" />
                     <div className="absolute inset-0 bg-linear-to-t from-[#06090A] to-transparent" />
                     <div className="absolute bottom-4 left-6 flex h-10 w-10 items-center justify-center rounded-2xl border border-white/10 bg-emerald-400/15 text-emerald-300 backdrop-blur-md">
                       <Icon className="h-5 w-5" />
@@ -274,24 +278,7 @@ export default function HomePage() {
             </div>
             <div className="md:col-span-7">
               <PremiumCard className="p-6">
-                <div className="grid gap-4 md:grid-cols-2">
-                  <div>
-                    <label className="text-xs font-semibold tracking-[0.22em] text-white/60 uppercase">Nom</label>
-                    <input className="mt-2 w-full rounded-xl border border-white/10 bg-black/20 px-4 py-3 text-sm text-white placeholder:text-white/35 focus:outline-none focus:ring-2 focus:ring-emerald-400/40" placeholder="Votre nom" />
-                  </div>
-                  <div>
-                    <label className="text-xs font-semibold tracking-[0.22em] text-white/60 uppercase">Telephone</label>
-                    <input className="mt-2 w-full rounded-xl border border-white/10 bg-black/20 px-4 py-3 text-sm text-white placeholder:text-white/35 focus:outline-none focus:ring-2 focus:ring-emerald-400/40" placeholder={siteContact.phone} />
-                  </div>
-                  <div className="md:col-span-2">
-                    <label className="text-xs font-semibold tracking-[0.22em] text-white/60 uppercase">Besoin</label>
-                    <textarea className="mt-2 min-h-30 w-full rounded-xl border border-white/10 bg-black/20 px-4 py-3 text-sm text-white placeholder:text-white/35 focus:outline-none focus:ring-2 focus:ring-emerald-400/40" placeholder="Objectif, delai, budget indicatif" />
-                  </div>
-                </div>
-                <div className="mt-5 flex flex-wrap items-center justify-between gap-3">
-                  <div className="text-xs text-white/50">Reponse sous {siteContact.responseTime}.</div>
-                  <PrimaryButton>Envoyer</PrimaryButton>
-                </div>
+                <ContactForm compact source="accueil" />
               </PremiumCard>
             </div>
           </div>
@@ -300,3 +287,8 @@ export default function HomePage() {
     </div>
   );
 }
+
+
+
+
+

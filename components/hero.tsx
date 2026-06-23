@@ -35,7 +35,7 @@ export function Hero() {
           </h1>
 
           <p className="mt-8 max-w-2xl text-lg leading-relaxed text-[var(--hero-muted)]">
-            {"Cinq poles d'excellence au service de votre performance. Strategie, digital, evenementiel, production et formation : une approche structurante pour transformer votre vision en resultats concrets."}
+            {"Sept poles d'excellence au service de votre performance. Strategie, digital, evenementiel, production, formation, livraison et VTC : une approche structurante pour transformer votre vision en resultats concrets."}
           </p>
 
           <div className="mt-12 flex flex-col gap-4 sm:flex-row sm:items-center">

@@ -10,6 +10,7 @@ import { PrimaryButton } from "@/components/ui/primary-button"
 import { PremiumCard } from "@/components/ui/premium-card"
 import { SectionTitle } from "@/components/ui/section-title"
 import { GlowDivider } from "@/components/ui/glow-divider"
+import { useSiteImages } from "@/hooks/use-site-images"
 
 interface PoleService {
   name: string
@@ -44,6 +45,20 @@ export function PolePageLayout({
   prevPole,
   nextPole,
 }: PolePageLayoutProps) {
+  const siteImages = useSiteImages();
+  const imageKey = title.toLowerCase().includes("strat")
+    ? "strategie"
+    : title.toLowerCase().includes("digital")
+      ? "digital"
+      : title.toLowerCase().includes("vénement") || title.toLowerCase().includes("evenement")
+        ? "evenementiel"
+        : title.toLowerCase().includes("production")
+          ? "production"
+          : title.toLowerCase().includes("formation")
+            ? "formation"
+            : "";
+  const displayImage = siteImages[imageKey] || image;
+
   return (
     <div className="bg-[#06090A] text-white min-h-screen">
       {/* Background elements to match home page premium feel */}
@@ -116,7 +131,7 @@ export function PolePageLayout({
             >
               <div className="relative aspect-4/5 overflow-hidden rounded-4xl border border-white/10 bg-white/3.5 shadow-2xl">
                 <Image
-                  src={image}
+                  src={displayImage}
                   alt={title}
                   fill
                   className="object-cover transition-transform duration-700 hover:scale-105"
@@ -236,4 +251,6 @@ export function PolePageLayout({
     </div>
   )
 }
+
+
 

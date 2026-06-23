@@ -3,10 +3,10 @@
 import { poles } from "@/lib/poles-data"
 import { PolePageLayout } from "@/components/pole-page-layout"
 
-export default function FormationPage() {
-  const pole = poles[4]
-  const prevPole = poles[3]
-  const nextPole = poles[5]
+export default function LivraisonPage() {
+  const pole = poles[5]
+  const prevPole = poles[4]
+  const nextPole = poles[6]
 
   return (
     <PolePageLayout
