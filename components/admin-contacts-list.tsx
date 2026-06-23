@@ -28,7 +28,7 @@ export function AdminContactsList() {
     setError("");
 
     try {
-      const response = await fetch("/api/admin/contacts", { credentials: "same-origin" });
+      const response = await fetch("/api/hcp-bo-7x9k2m/contacts", { credentials: "same-origin" });
       if (!response.ok) throw new Error("load");
       setContacts(await response.json());
     } catch {
@@ -39,7 +39,7 @@ export function AdminContactsList() {
   }
 
   async function markRead(id: string) {
-    const response = await fetch("/api/admin/contacts", {
+    const response = await fetch("/api/hcp-bo-7x9k2m/contacts", {
       method: "PATCH",
       credentials: "same-origin",
       headers: { "Content-Type": "application/json" },

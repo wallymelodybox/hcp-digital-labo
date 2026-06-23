@@ -30,27 +30,27 @@ import {
 const navItems = [
   {
     title: "Dashboard",
-    url: "/admin",
+    url: "/hcp-bo-7x9k2m",
     icon: LayoutDashboard,
   },
   {
     title: "Gestion des Pôles",
-    url: "/admin/poles",
+    url: "/hcp-bo-7x9k2m/poles",
     icon: Layers,
   },
   {
     title: "Images du site",
-    url: "/admin/images",
+    url: "/hcp-bo-7x9k2m/images",
     icon: ImageIcon,
   },
   {
     title: "Offres Stratégie",
-    url: "/admin/offres",
+    url: "/hcp-bo-7x9k2m/offres",
     icon: FileText,
   },
   {
     title: "Demandes Contact",
-    url: "/admin/contacts",
+    url: "/hcp-bo-7x9k2m/contacts",
     icon: Users,
   },
 ];
@@ -58,7 +58,7 @@ const navItems = [
 const secondaryItems = [
   {
     title: "Paramètres",
-    url: "/admin/settings",
+    url: "/hcp-bo-7x9k2m/settings",
     icon: Settings,
   },
   {
@@ -72,10 +72,10 @@ export function AdminSidebar() {
   const pathname = usePathname();
 
   return (
-    <Sidebar className="border-r border-white/10 bg-[#12141A]">
-      <SidebarHeader className="border-b border-white/10 p-4">
+    <Sidebar className="border-r border-white/10 bg-[#06090A] text-white">
+      <SidebarHeader className="border-b border-white/10 bg-[#06090A] p-4">
         <div className="flex items-center gap-2 px-2">
-          <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-emerald-500 text-white">
+          <div className="flex h-8 w-8 items-center justify-center rounded-lg border border-emerald-400/30 bg-emerald-400/15 text-emerald-300 shadow-[0_18px_60px_-24px_rgba(16,185,129,0.75)]">
             <span className="text-xs font-bold uppercase">HCP</span>
           </div>
           <div className="flex flex-col">
@@ -95,7 +95,7 @@ export function AdminSidebar() {
                   <SidebarMenuButton
                     asChild
                     isActive={pathname === item.url}
-                    className="text-white/70 transition-colors hover:bg-white/5 hover:text-white"
+                    className="text-white/70 transition-colors hover:bg-emerald-400/10 hover:text-white data-[active=true]:bg-emerald-400/15 data-[active=true]:text-emerald-200 data-[active=true]:shadow-[inset_3px_0_0_rgba(52,211,153,0.95)]"
                   >
                     <Link href={item.url}>
                       <item.icon className="h-4 w-4" />
@@ -117,7 +117,7 @@ export function AdminSidebar() {
                   <SidebarMenuButton
                     asChild
                     isActive={pathname === item.url}
-                    className="text-white/70 transition-colors hover:bg-white/5 hover:text-white"
+                    className="text-white/70 transition-colors hover:bg-emerald-400/10 hover:text-white data-[active=true]:bg-emerald-400/15 data-[active=true]:text-emerald-200 data-[active=true]:shadow-[inset_3px_0_0_rgba(52,211,153,0.95)]"
                   >
                     <Link href={item.url}>
                       <item.icon className="h-4 w-4" />
@@ -134,7 +134,7 @@ export function AdminSidebar() {
       <SidebarFooter className="border-t border-white/10 p-4">
         <SidebarMenu>
           <SidebarMenuItem>
-            <SidebarMenuButton className="text-red-400 transition-colors hover:bg-red-400/10 hover:text-red-300">
+            <SidebarMenuButton className="text-red-300/80 transition-colors hover:bg-red-400/10 hover:text-red-200">
               <LogOut className="h-4 w-4" />
               <span>Déconnexion</span>
             </SidebarMenuButton>
@@ -144,5 +144,6 @@ export function AdminSidebar() {
     </Sidebar>
   );
 }
+
 
 

@@ -4,7 +4,7 @@ export function middleware(req: NextRequest) {
   const { pathname } = req.nextUrl
 
   // Check if the request is for the admin dashboard
-  if (pathname.startsWith('/admin') || pathname.startsWith('/api/admin')) {
+  if (pathname.startsWith('/hcp-bo-7x9k2m') || pathname.startsWith('/api/hcp-bo-7x9k2m')) {
     const basicAuth = req.headers.get('authorization')
 
     if (basicAuth) {
@@ -31,6 +31,6 @@ export function middleware(req: NextRequest) {
 }
 
 export const config = {
-  matcher: ['/admin/:path*', '/api/admin/:path*'],
+  matcher: ['/hcp-bo-7x9k2m/:path*', '/api/hcp-bo-7x9k2m/:path*'],
 }
 

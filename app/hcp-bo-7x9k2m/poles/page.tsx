@@ -62,7 +62,7 @@ export default function AdminPolesPage() {
                       Voir
                     </Button>
                   </Link>
-                  <Link href={`/admin/poles#${pole.id}`}>
+                  <Link href={`/hcp-bo-7x9k2m/poles#${pole.id}`}>
                     <Button variant="ghost" size="sm" className="gap-2 text-emerald-400 hover:bg-emerald-400/10 hover:text-emerald-300">
                       <FileText className="h-4 w-4" />
                       Détails

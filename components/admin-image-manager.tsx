@@ -35,7 +35,7 @@ export function AdminImageManager() {
   );
 
   useEffect(() => {
-    fetch("/api/admin/site-images", { credentials: "same-origin" })
+    fetch("/api/hcp-bo-7x9k2m/site-images", { credentials: "same-origin" })
       .then((res) => (res.ok ? res.json() : Promise.reject()))
       .then((data) => {
         setImages(data || {});
@@ -51,7 +51,7 @@ export function AdminImageManager() {
     setStatus("saving");
     setMessage("");
 
-    const response = await fetch("/api/admin/site-images", {
+    const response = await fetch("/api/hcp-bo-7x9k2m/site-images", {
       method: "PUT",
       credentials: "same-origin",
       headers: { "Content-Type": "application/json" },

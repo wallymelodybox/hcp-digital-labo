@@ -29,7 +29,7 @@ export function AdminStrategyOffersManager() {
   const [message, setMessage] = useState("");
 
   useEffect(() => {
-    fetch("/api/admin/strategy-offers", { credentials: "same-origin" })
+    fetch("/api/hcp-bo-7x9k2m/strategy-offers", { credentials: "same-origin" })
       .then((res) => (res.ok ? res.json() : Promise.reject()))
       .then((data) => {
         if (Array.isArray(data) && data.length) setOffers(data);
@@ -62,7 +62,7 @@ export function AdminStrategyOffersManager() {
     setStatus("saving");
     setMessage("");
 
-    const response = await fetch("/api/admin/strategy-offers", {
+    const response = await fetch("/api/hcp-bo-7x9k2m/strategy-offers", {
       method: "PUT",
       credentials: "same-origin",
       headers: { "Content-Type": "application/json" },
