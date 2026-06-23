@@ -9,6 +9,8 @@ import { PrimaryButton } from "@/components/ui/primary-button"
 import { PremiumCard } from "@/components/ui/premium-card"
 import { SectionTitle } from "@/components/ui/section-title"
 import { GlowDivider } from "@/components/ui/glow-divider"
+import { poles } from "@/lib/poles-data"
+import { siteContact } from "@/lib/site-data"
 
 export default function ContactPage() {
   return (
@@ -42,7 +44,7 @@ export default function ContactPage() {
             <Pill>CONTACT & AUDIT</Pill>
             <span className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/3 px-3 py-1 text-[11px] font-semibold tracking-[0.22em] text-white/60">
               <Sparkles className="h-3.5 w-3.5 text-emerald-300" />
-              RÉPONSE SOUS 24H
+              REPONSE SOUS 24-48H
             </span>
           </div>
 
@@ -69,9 +71,9 @@ export default function ContactPage() {
 
             <div className="space-y-4">
               {[
-                { icon: Mail, label: "Email", value: "contact@hcp-digital-lab.org" },
-                { icon: Phone, label: "Téléphone", value: "07 68 30 70 80" },
-                { icon: MapPin, label: "Adresse", value: "Abidjan, Côte d'Ivoire" },
+                { icon: Mail, label: "Email", value: siteContact.email },
+                { icon: Phone, label: "Téléphone", value: siteContact.phone },
+                { icon: MapPin, label: "Adresse", value: siteContact.location },
               ].map((item) => (
                 <PremiumCard key={item.label} className="p-6">
                   <div className="flex items-start gap-4">
@@ -160,11 +162,9 @@ export default function ContactPage() {
                     className="w-full rounded-xl border border-white/10 bg-black/20 px-4 py-3 text-sm text-white/60 focus:outline-none focus:ring-2 focus:ring-emerald-400/40 appearance-none"
                   >
                     <option value="">Sélectionnez un pôle</option>
-                    <option value="strategie">Stratégie & Communication</option>
-                    <option value="digital">Digital & Technologie</option>
-                    <option value="evenementiel">Événementiel & Expériences</option>
-                    <option value="production">Production & Imprimerie</option>
-                    <option value="formation">Formation & Transformation</option>
+                    {poles.map((pole) => (
+                      <option key={pole.id} value={pole.id}>{pole.title}</option>
+                    ))}
                   </select>
                 </div>
 
@@ -180,7 +180,7 @@ export default function ContactPage() {
                 </div>
 
                 <div className="pt-4 flex flex-wrap items-center justify-between gap-4">
-                  <p className="text-xs text-white/40 italic">Réponse sous 24h ouvrées.</p>
+                  <p className="text-xs text-white/40 italic">Réponse sous {siteContact.responseTime}.</p>
                   <PrimaryButton>Envoyer la demande</PrimaryButton>
                 </div>
               </form>
@@ -191,4 +191,7 @@ export default function ContactPage() {
     </div>
   )
 }
+
+
+
 

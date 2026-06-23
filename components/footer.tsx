@@ -2,28 +2,17 @@
 
 import React, { useMemo } from "react";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
 import { GlowDivider } from "./ui/glow-divider";
-
-const poles = [
-  { id: "strategie", title: "Stratégie & Communication" },
-  { id: "digital", title: "Digital & Technologie" },
-  { id: "evenementiel", title: "Événementiel & Expériences" },
-  { id: "production", title: "Production & Imprimerie" },
-  { id: "formation", title: "Formation & Transformation" },
-];
+import { poles } from "@/lib/poles-data";
+import { siteContact } from "@/lib/site-data";
 
 const navLinks = [
   { label: "Accueil", href: "/" },
-  { label: "Stratégie", href: "/#strategie" },
-  { label: "Digital", href: "/#digital" },
-  { label: "Événementiel", href: "/#evenementiel" },
-  { label: "Production", href: "/#production" },
-  { label: "Formation", href: "/#formation" },
+  { label: "Expertises", href: "/#expertises" },
+  { label: "Contact", href: "/contact" },
 ];
 
 export function Footer() {
-  const pathname = usePathname();
   const year = useMemo(() => new Date().getFullYear(), []);
 
   return (
@@ -39,16 +28,16 @@ export function Footer() {
               </div>
             </div>
             <p className="mt-4 text-sm text-white/60">
-              Votre partenaire structurant pour la stratégie, le digital, l’événementiel, la production et la formation.
+              Votre partenaire structurant pour la strategie, le digital, l'evenementiel, la production et la formation.
             </p>
           </div>
 
           <div className="md:col-span-3">
-            <div className="text-xs font-semibold tracking-[0.26em] text-white/60 uppercase">NOS PÔLES</div>
+            <div className="text-xs font-semibold tracking-[0.26em] text-white/60 uppercase">NOS POLES</div>
             <div className="mt-4 space-y-2 text-sm text-white/60">
-              {poles.map((p) => (
-                <Link key={p.id} href={`/#${p.id}`} className="block hover:text-white transition-colors">
-                  {p.title}
+              {poles.map((pole) => (
+                <Link key={pole.id} href={pole.slug} className="block transition-colors hover:text-white">
+                  {pole.title}
                 </Link>
               ))}
             </div>
@@ -57,21 +46,20 @@ export function Footer() {
           <div className="md:col-span-3">
             <div className="text-xs font-semibold tracking-[0.26em] text-white/60 uppercase">NAVIGATION</div>
             <div className="mt-4 space-y-2 text-sm text-white/60">
-              {navLinks.map((n) => (
-                <Link key={n.href} href={n.href} className="block hover:text-white transition-colors">
-                  {n.label}
+              {navLinks.map((link) => (
+                <Link key={link.href} href={link.href} className="block transition-colors hover:text-white">
+                  {link.label}
                 </Link>
               ))}
-              <Link href="/#contact" className="block hover:text-white transition-colors">Contact</Link>
             </div>
           </div>
 
           <div className="md:col-span-2">
             <div className="text-xs font-semibold tracking-[0.26em] text-white/60 uppercase">CONTACT</div>
             <div className="mt-4 space-y-2 text-sm text-white/60">
-              <div className="text-emerald-300">contact@hcp-digital-lab.org</div>
-              <div>07 68 30 70 80</div>
-              <div>Abidjan, Côte d’Ivoire</div>
+              <div className="text-emerald-300">{siteContact.email}</div>
+              <div>{siteContact.phone}</div>
+              <div>{siteContact.location}</div>
             </div>
           </div>
         </div>
@@ -81,10 +69,10 @@ export function Footer() {
         </div>
 
         <div className="mt-6 flex flex-col gap-3 text-xs text-white/45 md:flex-row md:items-center md:justify-between">
-          <div>© {year} HCP Digital Labo. Tous droits réservés.</div>
+          <div>© {year} HCP Digital Labo. Tous droits reserves.</div>
           <div className="flex items-center gap-4">
-            <Link href="#" className="hover:text-white transition-colors">Mentions légales</Link>
-            <Link href="#" className="hover:text-white transition-colors">Politique de confidentialité</Link>
+            <Link href="#" className="transition-colors hover:text-white">Mentions legales</Link>
+            <Link href="#" className="transition-colors hover:text-white">Politique de confidentialite</Link>
           </div>
         </div>
       </div>

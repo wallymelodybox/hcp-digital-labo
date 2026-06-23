@@ -1,18 +1,23 @@
 import { PremiumCard } from "@/components/ui/premium-card";
-import { BarChart3, Users, FileText, Settings } from "lucide-react";
+import { BarChart3, FileText, Layers, ShieldCheck, Users } from "lucide-react";
+import { poles } from "@/lib/poles-data";
+import { adminOperationalItems, siteMetrics } from "@/lib/site-data";
 
 export default function AdminPage() {
+  const totalServices = poles.reduce((total, pole) => total + pole.services.length, 0);
+  const totalStats = poles.reduce((total, pole) => total + pole.stats.length, 0);
+
   const stats = [
-    { label: "Visiteurs (30j)", value: "2,450", icon: Users, trend: "+12%" },
-    { label: "Demandes Contact", value: "14", icon: FileText, trend: "+3" },
-    { label: "Projets Actifs", value: "6", icon: BarChart3, trend: "Stable" },
+    { label: "Pôles publiés", value: String(poles.length), icon: Layers, trend: "Source unique" },
+    { label: "Services listés", value: String(totalServices), icon: FileText, trend: "Public" },
+    { label: "Indicateurs", value: String(totalStats + siteMetrics.length), icon: BarChart3, trend: "À vérifier" },
   ];
 
   return (
     <div className="space-y-8">
       <div>
         <h2 className="text-3xl font-semibold tracking-tight text-white">Vue d'ensemble</h2>
-        <p className="mt-2 text-white/50">Bienvenue dans l'espace de gestion HCP Digital Labo.</p>
+        <p className="mt-2 text-white/50">Etat opérationnel du contenu public et des modules back-office.</p>
       </div>
 
       <div className="grid gap-4 md:grid-cols-3">
@@ -25,7 +30,7 @@ export default function AdminPage() {
               <span className="text-xs font-semibold text-emerald-400">{stat.trend}</span>
             </div>
             <div className="mt-4">
-              <div className="text-sm font-medium text-white/60 uppercase tracking-widest">{stat.label}</div>
+              <div className="text-sm font-medium uppercase tracking-widest text-white/60">{stat.label}</div>
               <div className="mt-1 text-2xl font-bold text-white">{stat.value}</div>
             </div>
           </PremiumCard>
@@ -34,23 +39,36 @@ export default function AdminPage() {
 
       <div className="grid gap-6 md:grid-cols-2">
         <PremiumCard className="p-6">
-          <h3 className="text-lg font-semibold text-white">Dernières demandes</h3>
-          <div className="mt-4 space-y-4">
-            <div className="border-b border-white/5 pb-4 last:border-0 last:pb-0">
-              <div className="text-sm font-medium">Jean Dupont - Stratégie</div>
-              <div className="text-xs text-white/40 italic mt-1">"Besoin d'un audit de marque premium..."</div>
-            </div>
-            <div className="border-b border-white/5 pb-4 last:border-0 last:pb-0">
-              <div className="text-sm font-medium">Marie Kouassi - Digital</div>
-              <div className="text-xs text-white/40 italic mt-1">"Refonte plateforme e-commerce luxe..."</div>
-            </div>
+          <div className="flex items-center gap-3">
+            <Users className="h-5 w-5 text-emerald-300" />
+            <h3 className="text-lg font-semibold text-white">Demandes contact</h3>
+          </div>
+          <p className="mt-4 text-sm leading-relaxed text-white/55">
+            Le formulaire public est prêt, mais l'enregistrement serveur n'est pas encore connecté. Les demandes ne doivent pas être considérées comme stockées tant qu'une table ou API n'est pas branchée.
+          </p>
+          <div className="mt-5 rounded-2xl border border-amber-400/20 bg-amber-400/10 p-4 text-sm text-amber-100">
+            Action suivante : créer la table des demandes ou une route API d'envoi email.
           </div>
         </PremiumCard>
 
-        <PremiumCard className="p-6 flex flex-col justify-center items-center text-center">
-          <Settings className="h-10 w-10 text-white/10" />
-          <h3 className="mt-4 text-sm font-semibold uppercase tracking-widest text-white/40">Configuration</h3>
-          <p className="mt-2 text-xs text-white/30">Accédez aux réglages globaux du site.</p>
+        <PremiumCard className="p-6">
+          <div className="flex items-center gap-3">
+            <ShieldCheck className="h-5 w-5 text-emerald-300" />
+            <h3 className="text-lg font-semibold text-white">Suivi BO</h3>
+          </div>
+          <div className="mt-5 space-y-4">
+            {adminOperationalItems.map((item) => (
+              <div key={item.title} className="border-b border-white/5 pb-4 last:border-0 last:pb-0">
+                <div className="flex items-center justify-between gap-3">
+                  <div className="text-sm font-medium text-white">{item.title}</div>
+                  <span className="rounded-full border border-emerald-400/20 bg-emerald-400/10 px-2 py-1 text-[10px] font-bold uppercase tracking-widest text-emerald-300">
+                    {item.status}
+                  </span>
+                </div>
+                <div className="mt-1 text-xs leading-relaxed text-white/40">{item.detail}</div>
+              </div>
+            ))}
+          </div>
         </PremiumCard>
       </div>
     </div>
