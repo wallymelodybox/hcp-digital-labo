@@ -1,5 +1,5 @@
 export const siteContact = {
-  email: "contact@hcp-digital-lab.org",
+  email: "contact@hcp-designci.com",
   phone: "07 68 30 70 80",
   location: "Abidjan, Côte d'Ivoire",
   responseTime: "24-48h ouvrées",
