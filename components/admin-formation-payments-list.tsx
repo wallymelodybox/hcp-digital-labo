@@ -1,9 +1,10 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
-import { Banknote, Inbox, MailWarning } from "lucide-react";
+import { Banknote, Download, Inbox, MailWarning } from "lucide-react";
+import { Button } from "@/components/ui/button";
 import { PremiumCard } from "@/components/ui/premium-card";
-import type { FormationRegistration, FormationRegistrationStatus } from "@/lib/site-storage";
+import type { FormationRegistration } from "@/lib/site-storage";
 
 function formatPrice(value: number) {
   return `${value.toLocaleString("fr-FR")} FCFA`;
@@ -76,6 +77,33 @@ export function AdminFormationPaymentsList() {
     return true;
   });
 
+  function exportCsv() {
+    const headers = ["Nom", "Prénoms", "WhatsApp", "Formule", "Moyen de paiement", "Référence", "Montant payé", "Montant dû", "Statut"];
+
+    const rows = filtered.map((item) => [
+      item.nom,
+      item.prenoms,
+      item.whatsapp,
+      item.formuleTitle,
+      modePaiementLabel(item.modePaiement),
+      item.referencePaiement ?? "",
+      item.montantPaye ? String(item.montantPaye) : "0",
+      String(item.prix),
+      item.montantPaye ? "Payé" : "En attente",
+    ]);
+
+    const escapeCell = (value: string) => `"${value.replace(/"/g, '""')}"`;
+    const csv = [headers, ...rows].map((row) => row.map(escapeCell).join(";")).join("\r\n");
+    const blob = new Blob(["﻿" + csv], { type: "text/csv;charset=utf-8;" });
+
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement("a");
+    link.href = url;
+    link.download = `paiements-formation-${new Date().toISOString().slice(0, 10)}.csv`;
+    link.click();
+    URL.revokeObjectURL(url);
+  }
+
   if (loading) {
     return <PremiumCard className="p-8 text-sm text-white/50">Chargement des paiements...</PremiumCard>;
   }
@@ -111,21 +139,29 @@ export function AdminFormationPaymentsList() {
         </PremiumCard>
       </div>
 
-      <div className="flex flex-wrap gap-2">
-        {filterOptions.map((option) => (
-          <button
-            key={option.value}
-            type="button"
-            onClick={() => setFilter(option.value)}
-            className={`rounded-full border px-4 py-2 text-xs font-semibold uppercase tracking-widest transition ${
-              filter === option.value
-                ? "border-emerald-400/40 bg-emerald-400/15 text-emerald-200"
-                : "border-white/10 bg-white/5 text-white/50 hover:bg-white/10"
-            }`}
-          >
-            {option.label}
-          </button>
-        ))}
+      <div className="flex flex-wrap items-center justify-between gap-3">
+        <div className="flex flex-wrap gap-2">
+          {filterOptions.map((option) => (
+            <button
+              key={option.value}
+              type="button"
+              onClick={() => setFilter(option.value)}
+              className={`rounded-full border px-4 py-2 text-xs font-semibold uppercase tracking-widest transition ${
+                filter === option.value
+                  ? "border-emerald-400/40 bg-emerald-400/15 text-emerald-200"
+                  : "border-white/10 bg-white/5 text-white/50 hover:bg-white/10"
+              }`}
+            >
+              {option.label}
+            </button>
+          ))}
+        </div>
+        {filtered.length ? (
+          <Button onClick={exportCsv} variant="ghost" className="gap-2 text-white/70 hover:bg-white/5 hover:text-white">
+            <Download className="h-4 w-4" />
+            Exporter en CSV ({filtered.length})
+          </Button>
+        ) : null}
       </div>
 
       {!filtered.length ? (

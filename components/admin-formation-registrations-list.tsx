@@ -1,7 +1,8 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { GraduationCap, Inbox, MailWarning } from "lucide-react";
+import { Download, GraduationCap, Inbox, MailWarning } from "lucide-react";
+import { Button } from "@/components/ui/button";
 import { PremiumCard } from "@/components/ui/premium-card";
 import type { FormationRegistration, FormationRegistrationStatus } from "@/lib/site-storage";
 import type { FormationSession } from "@/lib/formation-sessions";
@@ -159,6 +160,69 @@ export function AdminFormationRegistrationsList() {
     }
   }
 
+  function exportCsv() {
+    const headers = [
+      "Nom",
+      "Prénoms",
+      "WhatsApp",
+      "E-mail",
+      "Pays",
+      "Ville",
+      "Profession",
+      "Entreprise",
+      "Niveau informatique",
+      "Formule",
+      "Prix",
+      "Prix original",
+      "Code promo",
+      "Mode de participation",
+      "Session",
+      "Mode de paiement",
+      "Statut",
+      "Montant payé",
+      "Référence paiement",
+      "Date de paiement",
+      "Source",
+      "Date d'inscription",
+    ];
+
+    const rows = registrations.map((item) => [
+      item.nom,
+      item.prenoms,
+      item.whatsapp,
+      item.email,
+      item.pays,
+      item.ville,
+      item.profession,
+      item.entreprise ?? "",
+      niveauLabel(item.niveauInformatique),
+      item.formuleTitle,
+      String(item.prix),
+      item.prixOriginal ? String(item.prixOriginal) : "",
+      item.codePromo ?? "",
+      item.modeParticipation === "presentiel" ? "Présentiel" : "En ligne",
+      sessionLabel(item.sessionId) ?? "",
+      modePaiementLabel(item.modePaiement),
+      statusOptions.find((option) => option.value === item.status)?.label ?? item.status,
+      item.montantPaye ? String(item.montantPaye) : "",
+      item.referencePaiement ?? "",
+      item.paiementConfirmeAt ? new Date(item.paiementConfirmeAt).toLocaleString("fr-FR") : "",
+      item.source,
+      new Date(item.createdAt).toLocaleString("fr-FR"),
+    ]);
+
+    const escapeCell = (value: string) => `"${value.replace(/"/g, '""')}"`;
+    const csv = [headers, ...rows].map((row) => row.map(escapeCell).join(";")).join("\r\n");
+    const blob = new Blob(["﻿" + csv], { type: "text/csv;charset=utf-8;" });
+
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement("a");
+    link.href = url;
+    link.download = `inscriptions-formation-${new Date().toISOString().slice(0, 10)}.csv`;
+    link.click();
+    URL.revokeObjectURL(url);
+  }
+
   useEffect(() => {
     load();
   }, []);
@@ -198,6 +262,13 @@ export function AdminFormationRegistrationsList() {
 
   return (
     <div className="grid gap-5">
+      <div className="flex justify-end">
+        <Button onClick={exportCsv} variant="ghost" className="gap-2 text-white/70 hover:bg-white/5 hover:text-white">
+          <Download className="h-4 w-4" />
+          Exporter en CSV ({registrations.length})
+        </Button>
+      </div>
+
       {registrations.map((item) => (
         <PremiumCard key={item.id} className="p-6">
           <div className="flex flex-col gap-5 md:flex-row md:items-start md:justify-between">
