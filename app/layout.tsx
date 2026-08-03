@@ -1,7 +1,6 @@
 import type { Metadata, Viewport } from 'next'
 import './globals.css'
-import { Navbar } from '@/components/navbar'
-import { Footer } from '@/components/footer'
+import { SiteChrome } from '@/components/site-chrome'
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://hcp-digital-lab.org'),
@@ -24,9 +23,7 @@ export default function RootLayout({
   return (
     <html lang="fr">
       <body className="font-sans antialiased">
-        <Navbar />
-        <main>{children}</main>
-        <Footer />
+        <SiteChrome>{children}</SiteChrome>
       </body>
     </html>
   )

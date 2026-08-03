@@ -7,7 +7,6 @@ import {
   Users,
   Settings,
   LogOut,
-  Home,
   ImageIcon,
   FileText,
   GraduationCap,
@@ -96,11 +95,6 @@ const secondaryItems = [
     title: "Paramètres",
     url: "/hcp-bo-7x9k2m/settings",
     icon: Settings,
-  },
-  {
-    title: "Retour au site",
-    url: "/",
-    icon: Home,
   },
 ];
 
