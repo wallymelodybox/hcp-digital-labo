@@ -3,6 +3,8 @@ import { defaultStrategyOffers, type StrategyOffer } from "@/lib/strategy-offers
 import { defaultFormationOffers, type FormationOffer } from "@/lib/formation-offers";
 import { defaultFormationSessions, type FormationSession } from "@/lib/formation-sessions";
 import { defaultFormationPromoCodes, type FormationPromoCode } from "@/lib/formation-promo-codes";
+import type { AttendanceStatus, FormationAttendance } from "@/lib/formation-attendance";
+import { generateCertificateNumber, type FormationCertificate } from "@/lib/formation-certificates";
 
 export type SiteImages = Record<string, string>;
 
@@ -61,6 +63,22 @@ const formationOffersFile = "formation-offers.json";
 const formationRegistrationsFile = "formation-registrations.json";
 const formationSessionsFile = "formation-sessions.json";
 const formationPromoCodesFile = "formation-promo-codes.json";
+const formationAttendanceFile = "formation-attendance.json";
+const formationCertificatesFile = "formation-certificates.json";
+
+let paymentWriteQueue: Promise<void> = Promise.resolve();
+
+async function withPaymentWriteLock<T>(operation: () => Promise<T>): Promise<T> {
+  const previous = paymentWriteQueue;
+  let release!: () => void;
+  paymentWriteQueue = new Promise<void>((resolve) => { release = resolve; });
+  await previous;
+  try {
+    return await operation();
+  } finally {
+    release();
+  }
+}
 
 export async function getSiteImages() {
   return readJsonFile<SiteImages>(imagesFile, {});
@@ -149,19 +167,47 @@ export async function confirmFormationRegistrationPayment(
   id: string,
   input: { montantPaye: number; referencePaiement: string },
 ) {
-  const registrations = await getFormationRegistrations();
-  const updated = registrations.map((registration) =>
-    registration.id === id
-      ? {
-          ...registration,
-          status: "paiement_confirme" as const,
-          montantPaye: input.montantPaye,
-          referencePaiement: input.referencePaiement,
-          paiementConfirmeAt: new Date().toISOString(),
-        }
-      : registration,
-  );
-  await writeJsonFile(formationRegistrationsFile, updated);
+  return withPaymentWriteLock(async () => {
+    const registrations = await getFormationRegistrations();
+    const registration = registrations.find((item) => item.id === id);
+    if (!registration) return { ok: false as const, reason: "not_found" as const };
+
+    if (
+      !Number.isSafeInteger(input.montantPaye) ||
+      input.montantPaye <= 0 ||
+      input.montantPaye !== registration.prix
+    ) {
+      return { ok: false as const, reason: "amount_mismatch" as const };
+    }
+
+    const reference = input.referencePaiement.trim();
+    if (!reference || reference.length > 160) {
+      return { ok: false as const, reason: "invalid_reference" as const };
+    }
+
+    const referenceOwner = registrations.find(
+      (item) => item.referencePaiement === reference && item.id !== id,
+    );
+    if (referenceOwner) return { ok: false as const, reason: "reference_used" as const };
+
+    if (registration.referencePaiement === reference && registration.status === "paiement_confirme") {
+      return { ok: true as const, idempotent: true };
+    }
+
+    const updated = registrations.map((item) =>
+      item.id === id
+        ? {
+            ...item,
+            status: "paiement_confirme" as const,
+            montantPaye: input.montantPaye,
+            referencePaiement: reference,
+            paiementConfirmeAt: new Date().toISOString(),
+          }
+        : item,
+    );
+    await writeJsonFile(formationRegistrationsFile, updated);
+    return { ok: true as const, idempotent: false };
+  });
 }
 
 export async function getFormationSessions() {
@@ -200,6 +246,97 @@ export async function getFormationPromoCodes() {
 
 export async function saveFormationPromoCodes(codes: FormationPromoCode[]) {
   await writeJsonFile(formationPromoCodesFile, codes);
+}
+
+export async function getFormationAttendance() {
+  return readJsonFile<FormationAttendance[]>(formationAttendanceFile, []);
+}
+
+export async function getFormationAttendanceForSession(sessionId: string) {
+  const attendance = await getFormationAttendance();
+  return attendance.filter((item) => item.sessionId === sessionId);
+}
+
+export async function setFormationAttendance(
+  registrationId: string,
+  sessionId: string,
+  status: AttendanceStatus,
+) {
+  const attendance = await getFormationAttendance();
+  const existing = attendance.find((item) => item.registrationId === registrationId && item.sessionId === sessionId);
+
+  const updated = existing
+    ? attendance.map((item) =>
+        item.id === existing.id ? { ...item, status, markedAt: new Date().toISOString() } : item,
+      )
+    : [
+        ...attendance,
+        {
+          id: crypto.randomUUID(),
+          registrationId,
+          sessionId,
+          status,
+          markedAt: new Date().toISOString(),
+        },
+      ];
+
+  await writeJsonFile(formationAttendanceFile, updated);
+}
+
+export async function isEligibleForCertificate(registrationId: string) {
+  const [registration, attendance] = await Promise.all([
+    getFormationRegistrationById(registrationId),
+    getFormationAttendance(),
+  ]);
+
+  if (!registration || registration.status !== "paiement_confirme" && registration.status !== "validee") {
+    return false;
+  }
+
+  return attendance.some((item) => item.registrationId === registrationId && item.status === "present");
+}
+
+export async function getFormationCertificates() {
+  return readJsonFile<FormationCertificate[]>(formationCertificatesFile, []);
+}
+
+export async function getFormationCertificateByNumber(certificateNumber: string) {
+  const certificates = await getFormationCertificates();
+  return certificates.find((item) => item.certificateNumber === certificateNumber) ?? null;
+}
+
+export async function getFormationCertificateForRegistration(registrationId: string) {
+  const certificates = await getFormationCertificates();
+  return certificates.find((item) => item.registrationId === registrationId) ?? null;
+}
+
+export type CertificateIssueResult =
+  | { ok: true; certificate: FormationCertificate }
+  | { ok: false; reason: "not_eligible" | "not_found" };
+
+export async function issueFormationCertificate(registrationId: string): Promise<CertificateIssueResult> {
+  const existing = await getFormationCertificateForRegistration(registrationId);
+  if (existing) return { ok: true, certificate: existing };
+
+  const eligible = await isEligibleForCertificate(registrationId);
+  if (!eligible) return { ok: false, reason: "not_eligible" };
+
+  const registration = await getFormationRegistrationById(registrationId);
+  if (!registration) return { ok: false, reason: "not_found" };
+
+  const certificates = await getFormationCertificates();
+  const issuedAt = new Date();
+  const certificate: FormationCertificate = {
+    id: crypto.randomUUID(),
+    certificateNumber: generateCertificateNumber(issuedAt, certificates.length + 1),
+    registrationId: registration.id,
+    participantName: `${registration.prenoms} ${registration.nom}`.trim(),
+    formuleTitle: registration.formuleTitle,
+    issuedAt: issuedAt.toISOString(),
+  };
+
+  await writeJsonFile(formationCertificatesFile, [...certificates, certificate]);
+  return { ok: true, certificate };
 }
 
 export type PromoCodeResolution =

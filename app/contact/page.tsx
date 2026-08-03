@@ -32,6 +32,7 @@ export default function ContactPage() {
         <div className="absolute inset-0 -z-10">
           <Image 
             src={siteImages.contactHero || "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80&w=2000"} 
+            unoptimized={Boolean(siteImages.contactHero)}
             alt="Contact Background" 
             fill
             className="object-cover opacity-10"

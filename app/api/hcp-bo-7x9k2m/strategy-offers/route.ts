@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { isAdminRequest } from "@/lib/admin-auth";
+import { isAdminMutationRequest, isAdminRequest } from "@/lib/admin-auth";
 import { getStrategyOffers, saveStrategyOffers } from "@/lib/site-storage";
 import type { StrategyOffer, StrategyOfferIcon } from "@/lib/strategy-offers";
 
@@ -43,7 +43,7 @@ export async function GET(req: NextRequest) {
 }
 
 export async function PUT(req: NextRequest) {
-  if (!isAdminRequest(req)) {
+  if (!isAdminMutationRequest(req)) {
     return NextResponse.json({ error: "Non autorisé." }, { status: 401 });
   }
 

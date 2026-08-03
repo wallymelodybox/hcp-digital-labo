@@ -26,19 +26,57 @@ function formatPrice(value: number) {
   return `${value.toLocaleString("fr-FR")} FCFA`;
 }
 
+const niveauLabels: Record<string, string> = {
+  debutant: "Débutant",
+  intermediaire: "Intermédiaire",
+  avance: "Avancé",
+};
+
+function niveauLabel(value: string) {
+  return niveauLabels[value] ?? value;
+}
+
+const modePaiementLabels: Record<string, string> = {
+  orange_money: "Orange Money",
+  mtn_momo: "MTN Mobile Money",
+  wave: "Wave",
+  moov_money: "Moov Money",
+  carte: "Carte bancaire",
+  virement: "Virement bancaire",
+  especes: "Espèces",
+};
+
+function modePaiementLabel(value: string) {
+  return modePaiementLabels[value] ?? value;
+}
+
 export function AdminFormationRegistrationsList() {
   const [registrations, setRegistrations] = useState<FormationRegistration[]>([]);
   const [sessions, setSessions] = useState<FormationSession[]>([]);
+  const [certificates, setCertificates] = useState<Record<string, string>>({});
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
   const [referenceDrafts, setReferenceDrafts] = useState<Record<string, string>>({});
   const [verifying, setVerifying] = useState<string | null>(null);
+  const [issuing, setIssuing] = useState<string | null>(null);
+  const [certificateError, setCertificateError] = useState<Record<string, string>>({});
 
   useEffect(() => {
     fetch("/api/hcp-bo-7x9k2m/formation-sessions", { credentials: "same-origin" })
       .then((res) => (res.ok ? res.json() : Promise.reject()))
       .then((data) => {
         if (Array.isArray(data)) setSessions(data);
+      })
+      .catch(() => {});
+
+    fetch("/api/hcp-bo-7x9k2m/formation-certificates", { credentials: "same-origin" })
+      .then((res) => (res.ok ? res.json() : Promise.reject()))
+      .then((data) => {
+        if (Array.isArray(data)) {
+          const map: Record<string, string> = {};
+          for (const cert of data) map[cert.registrationId] = cert.certificateNumber;
+          setCertificates(map);
+        }
       })
       .catch(() => {});
   }, []);
@@ -94,6 +132,30 @@ export function AdminFormationRegistrationsList() {
       }
     } finally {
       setVerifying(null);
+    }
+  }
+
+  async function issueCertificate(id: string) {
+    setIssuing(id);
+    setCertificateError((current) => ({ ...current, [id]: "" }));
+    try {
+      const response = await fetch("/api/hcp-bo-7x9k2m/formation-certificates", {
+        method: "POST",
+        credentials: "same-origin",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ registrationId: id }),
+      });
+
+      const payload = await response.json().catch(() => ({}));
+
+      if (!response.ok) {
+        setCertificateError((current) => ({ ...current, [id]: payload.error || "Génération impossible." }));
+        return;
+      }
+
+      setCertificates((current) => ({ ...current, [id]: payload.certificateNumber }));
+    } finally {
+      setIssuing(null);
     }
   }
 
@@ -158,10 +220,17 @@ export function AdminFormationRegistrationsList() {
               <div className="mt-3 flex flex-wrap gap-x-4 gap-y-1 text-xs text-white/45">
                 {item.profession ? <span>Profession : {item.profession}</span> : null}
                 {item.entreprise ? <span>Entreprise : {item.entreprise}</span> : null}
+                {item.niveauInformatique ? <span>Niveau info : {niveauLabel(item.niveauInformatique)}</span> : null}
                 <span>Participation : {item.modeParticipation === "presentiel" ? "Présentiel" : "En ligne"}</span>
                 {sessionLabel(item.sessionId) ? <span>Session : {sessionLabel(item.sessionId)}</span> : null}
-                <span>Paiement : {item.modePaiement}</span>
-                {item.codePromo ? <span>Code promo : {item.codePromo}</span> : null}
+                <span>Paiement : {modePaiementLabel(item.modePaiement)}</span>
+                {item.codePromo ? (
+                  <span>
+                    Code promo : {item.codePromo}
+                    {item.prixOriginal ? <> ({formatPrice(item.prixOriginal)} → {formatPrice(item.prix)})</> : null}
+                  </span>
+                ) : null}
+                <span>Source : {item.source}</span>
               </div>
 
               <div className="mt-3 flex flex-wrap items-center gap-x-4 gap-y-1 text-xs">
@@ -172,6 +241,9 @@ export function AdminFormationRegistrationsList() {
                   <span className="text-amber-300">Solde restant : {formatPrice(item.prix - item.montantPaye)}</span>
                 ) : null}
                 {item.referencePaiement ? <span className="text-white/40">Réf. : {item.referencePaiement}</span> : null}
+                {item.paiementConfirmeAt ? (
+                  <span className="text-white/40">Confirmé le {new Date(item.paiementConfirmeAt).toLocaleString("fr-FR")}</span>
+                ) : null}
               </div>
 
               {!item.montantPaye ? (
@@ -190,6 +262,33 @@ export function AdminFormationRegistrationsList() {
                   >
                     {verifying === item.id ? "Vérification..." : "Vérifier le paiement"}
                   </button>
+                </div>
+              ) : null}
+
+              {item.montantPaye ? (
+                <div className="mt-3 flex flex-wrap items-center gap-2">
+                  {certificates[item.id] ? (
+                    <a
+                      href={`/api/hcp-bo-7x9k2m/formation-certificates/${certificates[item.id]}/pdf`}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="rounded-lg border border-emerald-400/25 bg-emerald-400/10 px-3 py-2 text-xs font-semibold text-emerald-200 transition hover:bg-emerald-400/20"
+                    >
+                      Télécharger l&apos;attestation ({certificates[item.id]})
+                    </a>
+                  ) : (
+                    <button
+                      type="button"
+                      onClick={() => issueCertificate(item.id)}
+                      disabled={issuing === item.id}
+                      className="rounded-lg border border-white/10 bg-white/5 px-3 py-2 text-xs font-semibold text-white/70 transition hover:bg-white/10 disabled:opacity-50"
+                    >
+                      {issuing === item.id ? "Génération..." : "Générer l'attestation"}
+                    </button>
+                  )}
+                  {certificateError[item.id] ? (
+                    <span className="text-xs text-red-300">{certificateError[item.id]}</span>
+                  ) : null}
                 </div>
               ) : null}
 

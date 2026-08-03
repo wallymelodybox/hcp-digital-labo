@@ -225,6 +225,7 @@ export default function StrategiePage() {
                 <div className="relative h-48 w-full overflow-hidden">
                   <Image 
                     src={siteImages.strategie || "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=1200"} 
+                    unoptimized={Boolean(siteImages.strategie)}
                     alt="Stratégie et Analyse" 
                     fill
                     className="object-cover transition-transform duration-500 group-hover:scale-105 opacity-60"
@@ -564,6 +565,5 @@ export default function StrategiePage() {
     </div>
   );
 }
-
 
 

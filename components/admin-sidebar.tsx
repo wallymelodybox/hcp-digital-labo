@@ -14,6 +14,8 @@ import {
   ClipboardList,
   CalendarClock,
   Tag,
+  Banknote,
+  UserCheck,
 } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -71,6 +73,16 @@ const navItems = [
     title: "Inscriptions Formation",
     url: "/hcp-bo-7x9k2m/formation-inscriptions",
     icon: ClipboardList,
+  },
+  {
+    title: "Paiements Formation",
+    url: "/hcp-bo-7x9k2m/formation-paiements",
+    icon: Banknote,
+  },
+  {
+    title: "Présence Formation",
+    url: "/hcp-bo-7x9k2m/formation-presence",
+    icon: UserCheck,
   },
   {
     title: "Codes Promo Formation",

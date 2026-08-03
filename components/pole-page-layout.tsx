@@ -132,6 +132,7 @@ export function PolePageLayout({
               <div className="relative aspect-4/5 overflow-hidden rounded-4xl border border-white/10 bg-white/3.5 shadow-2xl">
                 <Image
                   src={displayImage}
+                  unoptimized={Boolean(siteImages[imageKey])}
                   alt={title}
                   fill
                   className="object-cover transition-transform duration-700 hover:scale-105"

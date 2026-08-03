@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { isAdminRequest } from "@/lib/admin-auth";
+import { isAdminMutationRequest, isAdminRequest } from "@/lib/admin-auth";
 import { getFormationOffers, saveFormationOffers } from "@/lib/site-storage";
 import type { FormationLevel, FormationOffer } from "@/lib/formation-offers";
 
@@ -53,7 +53,7 @@ export async function GET(req: NextRequest) {
 }
 
 export async function PUT(req: NextRequest) {
-  if (!isAdminRequest(req)) {
+  if (!isAdminMutationRequest(req)) {
     return NextResponse.json({ error: "Non autorisé." }, { status: 401 });
   }
 

@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { isAdminRequest } from "@/lib/admin-auth";
+import { isAdminMutationRequest, isAdminRequest } from "@/lib/admin-auth";
 import { getFormationRegistrations, updateFormationRegistrationStatus } from "@/lib/site-storage";
 import type { FormationRegistrationStatus } from "@/lib/site-storage";
 
@@ -20,7 +20,7 @@ export async function GET(req: NextRequest) {
 }
 
 export async function PATCH(req: NextRequest) {
-  if (!isAdminRequest(req)) {
+  if (!isAdminMutationRequest(req)) {
     return NextResponse.json({ error: "Non autorisé." }, { status: 401 });
   }
 

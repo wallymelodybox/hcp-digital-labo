@@ -6,7 +6,12 @@ __v0_jsx-dev-runtime.ts
 # Common ignores
 node_modules/
 .next/
-.env*.local
+.env*
+!.env.example
+data/contact-requests.json
+data/formation-registrations.json
+data/formation-attendance.json
+data/formation-certificates.json
 .DS_Store
 .vercel
 .history/
