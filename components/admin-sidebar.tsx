@@ -10,6 +10,10 @@ import {
   Home,
   ImageIcon,
   FileText,
+  GraduationCap,
+  ClipboardList,
+  CalendarClock,
+  Tag,
 } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -52,6 +56,26 @@ const navItems = [
     title: "Demandes Contact",
     url: "/hcp-bo-7x9k2m/contacts",
     icon: Users,
+  },
+  {
+    title: "Formules Formation",
+    url: "/hcp-bo-7x9k2m/formation-offres",
+    icon: GraduationCap,
+  },
+  {
+    title: "Sessions Formation",
+    url: "/hcp-bo-7x9k2m/formation-sessions",
+    icon: CalendarClock,
+  },
+  {
+    title: "Inscriptions Formation",
+    url: "/hcp-bo-7x9k2m/formation-inscriptions",
+    icon: ClipboardList,
+  },
+  {
+    title: "Codes Promo Formation",
+    url: "/hcp-bo-7x9k2m/formation-promo-codes",
+    icon: Tag,
   },
 ];
 

@@ -16,7 +16,7 @@ export function Footer() {
   const year = useMemo(() => new Date().getFullYear(), []);
 
   return (
-    <footer className="border-t border-white/10 bg-[#050607] text-white">
+    <footer className="public-theme border-t border-emerald-950/10 bg-[#eef5f1] text-emerald-950">
       <div className="mx-auto max-w-6xl px-5 py-10">
         <div className="grid gap-8 md:grid-cols-12">
           <div className="md:col-span-4">

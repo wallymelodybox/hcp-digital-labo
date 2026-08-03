@@ -19,7 +19,16 @@ const globalImages = [
     title: "Hero contact",
     fallback: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80&w=2000",
   },
+  {
+    id: "formationPricingBanner",
+    title: "Bannière Formation IA (image ou vidéo)",
+    fallback: "",
+  },
 ];
+
+function isVideoUrl(url: string) {
+  return /\.(mp4|webm|ogg|mov)(?:[?#].*)?$/i.test(url);
+}
 
 export function AdminImageManager() {
   const [images, setImages] = useState<Images>({});
@@ -107,7 +116,17 @@ export function AdminImageManager() {
             <PremiumCard key={item.id} className="p-6">
               <div className="grid gap-5 md:grid-cols-[220px_1fr] md:items-start">
                 <div className="overflow-hidden rounded-2xl border border-white/10 bg-black/30">
-                  <img src={preview} alt={item.title} className="aspect-video w-full object-cover" />
+                  {preview ? (
+                    isVideoUrl(preview) ? (
+                      <video src={preview} className="aspect-video w-full object-cover" muted controls playsInline preload="metadata" />
+                    ) : (
+                      <img src={preview} alt={item.title} className="aspect-video w-full object-cover" />
+                    )
+                  ) : (
+                    <div className="flex aspect-video items-center justify-center px-5 text-center text-xs text-white/35">
+                      Aucun média — le visuel par défaut sera utilisé
+                    </div>
+                  )}
                 </div>
                 <div>
                   <div className="flex flex-wrap items-center justify-between gap-3">
@@ -120,13 +139,18 @@ export function AdminImageManager() {
                       Défaut
                     </Button>
                   </div>
-                  <label className="mt-5 block text-xs font-semibold uppercase tracking-widest text-white/40">URL image</label>
+                  <label className="mt-5 block text-xs font-semibold uppercase tracking-widest text-white/40">
+                    {item.id === "formationPricingBanner" ? "URL directe de l’image ou de la vidéo" : "URL image"}
+                  </label>
                   <input
                     value={value}
                     onChange={(event) => updateImage(item.id, event.target.value)}
                     placeholder={item.fallback}
                     className="mt-2 w-full rounded-xl border border-white/10 bg-black/20 px-4 py-3 text-sm text-white placeholder:text-white/25 focus:outline-none focus:ring-2 focus:ring-emerald-400/40"
                   />
+                  {item.id === "formationPricingBanner" ? (
+                    <p className="mt-2 text-xs text-white/35">Vidéo compatible : MP4, WebM, OGG ou MOV. Utilisez une URL directe vers le fichier.</p>
+                  ) : null}
                 </div>
               </div>
             </PremiumCard>

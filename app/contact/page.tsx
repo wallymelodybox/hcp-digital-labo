@@ -17,7 +17,7 @@ export default function ContactPage() {
   const siteImages = useSiteImages();
 
   return (
-    <div className="min-h-screen bg-[#06090A] text-white">
+    <div className="public-theme min-h-screen bg-[#06090A] text-white">
       {/* Background elements */}
       <div className="pointer-events-none fixed inset-0 -z-10">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(16,185,129,0.16),transparent_55%)]" />
