@@ -166,8 +166,8 @@ export default function StrategiePage() {
     <div id="top" className="public-theme min-h-screen bg-[#06090A] text-white">
       {/* Background */}
       <div className="pointer-events-none fixed inset-0 -z-10">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(16,185,129,0.16),transparent_55%)]" />
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom,rgba(16,185,129,0.08),transparent_60%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(37,99,235,0.16),transparent_55%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom,rgba(37,99,235,0.08),transparent_60%)]" />
         <div className="absolute inset-0 opacity-[0.06] bg-[linear-gradient(rgba(255,255,255,0.25)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.25)_1px,transparent_1px)] bg-size-[56px_56px]" />
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_35%,rgba(0,0,0,0.45)_75%)]" />
         <div className="absolute inset-0 opacity-[0.03] bg-[url('data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22200%22 height=%22200%22%3E%3Cfilter id=%22n%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%220.8%22 numOctaves=%222%22 stitchTiles=%22stitch%22/%3E%3C/filter%3E%3Crect width=%22200%22 height=%22200%22 filter=%22url(%23n)%22 opacity=%220.30%22/%3E%3C/svg%3E')] mix-blend-soft-light" />
@@ -181,7 +181,7 @@ export default function StrategiePage() {
               <div className="flex flex-wrap items-center gap-3">
                 <Pill>STRATÉGIE & COMMUNICATION</Pill>
                 <span className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/3 px-3 py-1 text-[11px] font-semibold tracking-[0.22em] text-white/60">
-                  <Sparkles className="h-3.5 w-3.5 text-emerald-300" />
+                  <Sparkles className="h-3.5 w-3.5 text-blue-300" />
                   CABINET PREMIUM
                 </span>
               </div>
@@ -189,7 +189,7 @@ export default function StrategiePage() {
               <h1 className="mt-6 text-4xl font-semibold leading-[1.02] tracking-tight md:text-6xl">
                 Des messages clairs.
                 <span className="block">Une identité forte.</span>
-                <span className="block text-emerald-300">Un plan exécutable.</span>
+                <span className="block text-blue-300">Un plan exécutable.</span>
               </h1>
 
               <p className="mt-6 max-w-xl text-base leading-relaxed text-white/70">
@@ -210,7 +210,7 @@ export default function StrategiePage() {
                   { v: "Premium", l: "Finitions" },
                 ].map((s) => (
                   <div key={s.l} className="rounded-2xl border border-white/10 bg-white/3.5 px-5 py-4 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.06)]">
-                    <div className="text-2xl font-semibold tracking-tight text-emerald-300">{s.v}</div>
+                    <div className="text-2xl font-semibold tracking-tight text-blue-300">{s.v}</div>
                     <div className="mt-1 text-xs text-white/60">{s.l}</div>
                   </div>
                 ))}
@@ -220,7 +220,7 @@ export default function StrategiePage() {
 
           <div className="md:col-span-5">
             <motion.div initial={{ opacity: 0, y: 18 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.05 }} className="group relative">
-              <div className="pointer-events-none absolute -inset-px rounded-[26px] bg-linear-to-b from-emerald-400/35 via-white/10 to-transparent opacity-70 blur-0" />
+              <div className="pointer-events-none absolute -inset-px rounded-[26px] bg-linear-to-b from-blue-400/35 via-white/10 to-transparent opacity-70 blur-0" />
               <div className="relative overflow-hidden rounded-[26px] border border-white/10 bg-white/3 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.06)]">
                 <div className="relative h-48 w-full overflow-hidden">
                   <Image 
@@ -234,7 +234,7 @@ export default function StrategiePage() {
                 </div>
                 <div className="p-6">
                   <div className="flex items-center gap-3">
-                    <div className="flex h-10 w-10 items-center justify-center rounded-2xl bg-emerald-400/15 text-emerald-300">
+                    <div className="flex h-10 w-10 items-center justify-center rounded-2xl bg-blue-400/15 text-blue-300">
                       <Megaphone className="h-5 w-5" />
                     </div>
                     <div>
@@ -253,7 +253,7 @@ export default function StrategiePage() {
                       "Tableau de bord KPI",
                     ].map((t) => (
                       <div key={t} className="flex items-start gap-3">
-                        <CheckCircle2 className="mt-0.5 h-5 w-5 text-emerald-300" />
+                        <CheckCircle2 className="mt-0.5 h-5 w-5 text-blue-300" />
                         <span>{t}</span>
                       </div>
                     ))}
@@ -264,14 +264,14 @@ export default function StrategiePage() {
                     <div className="mt-1 text-sm font-semibold text-white">Audit express + feuille de route</div>
                     <p className="mt-2 text-sm text-white/65">Pour prioriser et lancer sans perdre de temps.</p>
                     <div className="mt-3">
-                      <a href="#contact" className="inline-flex items-center gap-2 text-sm font-semibold text-emerald-300 hover:text-emerald-200">
+                      <a href="#contact" className="inline-flex items-center gap-2 text-sm font-semibold text-blue-300 hover:text-blue-200">
                         Réserver un échange <ArrowRight className="h-4 w-4" />
                       </a>
                     </div>
                   </div>
                 </div>
 
-                <div className="pointer-events-none absolute -right-12 -top-12 h-48 w-48 rounded-full bg-emerald-400/15 blur-3xl" />
+                <div className="pointer-events-none absolute -right-12 -top-12 h-48 w-48 rounded-full bg-blue-400/15 blur-3xl" />
               </div>
             </motion.div>
           </div>
@@ -291,10 +291,10 @@ export default function StrategiePage() {
             const Icon = strategyOfferIcons[o.icon] || FileText;
             return (
               <div key={o.title} className="group">
-                <PremiumCard className="p-6 transition hover:-translate-y-1 hover:border-emerald-400/35">
+                <PremiumCard className="p-6 transition hover:-translate-y-1 hover:border-blue-400/35">
                   <div className="flex items-start justify-between gap-4">
                     <div className="flex items-center gap-3">
-                      <div className="flex h-10 w-10 items-center justify-center rounded-2xl bg-emerald-400/15 text-emerald-300">
+                      <div className="flex h-10 w-10 items-center justify-center rounded-2xl bg-blue-400/15 text-blue-300">
                         <Icon className="h-5 w-5" />
                       </div>
                       <div>
@@ -302,7 +302,7 @@ export default function StrategiePage() {
                         <div className="mt-1 text-sm text-white/65">{o.desc}</div>
                       </div>
                     </div>
-                    <ArrowRight className="mt-2 h-4 w-4 text-white/45 transition group-hover:translate-x-0.5 group-hover:text-emerald-300" />
+                    <ArrowRight className="mt-2 h-4 w-4 text-white/45 transition group-hover:translate-x-0.5 group-hover:text-blue-300" />
                   </div>
 
                   <div className="mt-5 flex flex-wrap gap-2">
@@ -313,7 +313,7 @@ export default function StrategiePage() {
                     ))}
                   </div>
 
-                  <div className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-emerald-300">
+                  <div className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-blue-300">
                     Découvrir le format <ArrowRight className="h-4 w-4" />
                   </div>
                 </PremiumCard>
@@ -328,13 +328,13 @@ export default function StrategiePage() {
         <div className="mx-auto max-w-6xl px-5">
           <div className="flex items-end justify-between gap-6">
             <div>
-              <div className="text-xs font-semibold tracking-[0.26em] text-emerald-700">NOTRE MÉTHODE</div>
+              <div className="text-xs font-semibold tracking-[0.26em] text-blue-700">NOTRE MÉTHODE</div>
               <h2 className="mt-3 text-3xl font-semibold tracking-tight md:text-4xl">De l’analyse à l’exécution</h2>
               <p className="mt-3 max-w-2xl text-sm text-black/60">Chaque livrable sert une action. Chaque action sert un KPI.</p>
             </div>
             <div className="hidden md:block">
               <span className="inline-flex items-center gap-2 rounded-full border border-black/10 bg-white px-3 py-1 text-xs font-semibold text-black/70">
-                <Wand2 className="h-4 w-4 text-emerald-600" />
+                <Wand2 className="h-4 w-4 text-blue-600" />
                 Exécution premium
               </span>
             </div>
@@ -344,13 +344,13 @@ export default function StrategiePage() {
             {method.map((m) => (
               <div key={m.n} className="group relative overflow-hidden rounded-2xl border border-black/10 bg-white p-6 shadow-[0_14px_40px_-22px_rgba(0,0,0,0.45)] transition hover:-translate-y-1">
                 <div className="absolute -right-3 -top-6 text-7xl font-semibold text-black/4">{m.n}</div>
-                <div className="text-xs font-semibold tracking-[0.26em] text-emerald-700">{m.n}</div>
+                <div className="text-xs font-semibold tracking-[0.26em] text-blue-700">{m.n}</div>
                 <div className="mt-3 text-lg font-semibold">{m.title}</div>
                 <p className="mt-2 text-sm leading-relaxed text-black/60">{m.desc}</p>
                 <div className="mt-4 h-px w-full bg-black/5" />
-                <div className="mt-4 text-sm font-semibold text-emerald-700">Détail</div>
+                <div className="mt-4 text-sm font-semibold text-blue-700">Détail</div>
                 <div className="pointer-events-none absolute inset-0 opacity-0 transition group-hover:opacity-100">
-                  <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(16,185,129,0.14),transparent_55%)]" />
+                  <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(37,99,235,0.14),transparent_55%)]" />
                 </div>
               </div>
             ))}
@@ -369,16 +369,16 @@ export default function StrategiePage() {
         <div className="mt-10 grid gap-4 md:grid-cols-3">
           {deliverables.map((d) => (
             <div key={d.title} className="group">
-              <PremiumCard className="p-6 transition hover:-translate-y-1 hover:border-emerald-400/30">
+              <PremiumCard className="p-6 transition hover:-translate-y-1 hover:border-blue-400/30">
                 <div className="flex items-center gap-3">
-                  <div className="flex h-10 w-10 items-center justify-center rounded-2xl bg-emerald-400/15 text-emerald-300">
+                  <div className="flex h-10 w-10 items-center justify-center rounded-2xl bg-blue-400/15 text-blue-300">
                     <FileText className="h-5 w-5" />
                   </div>
                   <div className="text-base font-semibold">{d.title}</div>
                 </div>
                 <p className="mt-3 text-sm leading-relaxed text-white/70">{d.desc}</p>
                 <div className="mt-5 h-px w-full bg-white/10" />
-                <div className="mt-4 text-sm font-semibold text-emerald-300">Format premium</div>
+                <div className="mt-4 text-sm font-semibold text-blue-300">Format premium</div>
               </PremiumCard>
             </div>
           ))}
@@ -395,18 +395,18 @@ export default function StrategiePage() {
               const Icon = c.icon;
               return (
                 <div key={c.title} className="group">
-                  <PremiumCard className="p-6 transition hover:-translate-y-1 hover:border-emerald-400/30">
+                  <PremiumCard className="p-6 transition hover:-translate-y-1 hover:border-blue-400/30">
                     <div className="flex items-start justify-between gap-4">
                       <div className="flex items-center gap-3">
-                        <div className="flex h-10 w-10 items-center justify-center rounded-2xl bg-emerald-400/15 text-emerald-300">
+                        <div className="flex h-10 w-10 items-center justify-center rounded-2xl bg-blue-400/15 text-blue-300">
                           <Icon className="h-5 w-5" />
                         </div>
                         <div className="text-base font-semibold">{c.title}</div>
                       </div>
-                      <span className="rounded-full border border-emerald-400/25 bg-emerald-400/10 px-3 py-1 text-[11px] font-semibold text-emerald-200">{c.kpi}</span>
+                      <span className="rounded-full border border-blue-400/25 bg-blue-400/10 px-3 py-1 text-[11px] font-semibold text-blue-200">{c.kpi}</span>
                     </div>
                     <p className="mt-4 text-sm leading-relaxed text-white/70">{c.desc}</p>
-                    <div className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-emerald-300">
+                    <div className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-blue-300">
                       Voir le format <ArrowRight className="h-4 w-4" />
                     </div>
                   </PremiumCard>
@@ -425,9 +425,9 @@ export default function StrategiePage() {
           <div className="mt-10 grid gap-4 md:grid-cols-2">
             {testimonials.map((t) => (
               <div key={t.name} className="group">
-                <PremiumCard className="p-6 transition hover:-translate-y-1 hover:border-emerald-400/25">
+                <PremiumCard className="p-6 transition hover:-translate-y-1 hover:border-blue-400/25">
                   <div className="flex items-start gap-3">
-                    <div className="flex h-10 w-10 items-center justify-center rounded-2xl bg-emerald-400/15 text-emerald-300">
+                    <div className="flex h-10 w-10 items-center justify-center rounded-2xl bg-blue-400/15 text-blue-300">
                       <Quote className="h-5 w-5" />
                     </div>
                     <div>
@@ -458,10 +458,10 @@ export default function StrategiePage() {
                     onClick={() => setOpenFaq(isOpen ? null : idx)}
                     className="w-full text-left"
                   >
-                    <PremiumCard className="p-6 transition hover:-translate-y-1 hover:border-emerald-400/25">
+                    <PremiumCard className="p-6 transition hover:-translate-y-1 hover:border-blue-400/25">
                       <div className="flex items-start justify-between gap-4">
                         <div className="flex items-start gap-3">
-                          <div className="mt-0.5 flex h-10 w-10 items-center justify-center rounded-2xl bg-emerald-400/15 text-emerald-300">
+                          <div className="mt-0.5 flex h-10 w-10 items-center justify-center rounded-2xl bg-blue-400/15 text-blue-300">
                             <HelpCircle className="h-5 w-5" />
                           </div>
                           <div>
@@ -494,10 +494,10 @@ export default function StrategiePage() {
       {/* CTA */}
       <section className="border-t border-white/10 bg-[#06090A] py-16">
         <div className="mx-auto max-w-6xl px-5">
-          <div className="relative overflow-hidden rounded-3xl border border-emerald-400/20 bg-emerald-400/10 p-8 md:p-10">
+          <div className="relative overflow-hidden rounded-3xl border border-blue-400/20 bg-blue-400/10 p-8 md:p-10">
             <div className="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
               <div>
-                <div className="inline-flex items-center gap-2 rounded-full border border-emerald-400/20 bg-black/20 px-3 py-1 text-[11px] font-semibold tracking-[0.22em] text-emerald-200">
+                <div className="inline-flex items-center gap-2 rounded-full border border-blue-400/20 bg-black/20 px-3 py-1 text-[11px] font-semibold tracking-[0.22em] text-blue-200">
                   <ShieldCheck className="h-4 w-4" />
                   CADRAGE PREMIUM
                 </div>
@@ -511,7 +511,7 @@ export default function StrategiePage() {
                 <a href="#offres"><SecondaryButton>Voir les offres</SecondaryButton></a>
               </div>
             </div>
-            <div className="pointer-events-none absolute -right-10 -top-10 h-44 w-44 rounded-full bg-emerald-400/20 blur-3xl" />
+            <div className="pointer-events-none absolute -right-10 -top-10 h-44 w-44 rounded-full bg-blue-400/20 blur-3xl" />
           </div>
         </div>
       </section>
@@ -521,7 +521,7 @@ export default function StrategiePage() {
         <div className="mx-auto max-w-6xl px-5">
           <div className="grid gap-8 md:grid-cols-12">
             <div className="md:col-span-5">
-              <div className="text-xs font-semibold tracking-[0.26em] text-emerald-300">CONTACT</div>
+              <div className="text-xs font-semibold tracking-[0.26em] text-blue-300">CONTACT</div>
               <h3 className="mt-3 text-3xl font-semibold tracking-tight">Parlons de votre marque</h3>
               <p className="mt-3 text-sm leading-relaxed text-white/70">
                 Décrivez votre besoin : nous revenons avec une proposition structurée (périmètre, jalons, budget, délais).
@@ -539,15 +539,15 @@ export default function StrategiePage() {
                 <div className="grid gap-4 md:grid-cols-2">
                   <div>
                     <label className="text-xs font-semibold tracking-[0.22em] text-white/60">Nom</label>
-                    <input suppressHydrationWarning className="mt-2 w-full rounded-xl border border-white/10 bg-black/20 px-4 py-3 text-sm text-white placeholder:text-white/35 focus:outline-none focus:ring-2 focus:ring-emerald-400/40" placeholder="Votre nom" />
+                    <input suppressHydrationWarning className="mt-2 w-full rounded-xl border border-white/10 bg-black/20 px-4 py-3 text-sm text-white placeholder:text-white/35 focus:outline-none focus:ring-2 focus:ring-blue-400/40" placeholder="Votre nom" />
                   </div>
                   <div>
                     <label className="text-xs font-semibold tracking-[0.22em] text-white/60">Téléphone</label>
-                    <input suppressHydrationWarning className="mt-2 w-full rounded-xl border border-white/10 bg-black/20 px-4 py-3 text-sm text-white placeholder:text-white/35 focus:outline-none focus:ring-2 focus:ring-emerald-400/40" placeholder="07 68 30 70 80" />
+                    <input suppressHydrationWarning className="mt-2 w-full rounded-xl border border-white/10 bg-black/20 px-4 py-3 text-sm text-white placeholder:text-white/35 focus:outline-none focus:ring-2 focus:ring-blue-400/40" placeholder="07 68 30 70 80" />
                   </div>
                   <div className="md:col-span-2">
                     <label className="text-xs font-semibold tracking-[0.22em] text-white/60">Besoin</label>
-                    <textarea suppressHydrationWarning className="mt-2 min-h-30 w-full rounded-xl border border-white/10 bg-black/20 px-4 py-3 text-sm text-white placeholder:text-white/35 focus:outline-none focus:ring-2 focus:ring-emerald-400/40" placeholder="Objectif, délai, budget indicatif" />
+                    <textarea suppressHydrationWarning className="mt-2 min-h-30 w-full rounded-xl border border-white/10 bg-black/20 px-4 py-3 text-sm text-white placeholder:text-white/35 focus:outline-none focus:ring-2 focus:ring-blue-400/40" placeholder="Objectif, délai, budget indicatif" />
                   </div>
                 </div>
 

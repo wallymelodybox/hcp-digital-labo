@@ -221,11 +221,11 @@ function RegistrationForm({ offers, selectedId, onDone }: { offers: FormationOff
   if (status === "success") {
     return (
       <PremiumCard className="p-8 text-center">
-        <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-2xl bg-emerald-400/15 text-emerald-300">
+        <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-2xl bg-blue-400/15 text-blue-300">
           <Check className="h-6 w-6" />
         </div>
         <p className="mt-4 text-white/80">{message}</p>
-        <button type="button" onClick={onDone} className="mt-6 text-sm text-emerald-300 hover:text-emerald-200">
+        <button type="button" onClick={onDone} className="mt-6 text-sm text-blue-300 hover:text-blue-200">
           Retour aux formules
         </button>
       </PremiumCard>
@@ -253,7 +253,7 @@ function RegistrationForm({ offers, selectedId, onDone }: { offers: FormationOff
 
       <div>
         <label className="text-xs font-semibold tracking-[0.22em] text-white/60 uppercase">Niveau actuel en informatique</label>
-        <select name="niveauInformatique" className="mt-2 w-full appearance-none rounded-xl border border-white/10 bg-black/20 px-4 py-3 text-sm text-white/70 focus:outline-none focus:ring-2 focus:ring-emerald-400/40">
+        <select name="niveauInformatique" className="mt-2 w-full appearance-none rounded-xl border border-white/10 bg-black/20 px-4 py-3 text-sm text-white/70 focus:outline-none focus:ring-2 focus:ring-blue-400/40">
           <option value="debutant">Débutant</option>
           <option value="intermediaire">Intermédiaire</option>
           <option value="avance">Avancé</option>
@@ -266,7 +266,7 @@ function RegistrationForm({ offers, selectedId, onDone }: { offers: FormationOff
           name="formuleId"
           value={formuleId}
           onChange={(event) => setFormuleId(event.target.value)}
-          className="mt-2 w-full appearance-none rounded-xl border border-white/10 bg-black/20 px-4 py-3 text-sm text-white/70 focus:outline-none focus:ring-2 focus:ring-emerald-400/40"
+          className="mt-2 w-full appearance-none rounded-xl border border-white/10 bg-black/20 px-4 py-3 text-sm text-white/70 focus:outline-none focus:ring-2 focus:ring-blue-400/40"
         >
           {offers.map((offer) => (
             <option key={offer.id} value={offer.id}>
@@ -279,14 +279,14 @@ function RegistrationForm({ offers, selectedId, onDone }: { offers: FormationOff
       <div className="grid gap-4 md:grid-cols-2">
         <div>
           <label className="text-xs font-semibold tracking-[0.22em] text-white/60 uppercase">Mode de participation</label>
-          <select name="modeParticipation" className="mt-2 w-full appearance-none rounded-xl border border-white/10 bg-black/20 px-4 py-3 text-sm text-white/70 focus:outline-none focus:ring-2 focus:ring-emerald-400/40">
+          <select name="modeParticipation" className="mt-2 w-full appearance-none rounded-xl border border-white/10 bg-black/20 px-4 py-3 text-sm text-white/70 focus:outline-none focus:ring-2 focus:ring-blue-400/40">
             <option value="en_ligne">En ligne</option>
             <option value="presentiel">Présentiel</option>
           </select>
         </div>
         <div>
           <label className="text-xs font-semibold tracking-[0.22em] text-white/60 uppercase">Session souhaitée</label>
-          <select name="sessionId" className="mt-2 w-full appearance-none rounded-xl border border-white/10 bg-black/20 px-4 py-3 text-sm text-white/70 focus:outline-none focus:ring-2 focus:ring-emerald-400/40">
+          <select name="sessionId" className="mt-2 w-full appearance-none rounded-xl border border-white/10 bg-black/20 px-4 py-3 text-sm text-white/70 focus:outline-none focus:ring-2 focus:ring-blue-400/40">
             <option value="">À définir avec l&apos;équipe</option>
             {sessionsForFormule.map((session) => (
               <option key={session.id} value={session.id} disabled={session.remaining <= 0}>
@@ -300,7 +300,7 @@ function RegistrationForm({ offers, selectedId, onDone }: { offers: FormationOff
       <div className="grid gap-4 md:grid-cols-2">
         <div>
           <label className="text-xs font-semibold tracking-[0.22em] text-white/60 uppercase">Mode de paiement</label>
-          <select name="modePaiement" className="mt-2 w-full appearance-none rounded-xl border border-white/10 bg-black/20 px-4 py-3 text-sm text-white/70 focus:outline-none focus:ring-2 focus:ring-emerald-400/40">
+          <select name="modePaiement" className="mt-2 w-full appearance-none rounded-xl border border-white/10 bg-black/20 px-4 py-3 text-sm text-white/70 focus:outline-none focus:ring-2 focus:ring-blue-400/40">
             <option value="orange_money">Orange Money</option>
             <option value="mtn_momo">MTN Mobile Money</option>
             <option value="wave">Wave</option>
@@ -323,7 +323,7 @@ function RegistrationForm({ offers, selectedId, onDone }: { offers: FormationOff
                 setPromoCode(event.target.value.toUpperCase());
                 setPromo({ status: "idle" });
               }}
-              className="w-full rounded-xl border border-white/10 bg-black/20 px-4 py-3 text-sm text-white placeholder:text-white/35 focus:outline-none focus:ring-2 focus:ring-emerald-400/40"
+              className="w-full rounded-xl border border-white/10 bg-black/20 px-4 py-3 text-sm text-white placeholder:text-white/35 focus:outline-none focus:ring-2 focus:ring-blue-400/40"
             />
             <button
               type="button"
@@ -335,7 +335,7 @@ function RegistrationForm({ offers, selectedId, onDone }: { offers: FormationOff
             </button>
           </div>
           {promo.status === "valid" ? (
-            <p className="mt-2 text-xs text-emerald-300">
+            <p className="mt-2 text-xs text-blue-300">
               Code appliqué : {formatPrice(promo.discountedPrice)} au lieu de {formatPrice(promo.originalPrice)}.
             </p>
           ) : null}
@@ -348,7 +348,7 @@ function RegistrationForm({ offers, selectedId, onDone }: { offers: FormationOff
       {currentOffer ? (
         <div className="rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-white/80">
           Total à payer :{" "}
-          <span className="font-semibold text-emerald-300">
+          <span className="font-semibold text-blue-300">
             {formatPrice(promo.status === "valid" ? promo.discountedPrice : currentOffer.price)}
           </span>
         </div>
@@ -383,7 +383,7 @@ function Field({ label, name, required, type = "text" }: { label: string; name: 
         name={name}
         type={type}
         required={required}
-        className="mt-2 w-full rounded-xl border border-white/10 bg-black/20 px-4 py-3 text-sm text-white placeholder:text-white/35 focus:outline-none focus:ring-2 focus:ring-emerald-400/40"
+        className="mt-2 w-full rounded-xl border border-white/10 bg-black/20 px-4 py-3 text-sm text-white placeholder:text-white/35 focus:outline-none focus:ring-2 focus:ring-blue-400/40"
       />
     </div>
   );
@@ -410,7 +410,7 @@ export function FormationPricing() {
     <section className="py-16 md:py-24" id="formules">
       <div className="mx-auto max-w-6xl px-5">
         {bannerMedia ? (
-          <div className="formation-banner relative overflow-hidden rounded-2xl border border-emerald-300/20 bg-white shadow-[0_30px_100px_-45px_rgba(16,185,129,0.35)] sm:rounded-[2rem]">
+          <div className="formation-banner relative overflow-hidden rounded-2xl border border-blue-300/20 bg-white shadow-[0_30px_100px_-45px_rgba(37,99,235,0.35)] sm:rounded-[2rem]">
             <h2 className="sr-only">Maîtrisez l&apos;IA pour créer vos propres solutions digitales</h2>
             {isVideoUrl(bannerMedia) ? (
               <video
@@ -435,8 +435,8 @@ export function FormationPricing() {
             )}
           </div>
         ) : (
-        <div className="formation-banner relative isolate overflow-hidden rounded-[2rem] border border-emerald-300/15 bg-[#07130f] px-6 py-12 shadow-[0_30px_100px_-45px_rgba(16,185,129,0.5)] sm:px-10 md:py-16 lg:px-16">
-          <div className="absolute inset-0 -z-20 bg-[radial-gradient(circle_at_82%_28%,rgba(16,185,129,0.28),transparent_27%),radial-gradient(circle_at_8%_90%,rgba(20,184,166,0.16),transparent_32%)]" />
+        <div className="formation-banner relative isolate overflow-hidden rounded-[2rem] border border-blue-300/15 bg-[#07130f] px-6 py-12 shadow-[0_30px_100px_-45px_rgba(37,99,235,0.5)] sm:px-10 md:py-16 lg:px-16">
+          <div className="absolute inset-0 -z-20 bg-[radial-gradient(circle_at_82%_28%,rgba(37,99,235,0.28),transparent_27%),radial-gradient(circle_at_8%_90%,rgba(59,130,246,0.16),transparent_32%)]" />
           <div className="absolute inset-0 -z-10 opacity-20 [background-image:linear-gradient(rgba(110,231,183,0.18)_1px,transparent_1px),linear-gradient(90deg,rgba(110,231,183,0.18)_1px,transparent_1px)] [background-size:42px_42px] [mask-image:linear-gradient(to_right,black,transparent_72%)]" />
 
           <div className="grid items-center gap-10 lg:grid-cols-[1.25fr_0.75fr]">
@@ -457,16 +457,16 @@ export function FormationPricing() {
             </div>
 
             <div className="relative mx-auto h-56 w-full max-w-sm overflow-hidden rounded-3xl border border-white/10 bg-black/25 sm:h-64" aria-hidden="true">
-              <div className="absolute left-1/2 top-1/2 flex h-32 w-32 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border border-emerald-300/30 bg-emerald-400/10 shadow-[0_0_70px_rgba(52,211,153,0.3)] backdrop-blur-xl">
-                <BrainCircuit className="h-14 w-14 text-emerald-300" strokeWidth={1.4} />
+              <div className="absolute left-1/2 top-1/2 flex h-32 w-32 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border border-blue-300/30 bg-blue-400/10 shadow-[0_0_70px_rgba(52,211,153,0.3)] backdrop-blur-xl">
+                <BrainCircuit className="h-14 w-14 text-blue-300" strokeWidth={1.4} />
               </div>
               <div className="absolute left-3 top-5 flex h-16 w-16 rotate-[-7deg] items-center justify-center rounded-2xl border border-white/10 bg-white/[0.06] backdrop-blur-md">
                 <Code2 className="h-7 w-7 text-teal-200" />
               </div>
               <div className="absolute bottom-6 right-2 flex h-16 w-16 rotate-[8deg] items-center justify-center rounded-2xl border border-white/10 bg-white/[0.06] backdrop-blur-md">
-                <WandSparkles className="h-7 w-7 text-emerald-200" />
+                <WandSparkles className="h-7 w-7 text-blue-200" />
               </div>
-              <div className="absolute right-4 top-3 rounded-full border border-emerald-300/20 bg-emerald-300/10 px-4 py-2 text-[10px] font-semibold tracking-[0.18em] text-emerald-200 uppercase">Créer</div>
+              <div className="absolute right-4 top-3 rounded-full border border-blue-300/20 bg-blue-300/10 px-4 py-2 text-[10px] font-semibold tracking-[0.18em] text-blue-200 uppercase">Créer</div>
               <div className="absolute bottom-4 left-4 rounded-full border border-white/10 bg-black/25 px-4 py-2 text-[10px] font-semibold tracking-[0.18em] text-white/70 uppercase">Automatiser</div>
             </div>
           </div>
@@ -479,10 +479,10 @@ export function FormationPricing() {
               {offers.map((offer) => (
                 <PremiumCard
                   key={offer.id}
-                  className={`p-8 flex flex-col ${offer.badge ? "border-emerald-400/40 shadow-[0_30px_90px_-40px_rgba(16,185,129,0.55)]" : ""}`}
+                  className={`p-8 flex flex-col ${offer.badge ? "border-blue-400/40 shadow-[0_30px_90px_-40px_rgba(37,99,235,0.55)]" : ""}`}
                 >
                   {offer.badge ? (
-                    <div className="mb-4 inline-flex w-fit items-center gap-2 rounded-full border border-emerald-400/30 bg-emerald-400/10 px-3 py-1 text-[11px] font-bold uppercase tracking-widest text-emerald-300">
+                    <div className="mb-4 inline-flex w-fit items-center gap-2 rounded-full border border-blue-400/30 bg-blue-400/10 px-3 py-1 text-[11px] font-bold uppercase tracking-widest text-blue-300">
                       <Sparkles className="h-3 w-3" />
                       {offer.badge}
                     </div>
@@ -495,14 +495,14 @@ export function FormationPricing() {
                     {offer.originalPrice ? (
                       <div className="text-sm text-white/40 line-through">{formatPrice(offer.originalPrice)}</div>
                     ) : null}
-                    <div className="text-3xl font-bold text-emerald-300">{formatPrice(offer.price)}</div>
+                    <div className="text-3xl font-bold text-blue-300">{formatPrice(offer.price)}</div>
                     <div className="mt-1 text-xs text-white/45">{offer.duration}</div>
                   </div>
 
                   <ul className="mt-6 flex-1 space-y-3">
                     {offer.features.map((feature) => (
                       <li key={feature} className="flex items-start gap-2 text-sm text-white/75">
-                        <Check className="mt-0.5 h-4 w-4 shrink-0 text-emerald-400" />
+                        <Check className="mt-0.5 h-4 w-4 shrink-0 text-blue-400" />
                         {feature}
                       </li>
                     ))}
@@ -511,7 +511,7 @@ export function FormationPricing() {
                   <button
                     type="button"
                     onClick={() => setSelectedId(offer.id)}
-                    className="mt-8 inline-flex items-center justify-center rounded-xl bg-emerald-400 px-5 py-3 text-sm font-semibold text-black transition hover:-translate-y-0.5 hover:bg-emerald-300"
+                    className="mt-8 inline-flex items-center justify-center rounded-xl bg-blue-500 px-5 py-3 text-sm font-semibold text-white transition hover:-translate-y-0.5 hover:bg-blue-400"
                   >
                     {offer.ctaLabel}
                   </button>

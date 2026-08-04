@@ -8,7 +8,7 @@ const styles = StyleSheet.create({
   },
   border: {
     borderWidth: 2,
-    borderColor: "#10B981",
+    borderColor: "#2563EB",
     padding: 40,
     height: "100%",
     justifyContent: "space-between",
@@ -16,7 +16,7 @@ const styles = StyleSheet.create({
   kicker: {
     fontSize: 10,
     letterSpacing: 3,
-    color: "#10B981",
+    color: "#2563EB",
     textTransform: "uppercase",
     textAlign: "center",
   },

@@ -45,7 +45,7 @@ const testimonials = [
 function Stat({ value, label }: { value: string; label: string }) {
   return (
     <div className="rounded-2xl border border-white/10 bg-white/[0.035] px-5 py-4 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.06)]">
-      <div className="text-2xl font-semibold tracking-tight text-emerald-300">{value}</div>
+      <div className="text-2xl font-semibold tracking-tight text-blue-300">{value}</div>
       <div className="mt-1 text-xs text-white/60">{label}</div>
     </div>
   );
@@ -57,8 +57,8 @@ export default function HomePage() {
   return (
     <div className="public-theme min-h-screen bg-[#06090A] text-white">
       <div className="pointer-events-none fixed inset-0 -z-10">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(16,185,129,0.16),transparent_55%)]" />
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom,rgba(16,185,129,0.08),transparent_60%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(37,99,235,0.16),transparent_55%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom,rgba(37,99,235,0.08),transparent_60%)]" />
         <div className="absolute inset-0 opacity-[0.06] bg-[linear-gradient(rgba(255,255,255,0.25)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.25)_1px,transparent_1px)] bg-size-[56px_56px]" />
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_35%,rgba(0,0,0,0.45)_75%)]" />
       </div>
@@ -70,7 +70,7 @@ export default function HomePage() {
               <div className="flex flex-wrap items-center gap-3">
                 <Pill>TRANSFORMATION STRATEGIQUE</Pill>
                 <span className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.03] px-3 py-1 text-[11px] font-semibold tracking-[0.22em] text-white/60">
-                  <Sparkles className="h-3.5 w-3.5 text-emerald-300" />
+                  <Sparkles className="h-3.5 w-3.5 text-blue-300" />
                   STANDARD PREMIUM
                 </span>
               </div>
@@ -78,7 +78,7 @@ export default function HomePage() {
               <h1 className="mt-6 text-4xl font-semibold leading-[1.02] tracking-tight md:text-6xl">
                 HCP Digital Labo
                 <span className="block">transforme vos idees</span>
-                <span className="block text-emerald-300">en execution mesurable.</span>
+                <span className="block text-blue-300">en execution mesurable.</span>
               </h1>
 
               <p className="mt-6 max-w-xl text-base leading-relaxed text-white/70">
@@ -100,7 +100,7 @@ export default function HomePage() {
 
           <div className="md:col-span-5">
             <motion.div initial={{ opacity: 0, y: 18 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.05 }} className="group relative">
-              <div className="pointer-events-none absolute -inset-px rounded-[26px] bg-linear-to-b from-emerald-400/35 via-white/10 to-transparent opacity-70" />
+              <div className="pointer-events-none absolute -inset-px rounded-[26px] bg-linear-to-b from-blue-400/35 via-white/10 to-transparent opacity-70" />
               <div className="relative overflow-hidden rounded-[26px] border border-white/10 bg-white/[0.035] shadow-[inset_0_1px_0_0_rgba(255,255,255,0.06)]">
                 <div className="relative h-52 w-full overflow-hidden">
                   <Image
@@ -115,7 +115,7 @@ export default function HomePage() {
                 </div>
                 <div className="p-6">
                   <div className="flex items-center gap-3">
-                    <div className="flex h-10 w-10 items-center justify-center rounded-2xl bg-emerald-400/15 text-emerald-300">
+                    <div className="flex h-10 w-10 items-center justify-center rounded-2xl bg-blue-400/15 text-blue-300">
                       <Wand2 className="h-5 w-5" />
                     </div>
                     <div>
@@ -129,7 +129,7 @@ export default function HomePage() {
                   <div className="mt-5 space-y-3 text-sm text-white/70">
                     {proofItems.map((item) => (
                       <div key={item} className="flex items-start gap-3">
-                        <CheckCircle2 className="mt-0.5 h-5 w-5 text-emerald-300" />
+                        <CheckCircle2 className="mt-0.5 h-5 w-5 text-blue-300" />
                         <span>{item}</span>
                       </div>
                     ))}
@@ -139,7 +139,7 @@ export default function HomePage() {
                     <div className="text-xs tracking-[0.22em] text-white/55 uppercase">Offre demarrage</div>
                     <div className="mt-1 text-sm font-semibold text-white">Audit express + feuille de route</div>
                     <p className="mt-2 text-sm text-white/65">Une base solide pour prioriser, chiffrer et lancer.</p>
-                    <Link href="/contact" className="mt-3 inline-flex items-center gap-2 text-sm font-semibold text-emerald-300 hover:text-emerald-200">
+                    <Link href="/contact" className="mt-3 inline-flex items-center gap-2 text-sm font-semibold text-blue-300 hover:text-blue-200">
                       Demander un diagnostic <ArrowRight className="h-4 w-4" />
                     </Link>
                   </div>
@@ -154,12 +154,12 @@ export default function HomePage() {
         <div className="mx-auto max-w-6xl px-5">
           <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
             <div>
-              <div className="text-xs font-semibold tracking-[0.26em] text-emerald-700">NOTRE METHODE</div>
+              <div className="text-xs font-semibold tracking-[0.26em] text-blue-700">NOTRE METHODE</div>
               <h2 className="mt-3 text-3xl font-semibold tracking-tight md:text-4xl">Une execution pilotee, mesuree, optimisee</h2>
               <p className="mt-3 max-w-2xl text-sm text-black/60">Un cadre clair pour livrer vite, proprement, puis ameliorer en continu.</p>
             </div>
             <span className="inline-flex w-fit items-center gap-2 rounded-full border border-black/10 bg-white px-3 py-1 text-xs font-semibold text-black/70">
-              <ShieldCheck className="h-4 w-4 text-emerald-600" />
+              <ShieldCheck className="h-4 w-4 text-blue-600" />
               BO sous controle
             </span>
           </div>
@@ -168,7 +168,7 @@ export default function HomePage() {
             {homeProcess.map((step) => (
               <div key={step.n} className="group relative overflow-hidden rounded-2xl border border-black/10 bg-white p-6 shadow-[0_14px_40px_-22px_rgba(0,0,0,0.45)] transition hover:-translate-y-1">
                 <div className="absolute -right-3 -top-6 text-7xl font-semibold text-black/5">{step.n}</div>
-                <div className="text-xs font-semibold tracking-[0.26em] text-emerald-700">{step.n}</div>
+                <div className="text-xs font-semibold tracking-[0.26em] text-blue-700">{step.n}</div>
                 <div className="mt-3 text-lg font-semibold">{step.title}</div>
                 <p className="mt-2 text-sm leading-relaxed text-black/60">{step.desc}</p>
               </div>
@@ -184,7 +184,7 @@ export default function HomePage() {
             title="Cinq poles, une seule vision"
             desc="Les pages publiques et le back-office lisent les memes donnees pour eviter les informations contradictoires."
           />
-          <Link href="/contact" className="inline-flex items-center gap-2 text-sm font-semibold text-emerald-300 hover:text-emerald-200">
+          <Link href="/contact" className="inline-flex items-center gap-2 text-sm font-semibold text-blue-300 hover:text-blue-200">
             Demarrer un projet <ArrowRight className="h-4 w-4" />
           </Link>
         </div>
@@ -194,7 +194,7 @@ export default function HomePage() {
             const Icon = pole.icon;
             return (
               <Link id={pole.id} key={pole.id} href={pole.slug} className="group scroll-mt-28">
-                <PremiumCard className="h-full p-0 transition hover:-translate-y-1 hover:border-emerald-400/35">
+                <PremiumCard className="h-full p-0 transition hover:-translate-y-1 hover:border-blue-400/35">
                   <div className="relative aspect-3/2 w-full overflow-hidden border-b border-black/10 bg-white">
                     <Image
                       src={siteImages[pole.id] || pole.image}
@@ -208,7 +208,7 @@ export default function HomePage() {
                   <div className="p-6">
                     <div className="flex items-start justify-between gap-4">
                       <div className="flex items-start gap-3">
-                        <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-2xl border border-emerald-400/20 bg-emerald-400/10 text-emerald-300">
+                        <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-2xl border border-blue-400/20 bg-blue-400/10 text-blue-300">
                           <Icon className="h-5 w-5" />
                         </div>
                         <div>
@@ -216,7 +216,7 @@ export default function HomePage() {
                           <div className="mt-1 text-base font-semibold text-white">{pole.title}</div>
                         </div>
                       </div>
-                      <ArrowRight className="mt-2 h-4 w-4 text-white/45 transition group-hover:translate-x-0.5 group-hover:text-emerald-300" />
+                      <ArrowRight className="mt-2 h-4 w-4 text-white/45 transition group-hover:translate-x-0.5 group-hover:text-blue-300" />
                     </div>
                     <p className="mt-4 text-sm leading-relaxed text-white/70">{pole.shortDescription}</p>
                     <div className="mt-5 flex flex-wrap gap-2">
@@ -226,7 +226,7 @@ export default function HomePage() {
                         </span>
                       ))}
                     </div>
-                    <div className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-emerald-300">Decouvrir le pole</div>
+                    <div className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-blue-300">Decouvrir le pole</div>
                   </div>
                 </PremiumCard>
               </Link>
@@ -241,7 +241,7 @@ export default function HomePage() {
           <div className="mt-10 grid gap-4 md:grid-cols-3">
             {adminOperationalItems.map((item) => (
               <PremiumCard key={item.title} className="p-6">
-                <div className="text-xs font-semibold tracking-[0.22em] text-emerald-300 uppercase">{item.status}</div>
+                <div className="text-xs font-semibold tracking-[0.22em] text-blue-300 uppercase">{item.status}</div>
                 <h3 className="mt-3 text-lg font-semibold text-white">{item.title}</h3>
                 <p className="mt-3 text-sm leading-relaxed text-white/65">{item.detail}</p>
               </PremiumCard>
@@ -257,7 +257,7 @@ export default function HomePage() {
             {testimonials.map((testimonial) => (
               <PremiumCard key={testimonial.name} className="p-6">
                 <div className="flex items-start gap-3">
-                  <div className="flex h-10 w-10 items-center justify-center rounded-2xl bg-emerald-400/15 text-emerald-300">
+                  <div className="flex h-10 w-10 items-center justify-center rounded-2xl bg-blue-400/15 text-blue-300">
                     <Quote className="h-5 w-5" />
                   </div>
                   <div>
@@ -276,7 +276,7 @@ export default function HomePage() {
         <div className="mx-auto max-w-6xl px-5">
           <div className="grid gap-8 md:grid-cols-12">
             <div className="md:col-span-5">
-              <div className="text-xs font-semibold tracking-[0.26em] text-emerald-300">CONTACT</div>
+              <div className="text-xs font-semibold tracking-[0.26em] text-blue-300">CONTACT</div>
               <h3 className="mt-3 text-3xl font-semibold tracking-tight text-white">Parlons de votre projet</h3>
               <p className="mt-3 text-sm leading-relaxed text-white/70">Decrivez votre besoin : nous revenons avec une proposition structuree.</p>
               <div className="mt-6 space-y-3 rounded-3xl border border-white/10 bg-white/[0.03] p-6">

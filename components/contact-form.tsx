@@ -54,7 +54,7 @@ export function ContactForm({ compact = false, source = "site" }: ContactFormPro
             id={`${source}-name`}
             name="name"
             required
-            className="mt-2 w-full rounded-xl border border-white/10 bg-black/20 px-4 py-3 text-sm text-white placeholder:text-white/35 focus:outline-none focus:ring-2 focus:ring-emerald-400/40"
+            className="mt-2 w-full rounded-xl border border-white/10 bg-black/20 px-4 py-3 text-sm text-white placeholder:text-white/35 focus:outline-none focus:ring-2 focus:ring-blue-400/40"
             placeholder="Votre nom"
           />
         </div>
@@ -67,7 +67,7 @@ export function ContactForm({ compact = false, source = "site" }: ContactFormPro
             <input
               id={`${source}-company`}
               name="company"
-              className="mt-2 w-full rounded-xl border border-white/10 bg-black/20 px-4 py-3 text-sm text-white placeholder:text-white/35 focus:outline-none focus:ring-2 focus:ring-emerald-400/40"
+              className="mt-2 w-full rounded-xl border border-white/10 bg-black/20 px-4 py-3 text-sm text-white placeholder:text-white/35 focus:outline-none focus:ring-2 focus:ring-blue-400/40"
               placeholder="Votre entreprise"
             />
           </div>
@@ -79,7 +79,7 @@ export function ContactForm({ compact = false, source = "site" }: ContactFormPro
             <input
               id={`${source}-phone`}
               name="phone"
-              className="mt-2 w-full rounded-xl border border-white/10 bg-black/20 px-4 py-3 text-sm text-white placeholder:text-white/35 focus:outline-none focus:ring-2 focus:ring-emerald-400/40"
+              className="mt-2 w-full rounded-xl border border-white/10 bg-black/20 px-4 py-3 text-sm text-white placeholder:text-white/35 focus:outline-none focus:ring-2 focus:ring-blue-400/40"
               placeholder={siteContact.phone}
             />
           </div>
@@ -96,7 +96,7 @@ export function ContactForm({ compact = false, source = "site" }: ContactFormPro
               id={`${source}-email`}
               name="email"
               type="email"
-              className="mt-2 w-full rounded-xl border border-white/10 bg-black/20 px-4 py-3 text-sm text-white placeholder:text-white/35 focus:outline-none focus:ring-2 focus:ring-emerald-400/40"
+              className="mt-2 w-full rounded-xl border border-white/10 bg-black/20 px-4 py-3 text-sm text-white placeholder:text-white/35 focus:outline-none focus:ring-2 focus:ring-blue-400/40"
               placeholder="votre@email.com"
             />
           </div>
@@ -107,7 +107,7 @@ export function ContactForm({ compact = false, source = "site" }: ContactFormPro
             <input
               id={`${source}-phone-full`}
               name="phone"
-              className="mt-2 w-full rounded-xl border border-white/10 bg-black/20 px-4 py-3 text-sm text-white placeholder:text-white/35 focus:outline-none focus:ring-2 focus:ring-emerald-400/40"
+              className="mt-2 w-full rounded-xl border border-white/10 bg-black/20 px-4 py-3 text-sm text-white placeholder:text-white/35 focus:outline-none focus:ring-2 focus:ring-blue-400/40"
               placeholder={siteContact.phone}
             />
           </div>
@@ -122,7 +122,7 @@ export function ContactForm({ compact = false, source = "site" }: ContactFormPro
           <select
             id={`${source}-pole`}
             name="pole"
-            className="mt-2 w-full appearance-none rounded-xl border border-white/10 bg-black/20 px-4 py-3 text-sm text-white/60 focus:outline-none focus:ring-2 focus:ring-emerald-400/40"
+            className="mt-2 w-full appearance-none rounded-xl border border-white/10 bg-black/20 px-4 py-3 text-sm text-white/60 focus:outline-none focus:ring-2 focus:ring-blue-400/40"
           >
             <option value="">Sélectionnez un pôle</option>
             {poles.map((pole) => (
@@ -143,7 +143,7 @@ export function ContactForm({ compact = false, source = "site" }: ContactFormPro
           name="message"
           required
           rows={compact ? 4 : 5}
-          className="mt-2 min-h-30 w-full resize-none rounded-xl border border-white/10 bg-black/20 px-4 py-3 text-sm text-white placeholder:text-white/35 focus:outline-none focus:ring-2 focus:ring-emerald-400/40"
+          className="mt-2 min-h-30 w-full resize-none rounded-xl border border-white/10 bg-black/20 px-4 py-3 text-sm text-white placeholder:text-white/35 focus:outline-none focus:ring-2 focus:ring-blue-400/40"
           placeholder="Objectif, délai, budget indicatif"
         />
       </div>
@@ -156,7 +156,7 @@ export function ContactForm({ compact = false, source = "site" }: ContactFormPro
       </div>
 
       {message ? (
-        <div className={`rounded-xl border px-4 py-3 text-sm ${status === "success" ? "border-emerald-400/25 bg-emerald-400/10 text-emerald-100" : "border-red-400/25 bg-red-400/10 text-red-100"}`}>
+        <div className={`rounded-xl border px-4 py-3 text-sm ${status === "success" ? "border-blue-400/25 bg-blue-400/10 text-blue-100" : "border-red-400/25 bg-red-400/10 text-red-100"}`}>
           {message}
         </div>
       ) : null}

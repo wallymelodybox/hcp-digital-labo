@@ -5,7 +5,7 @@ export function SecondaryButton({ children, ...props }: React.ButtonHTMLAttribut
   return (
     <button
       type="button"
-      className="group inline-flex items-center justify-center gap-2 rounded-xl border border-white/15 bg-white/0 px-5 py-3 text-sm font-semibold text-white transition hover:-translate-y-0.5 hover:border-emerald-400/40 hover:bg-white/5 focus:outline-none focus:ring-2 focus:ring-white/10"
+      className="group inline-flex items-center justify-center gap-2 rounded-xl border border-white/15 bg-white/0 px-5 py-3 text-sm font-semibold text-white transition hover:-translate-y-0.5 hover:border-blue-400/40 hover:bg-white/5 focus:outline-none focus:ring-2 focus:ring-white/10"
       {...props}
     >
       {children}

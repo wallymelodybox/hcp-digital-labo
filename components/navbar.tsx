@@ -21,25 +21,25 @@ export function Navbar() {
 
   return (
     <>
-      <header className="sticky top-0 z-50 border-b border-emerald-950/10 bg-white/85 backdrop-blur-2xl">
+      <header className="sticky top-0 z-50 border-b border-blue-950/10 bg-white/85 backdrop-blur-2xl">
         <div className="mx-auto flex max-w-6xl items-center justify-between px-5 py-4">
           <Link href="/" className="flex items-center gap-3">
-            <div className="h-9 w-1.5 rounded-full bg-emerald-400" />
+            <div className="h-9 w-1.5 rounded-full bg-blue-500" />
             <div className="leading-tight">
-              <div className="text-sm font-semibold tracking-wide text-emerald-950">HCP</div>
-              <div className="-mt-0.5 text-[11px] tracking-[0.28em] text-emerald-950/55">
+              <div className="text-sm font-semibold tracking-wide text-blue-950">HCP</div>
+              <div className="-mt-0.5 text-[11px] tracking-[0.28em] text-blue-950/55">
                 DIGITAL LABO
               </div>
             </div>
           </Link>
 
-          <nav className="hidden items-center gap-7 text-sm text-emerald-950/65 md:flex">
+          <nav className="hidden items-center gap-7 text-sm text-blue-950/65 md:flex">
             {navLinks.map((item) => (
               <Link
                 key={item.href}
                 href={item.href}
-                className={`transition hover:text-emerald-950 ${
-                  pathname === item.href ? "text-emerald-400" : ""
+                className={`transition hover:text-blue-950 ${
+                  pathname === item.href ? "text-blue-500" : ""
                 }`}
               >
                 {item.label}
@@ -50,17 +50,17 @@ export function Navbar() {
           <div className="flex items-center gap-3">
             <Link
               href="/#contact"
-              className="hidden rounded-xl border border-emerald-950/10 bg-emerald-50 px-4 py-2 text-sm font-semibold text-emerald-950 transition hover:border-emerald-500/35 hover:bg-emerald-100 md:inline-flex"
+              className="hidden rounded-xl border border-blue-950/10 bg-blue-50 px-4 py-2 text-sm font-semibold text-blue-950 transition hover:border-blue-500/35 hover:bg-blue-100 md:inline-flex"
             >
               Nous contacter
             </Link>
             <button
               onClick={() => setMenuOpen(true)}
-              className="inline-flex h-10 w-10 items-center justify-center rounded-xl border border-emerald-950/10 bg-emerald-50 md:hidden"
+              className="inline-flex h-10 w-10 items-center justify-center rounded-xl border border-blue-950/10 bg-blue-50 md:hidden"
               aria-label="Menu"
               type="button"
             >
-              <Menu className="h-5 w-5 text-emerald-950" />
+              <Menu className="h-5 w-5 text-blue-950" />
             </button>
           </div>
         </div>
@@ -74,17 +74,17 @@ export function Navbar() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
           >
-            <div className="absolute inset-0 bg-emerald-950/30" onClick={() => setMenuOpen(false)} />
+            <div className="absolute inset-0 bg-blue-950/30" onClick={() => setMenuOpen(false)} />
             <motion.div
               initial={{ x: 40, opacity: 0 }}
               animate={{ x: 0, opacity: 1 }}
               exit={{ x: 40, opacity: 0 }}
               transition={{ duration: 0.25 }}
-              className="absolute right-0 top-0 h-full w-[86%] max-w-sm border-l border-emerald-950/10 bg-white/95 p-6 backdrop-blur-xl"
+              className="absolute right-0 top-0 h-full w-[86%] max-w-sm border-l border-blue-950/10 bg-white/95 p-6 backdrop-blur-xl"
             >
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-3">
-                  <div className="h-9 w-1.5 rounded-full bg-emerald-400" />
+                  <div className="h-9 w-1.5 rounded-full bg-blue-500" />
                   <div className="leading-tight">
                     <div className="text-sm font-semibold tracking-wide text-white">HCP</div>
                     <div className="-mt-0.5 text-[11px] tracking-[0.28em] text-white/60">
@@ -116,7 +116,7 @@ export function Navbar() {
                 <Link
                   href="/#contact"
                   onClick={() => setMenuOpen(false)}
-                  className="mt-3 inline-flex w-full items-center justify-center rounded-xl bg-emerald-400 px-5 py-3 text-sm font-semibold text-black"
+                  className="mt-3 inline-flex w-full items-center justify-center rounded-xl bg-blue-500 px-5 py-3 text-sm font-semibold text-white"
                 >
                   Nous contacter
                 </Link>
