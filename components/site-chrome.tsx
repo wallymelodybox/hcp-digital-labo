@@ -3,6 +3,7 @@
 import { usePathname } from "next/navigation";
 import { Navbar } from "@/components/navbar";
 import { Footer } from "@/components/footer";
+import { VisitorChat } from "@/components/visitor-chat";
 
 export function SiteChrome({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
@@ -15,6 +16,7 @@ export function SiteChrome({ children }: { children: React.ReactNode }) {
       <Navbar />
       <main>{children}</main>
       <Footer />
+      <VisitorChat />
     </>
   );
 }
