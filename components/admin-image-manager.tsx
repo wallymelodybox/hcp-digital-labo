@@ -30,6 +30,23 @@ function isVideoUrl(url: string) {
   return /\.(mp4|webm|ogg|mov)(?:[?#].*)?$/i.test(url);
 }
 
+async function hasRequiredBannerDimensions(file: File) {
+  if (!file.type.startsWith("image/")) return true;
+
+  const objectUrl = URL.createObjectURL(file);
+  try {
+    const dimensions = await new Promise<{ width: number; height: number }>((resolve, reject) => {
+      const image = new window.Image();
+      image.onload = () => resolve({ width: image.naturalWidth, height: image.naturalHeight });
+      image.onerror = reject;
+      image.src = objectUrl;
+    });
+    return dimensions.width === 1536 && dimensions.height === 1024;
+  } finally {
+    URL.revokeObjectURL(objectUrl);
+  }
+}
+
 export function AdminImageManager() {
   const [images, setImages] = useState<Images>({});
   const [status, setStatus] = useState<"idle" | "loading" | "saving" | "success" | "error">("loading");
@@ -90,9 +107,24 @@ export function AdminImageManager() {
     setStatus("idle");
     setMessage("");
 
+    try {
+      if (!(await hasRequiredBannerDimensions(file))) {
+        setStatus("error");
+        setMessage("Dimension incorrecte : choisissez une image de 1536 × 1024 px exactement.");
+        return;
+      }
+    } catch {
+      setStatus("error");
+      setMessage("Impossible de lire les dimensions de cette image.");
+      return;
+    } finally {
+      setUploadingKey(null);
+    }
+
     const formData = new FormData();
     formData.append("key", id);
     formData.append("file", file);
+    setUploadingKey(id);
 
     try {
       const response = await fetch("/api/hcp-bo-7x9k2m/site-images", {
@@ -149,12 +181,12 @@ export function AdminImageManager() {
                 <div className="overflow-hidden rounded-2xl border border-white/10 bg-black/30">
                   {preview ? (
                     isVideoUrl(preview) ? (
-                      <video src={preview} className="aspect-video w-full object-cover" muted controls playsInline preload="metadata" />
+                      <video src={preview} className="aspect-3/2 w-full bg-white object-contain" muted controls playsInline preload="metadata" />
                     ) : (
-                      <img src={preview} alt={item.title} className="aspect-video w-full object-cover" />
+                      <img src={preview} alt={item.title} className="aspect-3/2 w-full bg-white object-contain opacity-100" />
                     )
                   ) : (
-                    <div className="flex aspect-video items-center justify-center px-5 text-center text-xs text-white/35">
+                    <div className="flex aspect-3/2 items-center justify-center px-5 text-center text-xs text-white/35">
                       Aucun média — le visuel par défaut sera utilisé
                     </div>
                   )}
@@ -180,8 +212,8 @@ export function AdminImageManager() {
                           <div className="text-sm font-semibold text-white">Choisir un nouveau média</div>
                           <div className="mt-1 text-xs text-white/40">
                             {item.id === "formationPricingBanner"
-                              ? "Image 8 Mo max. ou vidéo 50 Mo max."
-                              : "JPG, PNG, WebP, GIF ou AVIF — 8 Mo max."}
+                              ? "Format 1536 × 1024 px — image 8 Mo ou vidéo 50 Mo max."
+                              : "Format obligatoire : 1536 × 1024 px — 8 Mo max."}
                           </div>
                         </div>
                       </div>

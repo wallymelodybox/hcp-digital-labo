@@ -102,16 +102,16 @@ export default function HomePage() {
             <motion.div initial={{ opacity: 0, y: 18 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.05 }} className="group relative">
               <div className="pointer-events-none absolute -inset-px rounded-[26px] bg-linear-to-b from-blue-400/35 via-white/10 to-transparent opacity-70" />
               <div className="relative overflow-hidden rounded-[26px] border border-white/10 bg-white/[0.035] shadow-[inset_0_1px_0_0_rgba(255,255,255,0.06)]">
-                <div className="relative h-52 w-full overflow-hidden">
+                <div className="relative aspect-3/2 w-full overflow-hidden bg-white">
                   <Image
                     src={siteImages.homeHero || "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=1200"}
                     unoptimized={Boolean(siteImages.homeHero)}
                     alt="Espace de travail HCP Digital Labo"
                     fill
-                    priority
-                    className="object-cover opacity-100 transition-transform duration-500 group-hover:scale-105"
+                    sizes="(max-width: 767px) 100vw, 42vw"
+                    preload
+                    className="object-contain opacity-100"
                   />
-                  <div className="absolute inset-0 bg-linear-to-t from-[#06090A] to-transparent" />
                 </div>
                 <div className="p-6">
                   <div className="flex items-center gap-3">
@@ -221,7 +221,7 @@ export default function HomePage() {
                     <p className="mt-4 text-sm leading-relaxed text-white/70">{pole.shortDescription}</p>
                     <div className="mt-5 flex flex-wrap gap-2">
                       {pole.services.slice(0, 3).map((service) => (
-                        <span key={service.name} className="rounded-full border border-white/10 bg-white/[0.02] px-3 py-1 text-[11px] font-semibold text-white/60">
+                        <span key={service.name} className="rounded-full border border-white/10 bg-white/2 px-3 py-1 text-[11px] font-semibold text-white/60">
                           {service.name}
                         </span>
                       ))}
@@ -296,7 +296,6 @@ export default function HomePage() {
     </div>
   );
 }
-
 
 
 

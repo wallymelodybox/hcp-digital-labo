@@ -28,21 +28,23 @@ export default function ContactPage() {
       </div>
 
       {/* Hero */}
-      <section className="relative mx-auto max-w-6xl px-5 pt-14 pb-14 md:pt-20 md:pb-20 overflow-hidden rounded-[40px] mt-8">
-        <div className="absolute inset-0 -z-10">
+      <section className="mx-auto mt-8 max-w-6xl px-5 pb-14 md:pb-20">
+        <div className="relative aspect-3/2 overflow-hidden rounded-[32px] border border-white/10 bg-white shadow-2xl">
           <Image 
             src={siteImages.contactHero || "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80&w=2000"} 
             unoptimized={Boolean(siteImages.contactHero)}
-            alt="Contact Background" 
+            alt="Contact HCP Digital Labo" 
             fill
-            className="object-cover opacity-10"
+            sizes="(max-width: 1152px) 100vw, 1152px"
+            preload
+            className="object-contain opacity-100"
           />
-          <div className="absolute inset-0 bg-linear-to-b from-transparent via-[#06090A]/50 to-[#06090A]" />
         </div>
         <motion.div
           initial={{ opacity: 0, y: 14 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.55 }}
+          className="pt-10 md:pt-14"
         >
           <div className="flex flex-wrap items-center gap-3">
             <Pill>CONTACT & AUDIT</Pill>
@@ -131,7 +133,6 @@ export default function ContactPage() {
     </div>
   )
 }
-
 
 
 

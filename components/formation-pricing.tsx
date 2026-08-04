@@ -415,7 +415,7 @@ export function FormationPricing() {
             {isVideoUrl(bannerMedia) ? (
               <video
                 src={bannerMedia}
-                className="aspect-1983/793 h-auto w-full bg-white object-contain"
+                className="aspect-3/2 h-auto w-full bg-white object-contain opacity-100"
                 autoPlay
                 muted
                 loop
@@ -428,9 +428,9 @@ export function FormationPricing() {
               <img
                 src={bannerMedia}
                 alt="Formations en intelligence artificielle"
-                width={1983}
-                height={793}
-                className="block h-auto w-full object-contain opacity-100"
+                width={1536}
+                height={1024}
+                className="block aspect-3/2 w-full bg-white object-contain opacity-100"
               />
             )}
           </div>
