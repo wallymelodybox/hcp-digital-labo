@@ -28,3 +28,7 @@ React will never use eval() in production mode @ http://localhost:3000/_next/sta
 [  850859ms] [LOG] [Fast Refresh] done in 145ms @ http://localhost:3000/_next/static/chunks/0pqw_next_dist_1ijfce2._.js:776
 [  850953ms] [LOG] [Fast Refresh] done in 145ms @ http://localhost:3000/_next/static/chunks/0pqw_next_dist_1ijfce2._.js:776
 [  851076ms] [LOG] [Fast Refresh] done in 145ms @ http://localhost:3000/_next/static/chunks/0pqw_next_dist_1ijfce2._.js:776
+[  852990ms] [LOG] [Fast Refresh] done in 145ms @ http://localhost:3000/_next/static/chunks/0pqw_next_dist_1ijfce2._.js:776
+[  853053ms] [LOG] [Fast Refresh] done in 145ms @ http://localhost:3000/_next/static/chunks/0pqw_next_dist_1ijfce2._.js:776
+[  853176ms] [LOG] [Fast Refresh] done in 145ms @ http://localhost:3000/_next/static/chunks/0pqw_next_dist_1ijfce2._.js:776
+[  854750ms] [LOG] [Fast Refresh] done in 145ms @ http://localhost:3000/_next/static/chunks/0pqw_next_dist_1ijfce2._.js:776
