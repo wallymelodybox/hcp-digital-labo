@@ -21,10 +21,8 @@ export default function FormationPage() {
         stats={[...pole.stats]}
         prevPole={{ title: prevPole.title, slug: prevPole.slug }}
         nextPole={{ title: nextPole.title, slug: nextPole.slug }}
+        contentAfterHero={<FormationPricing />}
       />
-      <div className="bg-[#06090A]">
-        <FormationPricing />
-      </div>
     </div>
   )
 }

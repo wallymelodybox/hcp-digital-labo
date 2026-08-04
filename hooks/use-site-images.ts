@@ -10,7 +10,7 @@ export function useSiteImages() {
   useEffect(() => {
     let active = true;
 
-    fetch("/api/site-images")
+    fetch("/api/site-images", { cache: "no-store" })
       .then((res) => (res.ok ? res.json() : {}))
       .then((data) => {
         if (active && data && typeof data === "object") {

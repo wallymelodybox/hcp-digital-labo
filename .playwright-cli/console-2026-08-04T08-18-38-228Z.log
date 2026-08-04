@@ -1,0 +1,22 @@
+[    1279ms] [INFO] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold @ http://localhost:3000/_next/static/chunks/0pqw_next_dist_1ijfce2._.js:776
+[    1283ms] [ERROR] eval() is not supported in this environment. If this page was served with a `Content-Security-Policy` header, make sure that `unsafe-eval` is included. React requires eval() in development mode for various debugging features like reconstructing callstacks from a different environment.
+React will never use eval() in production mode @ http://localhost:3000/_next/static/chunks/0pqw_next_dist_1ijfce2._.js:1052
+[    1353ms] [LOG] [HMR] connected @ http://localhost:3000/_next/static/chunks/0pqw_next_dist_1ijfce2._.js:776
+[    1502ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3000/_next/image?url=https%3A%2F%2Fimages.unsplash.com%2Fphoto-1524178232363-1fb28f74b0cd%3Fauto%3Dformat%26fit%3Dcrop%26q%3D80%26w%3D1200&w=1920&q=75:0
+[    1621ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3000/favicon.ico:0
+[   25891ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/0pqw_next_dist_1ijfce2._.js:776
+[   25988ms] [WARNING] [Fast Refresh] performing full reload
+
+Fast Refresh will perform a full reload when you edit a file that's imported by modules outside of the React rendering tree.
+You might have a file which exports a React component but also exports a value that is imported by a non-React component file.
+Consider migrating the non-React component export to a separate file and importing it into both files.
+
+It is also possible the parent component of the component you edited is a class component, which disables Fast Refresh.
+Fast Refresh requires at least one parent function component in your React tree. @ http://localhost:3000/_next/static/chunks/0pqw_next_dist_1ijfce2._.js:776
+[   26044ms] [LOG] [Fast Refresh] done in 204ms @ http://localhost:3000/_next/static/chunks/0pqw_next_dist_1ijfce2._.js:776
+[   26121ms] [LOG] [Fast Refresh] done in 204ms @ http://localhost:3000/_next/static/chunks/0pqw_next_dist_1ijfce2._.js:776
+[   26216ms] [INFO] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold @ http://localhost:3000/_next/static/chunks/0pqw_next_dist_1ijfce2._.js:776
+[   26216ms] [ERROR] eval() is not supported in this environment. If this page was served with a `Content-Security-Policy` header, make sure that `unsafe-eval` is included. React requires eval() in development mode for various debugging features like reconstructing callstacks from a different environment.
+React will never use eval() in production mode @ http://localhost:3000/_next/static/chunks/0pqw_next_dist_1ijfce2._.js:1052
+[   26243ms] [LOG] [HMR] connected @ http://localhost:3000/_next/static/chunks/0pqw_next_dist_1ijfce2._.js:776
+[   26517ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3000/_next/image?url=https%3A%2F%2Fimages.unsplash.com%2Fphoto-1524178232363-1fb28f74b0cd%3Fauto%3Dformat%26fit%3Dcrop%26q%3D80%26w%3D1200&w=1920&q=75:0

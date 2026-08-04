@@ -1,0 +1,295 @@
+- generic [active] [ref=e1]:
+  - banner [ref=e2]:
+    - generic [ref=e3]:
+      - link "HCP DIGITAL LABO" [ref=e4] [cursor=pointer]:
+        - /url: /
+        - generic [ref=e6]:
+          - generic [ref=e7]: HCP
+          - generic [ref=e8]: DIGITAL LABO
+      - navigation [ref=e9]:
+        - link "Accueil" [ref=e10] [cursor=pointer]:
+          - /url: /
+        - link "Stratégie" [ref=e11] [cursor=pointer]:
+          - /url: /strategie
+        - link "Digital" [ref=e12] [cursor=pointer]:
+          - /url: /digital
+        - link "Événementiel" [ref=e13] [cursor=pointer]:
+          - /url: /evenementiel
+        - link "Production" [ref=e14] [cursor=pointer]:
+          - /url: /production
+        - link "Formation" [ref=e15] [cursor=pointer]:
+          - /url: /formation
+      - link "Nous contacter" [ref=e17] [cursor=pointer]:
+        - /url: /#contact
+  - main [ref=e18]:
+    - generic [ref=e19]:
+      - generic [ref=e20]:
+        - generic [ref=e23]:
+          - generic [ref=e24]:
+            - link "Retour" [ref=e26] [cursor=pointer]:
+              - /url: /
+            - generic [ref=e29]: "05"
+            - heading "Formation & Transformation" [level=1] [ref=e35]
+            - paragraph [ref=e36]: Nous accompagnons votre montee en competences avec des formations digitales, du coaching strategique et un accompagnement a la transformation. Notre pedagogie s'adapte a votre contexte pour garantir une adoption rapide et des resultats concrets sur le terrain.
+            - generic [ref=e37]:
+              - generic [ref=e38]:
+                - generic [ref=e39]: 100+
+                - generic [ref=e40]: Personnes formees
+              - generic [ref=e41]:
+                - generic [ref=e42]: 20+
+                - generic [ref=e43]: Ateliers animes
+              - generic [ref=e44]:
+                - generic [ref=e45]: 98%
+                - generic [ref=e46]: Satisfaction apprenants
+          - generic [ref=e48]:
+            - img "Formation & Transformation" [ref=e49]
+            - generic [ref=e51]: Pôle 05
+        - generic [ref=e54]:
+          - generic [ref=e55]:
+            - generic [ref=e56]: NOS SERVICES
+            - heading "Expertises & Livrables" [level=2] [ref=e57]
+            - paragraph [ref=e58]: Chaque service est pensé pour apporter une valeur concrète et mesurable à votre projet.
+          - generic [ref=e59]:
+            - generic [ref=e61]:
+              - generic [ref=e62]: "01"
+              - generic [ref=e63]:
+                - heading "Formation marketing digital" [level=3] [ref=e64]
+                - paragraph [ref=e65]: Programmes complets couvrant SEO, SEA, social media, content marketing et analytics.
+              - generic [ref=e66]: En savoir plus
+            - generic [ref=e70]:
+              - generic [ref=e71]: "02"
+              - generic [ref=e72]:
+                - heading "Formation outils numeriques" [level=3] [ref=e73]
+                - paragraph [ref=e74]: Maitrise des outils CRM, CMS, design, gestion de projet et collaboration pour vos equipes.
+              - generic [ref=e75]: En savoir plus
+            - generic [ref=e79]:
+              - generic [ref=e80]: "03"
+              - generic [ref=e81]:
+                - heading "Coaching strategique" [level=3] [ref=e82]
+                - paragraph [ref=e83]: Accompagnement personnalise des dirigeants et managers pour piloter la transformation.
+              - generic [ref=e84]: En savoir plus
+            - generic [ref=e88]:
+              - generic [ref=e89]: "04"
+              - generic [ref=e90]:
+                - heading "Accompagnement transformation digitale" [level=3] [ref=e91]
+                - paragraph [ref=e92]: Diagnostic de maturite numerique et feuille de route pour moderniser votre organisation.
+              - generic [ref=e93]: En savoir plus
+        - generic [ref=e97]:
+          - heading "Prêt à lancer votre projet ?" [level=2] [ref=e98]
+          - paragraph [ref=e99]: Bénéficiez d'un accompagnement structuré et de livrables premium orientés résultats.
+          - link [ref=e101] [cursor=pointer]:
+            - /url: /contact
+            - button "Démarrer un diagnostic" [ref=e102]
+        - generic [ref=e107]:
+          - link "Précédent Production & Imprimerie" [ref=e108] [cursor=pointer]:
+            - /url: /production
+            - generic [ref=e112]:
+              - generic [ref=e113]: Précédent
+              - generic [ref=e114]: Production & Imprimerie
+          - link "Suivant Livraison & Logistique" [ref=e115] [cursor=pointer]:
+            - /url: /livraison
+            - generic [ref=e116]:
+              - generic [ref=e117]: Suivant
+              - generic [ref=e118]: Livraison & Logistique
+      - generic [ref=e124]:
+        - generic [ref=e128]:
+          - generic [ref=e129]:
+            - generic [ref=e130]: Formation IA
+            - heading "Maîtrisez l'IA pour créer vos propres solutions digitales" [level=2] [ref=e132]
+            - paragraph [ref=e133]: Apprenez à créer des visuels, des vidéos, des sites web, des applications et des SaaS avec l'intelligence artificielle, selon votre niveau.
+            - generic [ref=e134]:
+              - generic [ref=e135]: Formation pratique
+              - generic [ref=e136]: Accessible aux débutants
+              - generic [ref=e137]: Projets concrets
+              - generic [ref=e138]: En ligne ou en présentiel
+          - generic [ref=e139]:
+            - generic [ref=e168]: Créer
+            - generic [ref=e169]: Automatiser
+        - generic [ref=e170]:
+          - generic [ref=e171]:
+            - heading "Formation Basique" [level=3] [ref=e172]
+            - paragraph [ref=e173]: Pour découvrir et bien utiliser les outils d'intelligence artificielle.
+            - generic [ref=e174]:
+              - generic [ref=e175]: 20 000 FCFA
+              - generic [ref=e176]: 4 à 6 heures
+            - list [ref=e177]:
+              - listitem [ref=e178]: Comprendre le fonctionnement de l'IA
+              - listitem [ref=e181]: Découvrir les principaux outils
+              - listitem [ref=e184]: Bien rédiger ses prompts
+              - listitem [ref=e187]: Utiliser ChatGPT efficacement
+              - listitem [ref=e190]: Créer des textes professionnels
+              - listitem [ref=e193]: Créer des visuels avec l'IA
+              - listitem [ref=e196]: Initiation à la création de vidéos
+              - listitem [ref=e199]: Bibliothèque de prompts
+              - listitem [ref=e202]: Support de formation
+            - button "Choisir la formule Basique" [ref=e205]
+          - generic [ref=e206]:
+            - generic [ref=e207]: Formule recommandée
+            - heading "Formation Intermédiaire" [level=3] [ref=e211]
+            - paragraph [ref=e212]: Pour créer des contenus et des solutions digitales avec l'IA.
+            - generic [ref=e213]:
+              - generic [ref=e214]: 35 000 FCFA
+              - generic [ref=e215]: 1 à 2 jours
+            - list [ref=e216]:
+              - listitem [ref=e217]: Tout le contenu de la formule Basique
+              - listitem [ref=e220]: Création avancée de visuels
+              - listitem [ref=e223]: Création et montage de vidéos avec l'IA
+              - listitem [ref=e226]: Création d'une identité visuelle
+              - listitem [ref=e229]: Création d'un site web avec l'IA
+              - listitem [ref=e232]: Initiation aux outils no-code
+              - listitem [ref=e235]: Automatisation de tâches simples
+              - listitem [ref=e238]: Projet pratique accompagné
+              - listitem [ref=e241]: Groupe privé d'accompagnement
+            - button "Choisir la formule Intermédiaire" [ref=e244]
+          - generic [ref=e245]:
+            - generic [ref=e246]: Vente flash
+            - heading "Formation Complète" [level=3] [ref=e250]
+            - paragraph [ref=e251]: Pour lancer un site, une application ou un projet SaaS avec l'IA.
+            - generic [ref=e252]:
+              - generic [ref=e253]: 100 000 FCFA
+              - generic [ref=e254]: 50 000 FCFA
+              - generic [ref=e255]: 2 à 4 jours
+            - list [ref=e256]:
+              - listitem [ref=e257]: Tout le contenu des formules précédentes
+              - listitem [ref=e260]: Création de sites web avancés
+              - listitem [ref=e263]: Création de prototypes d'applications
+              - listitem [ref=e266]: Initiation à la création de SaaS
+              - listitem [ref=e269]: Connexion à une base de données
+              - listitem [ref=e272]: Automatisation de processus
+              - listitem [ref=e275]: Création de formulaires et tableaux de bord
+              - listitem [ref=e278]: Mise en ligne d'un projet
+              - listitem [ref=e281]: Méthodes de monétisation
+              - listitem [ref=e284]: Suivi personnalisé
+              - listitem [ref=e287]: Projet final pratique
+              - listitem [ref=e290]: Attestation ou certificat
+            - button "Réserver ma place à 50 000 FCFA" [ref=e293]
+        - generic [ref=e294]:
+          - generic [ref=e295]:
+            - generic [ref=e296]: COMPARATIF
+            - heading "Comparez les formules en un coup d'œil" [level=2] [ref=e297]
+          - table [ref=e299]:
+            - rowgroup [ref=e300]:
+              - row [ref=e301]:
+                - columnheader "Fonctionnalité" [ref=e302]
+                - columnheader "Basique" [ref=e303]
+                - columnheader "Intermédiaire" [ref=e304]
+                - columnheader "Complète" [ref=e305]
+            - rowgroup [ref=e306]:
+              - row [ref=e307]:
+                - cell "Initiation à l'IA" [ref=e308]
+                - cell "✓" [ref=e309]
+                - cell "✓" [ref=e310]
+                - cell "✓" [ref=e311]
+              - row [ref=e312]:
+                - cell "Maîtrise des prompts" [ref=e313]
+                - cell "✓" [ref=e314]
+                - cell "✓" [ref=e315]
+                - cell "✓" [ref=e316]
+              - row [ref=e317]:
+                - cell "Création de visuels" [ref=e318]
+                - cell "✓" [ref=e319]
+                - cell "✓" [ref=e320]
+                - cell "✓" [ref=e321]
+              - row [ref=e322]:
+                - cell "Création de vidéos" [ref=e323]
+                - cell "Initiation" [ref=e324]
+                - cell "Avancée" [ref=e325]
+                - cell "Avancée" [ref=e326]
+              - row [ref=e327]:
+                - cell "Création de site" [ref=e328]
+                - cell "—" [ref=e329]
+                - cell "✓" [ref=e330]
+                - cell "✓" [ref=e331]
+              - row [ref=e332]:
+                - cell "Création d'application" [ref=e333]
+                - cell "—" [ref=e334]
+                - cell "Initiation" [ref=e335]
+                - cell "✓" [ref=e336]
+              - row [ref=e337]:
+                - cell "Création de SaaS" [ref=e338]
+                - cell "—" [ref=e339]
+                - cell "—" [ref=e340]
+                - cell "✓" [ref=e341]
+              - row [ref=e342]:
+                - cell "Automatisation" [ref=e343]
+                - cell "—" [ref=e344]
+                - cell "Basique" [ref=e345]
+                - cell "Avancée" [ref=e346]
+              - row [ref=e347]:
+                - cell "Projet pratique" [ref=e348]
+                - cell "—" [ref=e349]
+                - cell "✓" [ref=e350]
+                - cell "✓" [ref=e351]
+              - row [ref=e352]:
+                - cell "Accompagnement" [ref=e353]
+                - cell "Standard" [ref=e354]
+                - cell "Groupe privé" [ref=e355]
+                - cell "Personnalisé" [ref=e356]
+              - row [ref=e357]:
+                - cell "Prix" [ref=e358]
+                - cell "20 000 FCFA" [ref=e359]
+                - cell "35 000 FCFA" [ref=e360]
+                - cell "50 000 FCFA" [ref=e361]
+        - generic [ref=e362]:
+          - generic [ref=e363]:
+            - generic [ref=e364]: FAQ
+            - heading "Questions fréquentes" [level=2] [ref=e365]
+          - generic [ref=e367]:
+            - heading [level=3] [ref=e369]:
+              - button "Faut-il savoir programmer ?" [ref=e370]
+            - heading [level=3] [ref=e372]:
+              - button "Dois-je avoir un ordinateur ?" [ref=e373]
+            - heading [level=3] [ref=e375]:
+              - button "Les outils sont-ils gratuits ?" [ref=e376]
+            - heading [level=3] [ref=e378]:
+              - button "Puis-je payer en plusieurs fois ?" [ref=e379]
+            - heading [level=3] [ref=e381]:
+              - button "Vais-je recevoir une attestation ?" [ref=e382]
+  - contentinfo [ref=e383]:
+    - generic [ref=e384]:
+      - generic [ref=e385]:
+        - generic [ref=e386]:
+          - generic [ref=e389]:
+            - generic [ref=e390]: HCP
+            - generic [ref=e391]: DIGITAL LABO
+          - paragraph [ref=e392]: Votre partenaire structurant pour la strategie, le digital, l'evenementiel, la production, la formation, la livraison et le VTC.
+        - generic [ref=e393]:
+          - generic [ref=e394]: NOS POLES
+          - generic [ref=e395]:
+            - link "Strategie & Communication" [ref=e396] [cursor=pointer]:
+              - /url: /strategie
+            - link "Digital & Technologie" [ref=e397] [cursor=pointer]:
+              - /url: /digital
+            - link "Evenementiel & Experiences" [ref=e398] [cursor=pointer]:
+              - /url: /evenementiel
+            - link "Production & Imprimerie" [ref=e399] [cursor=pointer]:
+              - /url: /production
+            - link "Formation & Transformation" [ref=e400] [cursor=pointer]:
+              - /url: /formation
+            - link "Livraison & Logistique" [ref=e401] [cursor=pointer]:
+              - /url: /livraison
+            - link "VTC & Transport prive" [ref=e402] [cursor=pointer]:
+              - /url: /vtc
+        - generic [ref=e403]:
+          - generic [ref=e404]: NAVIGATION
+          - generic [ref=e405]:
+            - link "Accueil" [ref=e406] [cursor=pointer]:
+              - /url: /
+            - link "Expertises" [ref=e407] [cursor=pointer]:
+              - /url: /#expertises
+            - link "Contact" [ref=e408] [cursor=pointer]:
+              - /url: /contact
+        - generic [ref=e409]:
+          - generic [ref=e410]: CONTACT
+          - generic [ref=e411]:
+            - generic [ref=e412]: contact@hcp-designci.com
+            - generic [ref=e413]: 07 68 30 70 80
+            - generic [ref=e414]: Abidjan, Côte d'Ivoire
+      - generic [ref=e418]:
+        - generic [ref=e419]: © 2026 HCP Digital Labo. Tous droits reserves.
+        - generic [ref=e420]:
+          - link "Mentions legales" [ref=e421] [cursor=pointer]:
+            - /url: "#"
+          - link "Politique de confidentialite" [ref=e422] [cursor=pointer]:
+            - /url: "#"
+  - alert [ref=e423]

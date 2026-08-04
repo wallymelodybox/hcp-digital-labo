@@ -4,6 +4,7 @@ import Link from "next/link"
 import Image from "next/image"
 import { ArrowRight, ArrowLeft } from "lucide-react"
 import type { LucideIcon } from "lucide-react"
+import type { ReactNode } from "react"
 import { motion } from "framer-motion"
 import { Pill } from "@/components/ui/pill"
 import { PrimaryButton } from "@/components/ui/primary-button"
@@ -32,6 +33,7 @@ interface PolePageLayoutProps {
   stats: PoleStat[]
   prevPole?: { title: string; slug: string } | null
   nextPole?: { title: string; slug: string } | null
+  contentAfterHero?: ReactNode
 }
 
 export function PolePageLayout({
@@ -44,6 +46,7 @@ export function PolePageLayout({
   stats,
   prevPole,
   nextPole,
+  contentAfterHero,
 }: PolePageLayoutProps) {
   const siteImages = useSiteImages();
   const imageKey = title.toLowerCase().includes("strat")
@@ -149,6 +152,8 @@ export function PolePageLayout({
           </div>
         </div>
       </section>
+
+      {contentAfterHero}
 
       {/* Services detail section */}
       <section className="py-16 md:py-24">
