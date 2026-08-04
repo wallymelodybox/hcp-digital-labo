@@ -69,7 +69,7 @@ export default function HomePage() {
             <motion.div initial={{ opacity: 0, y: 14 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.55 }}>
               <div className="flex flex-wrap items-center gap-3">
                 <Pill>TRANSFORMATION STRATEGIQUE</Pill>
-                <span className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.03] px-3 py-1 text-[11px] font-semibold tracking-[0.22em] text-white/60">
+                <span className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/3 px-3 py-1 text-[11px] font-semibold tracking-[0.22em] text-white/60">
                   <Sparkles className="h-3.5 w-3.5 text-blue-300" />
                   STANDARD PREMIUM
                 </span>
@@ -194,8 +194,8 @@ export default function HomePage() {
             const Icon = pole.icon;
             return (
               <Link id={pole.id} key={pole.id} href={pole.slug} className="group scroll-mt-28">
-                <PremiumCard className="h-full p-0 transition hover:-translate-y-1 hover:border-blue-400/35">
-                  <div className="relative aspect-3/2 w-full overflow-hidden border-b border-black/10 bg-white">
+                <PremiumCard className="h-full border-blue-400/40 p-0 transition hover:-translate-y-1 hover:border-blue-400/70">
+                  <div className="relative aspect-3/2 w-full overflow-hidden border-b border-blue-400/20 bg-[#0A1220]">
                     <Image
                       src={siteImages[pole.id] || pole.image}
                       unoptimized={Boolean(siteImages[pole.id])}
@@ -226,7 +226,7 @@ export default function HomePage() {
                         </span>
                       ))}
                     </div>
-                    <div className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-blue-300">Decouvrir le pole</div>
+                    <div className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-blue-700">Decouvrir le pole</div>
                   </div>
                 </PremiumCard>
               </Link>
@@ -279,7 +279,7 @@ export default function HomePage() {
               <div className="text-xs font-semibold tracking-[0.26em] text-blue-300">CONTACT</div>
               <h3 className="mt-3 text-3xl font-semibold tracking-tight text-white">Parlons de votre projet</h3>
               <p className="mt-3 text-sm leading-relaxed text-white/70">Decrivez votre besoin : nous revenons avec une proposition structuree.</p>
-              <div className="mt-6 space-y-3 rounded-3xl border border-white/10 bg-white/[0.03] p-6">
+              <div className="mt-6 space-y-3 rounded-3xl border border-white/10 bg-white/3 p-6">
                 <div className="text-sm text-white"><span className="text-white/60">Email :</span> <span className="font-semibold">{siteContact.email}</span></div>
                 <div className="text-sm text-white"><span className="text-white/60">Telephone :</span> <span className="font-semibold">{siteContact.phone}</span></div>
                 <div className="text-sm text-white"><span className="text-white/60">Localisation :</span> <span className="font-semibold">{siteContact.location}</span></div>

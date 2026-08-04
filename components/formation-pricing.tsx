@@ -410,12 +410,12 @@ export function FormationPricing() {
     <section className="py-16 md:py-24" id="formules">
       <div className="mx-auto max-w-6xl px-5">
         {bannerMedia ? (
-          <div className="formation-banner relative overflow-hidden rounded-2xl border border-blue-300/20 bg-white shadow-[0_30px_100px_-45px_rgba(37,99,235,0.35)] sm:rounded-[2rem]">
+          <div className="formation-banner relative overflow-hidden rounded-2xl border border-blue-300/20 bg-white shadow-[0_30px_100px_-45px_rgba(37,99,235,0.35)] sm:rounded-4xl">
             <h2 className="sr-only">Maîtrisez l&apos;IA pour créer vos propres solutions digitales</h2>
             {isVideoUrl(bannerMedia) ? (
               <video
                 src={bannerMedia}
-                className="aspect-[1983/793] h-auto w-full bg-white object-contain"
+                className="aspect-1983/793 h-auto w-full bg-white object-contain"
                 autoPlay
                 muted
                 loop
@@ -435,9 +435,9 @@ export function FormationPricing() {
             )}
           </div>
         ) : (
-        <div className="formation-banner relative isolate overflow-hidden rounded-[2rem] border border-blue-300/15 bg-[#07130f] px-6 py-12 shadow-[0_30px_100px_-45px_rgba(37,99,235,0.5)] sm:px-10 md:py-16 lg:px-16">
+        <div className="formation-banner relative isolate overflow-hidden rounded-4xl border border-blue-300/15 bg-[#07130f] px-6 py-12 shadow-[0_30px_100px_-45px_rgba(37,99,235,0.5)] sm:px-10 md:py-16 lg:px-16">
           <div className="absolute inset-0 -z-20 bg-[radial-gradient(circle_at_82%_28%,rgba(37,99,235,0.28),transparent_27%),radial-gradient(circle_at_8%_90%,rgba(59,130,246,0.16),transparent_32%)]" />
-          <div className="absolute inset-0 -z-10 opacity-20 [background-image:linear-gradient(rgba(110,231,183,0.18)_1px,transparent_1px),linear-gradient(90deg,rgba(110,231,183,0.18)_1px,transparent_1px)] [background-size:42px_42px] [mask-image:linear-gradient(to_right,black,transparent_72%)]" />
+          <div className="absolute inset-0 -z-10 opacity-20 bg-[linear-gradient(rgba(96,165,250,0.18)_1px,transparent_1px),linear-gradient(90deg,rgba(96,165,250,0.18)_1px,transparent_1px)] bg-size-[42px_42px] mask-[linear-gradient(to_right,black,transparent_72%)]" />
 
           <div className="grid items-center gap-10 lg:grid-cols-[1.25fr_0.75fr]">
             <div className="max-w-3xl text-center lg:text-left">
@@ -457,13 +457,13 @@ export function FormationPricing() {
             </div>
 
             <div className="relative mx-auto h-56 w-full max-w-sm overflow-hidden rounded-3xl border border-white/10 bg-black/25 sm:h-64" aria-hidden="true">
-              <div className="absolute left-1/2 top-1/2 flex h-32 w-32 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border border-blue-300/30 bg-blue-400/10 shadow-[0_0_70px_rgba(52,211,153,0.3)] backdrop-blur-xl">
+              <div className="absolute left-1/2 top-1/2 flex h-32 w-32 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border border-blue-300/30 bg-blue-400/10 shadow-[0_0_70px_rgba(59,130,246,0.3)] backdrop-blur-xl">
                 <BrainCircuit className="h-14 w-14 text-blue-300" strokeWidth={1.4} />
               </div>
-              <div className="absolute left-3 top-5 flex h-16 w-16 rotate-[-7deg] items-center justify-center rounded-2xl border border-white/10 bg-white/[0.06] backdrop-blur-md">
-                <Code2 className="h-7 w-7 text-teal-200" />
+              <div className="absolute left-3 top-5 flex h-16 w-16 rotate-[-7deg] items-center justify-center rounded-2xl border border-white/10 bg-white/6 backdrop-blur-md">
+                <Code2 className="h-7 w-7 text-sky-200" />
               </div>
-              <div className="absolute bottom-6 right-2 flex h-16 w-16 rotate-[8deg] items-center justify-center rounded-2xl border border-white/10 bg-white/[0.06] backdrop-blur-md">
+              <div className="absolute bottom-6 right-2 flex h-16 w-16 rotate-[8deg] items-center justify-center rounded-2xl border border-white/10 bg-white/6 backdrop-blur-md">
                 <WandSparkles className="h-7 w-7 text-blue-200" />
               </div>
               <div className="absolute right-4 top-3 rounded-full border border-blue-300/20 bg-blue-300/10 px-4 py-2 text-[10px] font-semibold tracking-[0.18em] text-blue-200 uppercase">Créer</div>
@@ -522,7 +522,7 @@ export function FormationPricing() {
             <div className="mt-20">
               <SectionTitle kicker="COMPARATIF" title="Comparez les formules en un coup d'œil" />
               <div className="mt-8 overflow-x-auto rounded-2xl border border-white/10">
-                <table className="w-full min-w-[640px] border-collapse text-sm">
+                <table className="w-full min-w-160 border-collapse text-sm">
                   <thead>
                     <tr className="border-b border-white/10 bg-white/5 text-left text-white/70">
                       <th className="p-4 font-semibold">Fonctionnalité</th>

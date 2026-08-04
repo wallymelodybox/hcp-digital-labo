@@ -8,7 +8,6 @@
     "allowJs": true,
     "forceConsistentCasingInFileNames": true,
     "target": "ESNext",
-    "baseUrl": ".",
     "skipLibCheck": true,
     "strict": true,
     "noEmit": true,
