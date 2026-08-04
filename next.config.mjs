@@ -28,6 +28,7 @@ const nextConfig = {
       "script-src 'self' 'unsafe-inline' https://pay.kadev.ci",
       "style-src 'self' 'unsafe-inline'",
       "img-src 'self' data: blob: https:",
+      "media-src 'self' blob: https:",
       "font-src 'self' data:",
       "connect-src 'self' https://pay.kadev.ci",
       "frame-src https://pay.kadev.ci",

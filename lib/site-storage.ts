@@ -3,6 +3,7 @@ import { defaultStrategyOffers, type StrategyOffer } from "@/lib/strategy-offers
 import { defaultFormationOffers, type FormationOffer } from "@/lib/formation-offers";
 import { defaultFormationSessions, type FormationSession } from "@/lib/formation-sessions";
 import { defaultFormationPromoCodes, type FormationPromoCode } from "@/lib/formation-promo-codes";
+import { hasRemoteMediaStorage, readRemoteSiteImages, writeRemoteSiteImages } from "@/lib/site-media-storage";
 import type { AttendanceStatus, FormationAttendance } from "@/lib/formation-attendance";
 import { generateCertificateNumber, type FormationCertificate } from "@/lib/formation-certificates";
 
@@ -81,10 +82,18 @@ async function withPaymentWriteLock<T>(operation: () => Promise<T>): Promise<T> 
 }
 
 export async function getSiteImages() {
+  if (hasRemoteMediaStorage()) {
+    const remoteImages = await readRemoteSiteImages();
+    if (remoteImages) return remoteImages;
+  }
   return readJsonFile<SiteImages>(imagesFile, {});
 }
 
 export async function saveSiteImages(images: SiteImages) {
+  if (hasRemoteMediaStorage()) {
+    await writeRemoteSiteImages(images);
+    return;
+  }
   await writeJsonFile(imagesFile, images);
 }
 

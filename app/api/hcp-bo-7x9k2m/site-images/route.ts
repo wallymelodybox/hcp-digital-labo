@@ -1,9 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { isAdminMutationRequest, isAdminRequest } from "@/lib/admin-auth";
 import { getSiteImages, saveSiteImages } from "@/lib/site-storage";
-import { mkdir, writeFile } from "fs/promises";
-import path from "path";
-import { randomUUID } from "crypto";
+import { hasRemoteMediaStorage, removeRemoteSiteMedia, uploadRemoteSiteMedia } from "@/lib/site-media-storage";
 
 export const runtime = "nodejs";
 
@@ -131,15 +129,29 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: "Le contenu du fichier ne correspond pas à son format." }, { status: 400 });
   }
 
-  const uploadDirectory = path.join(process.cwd(), "public", "uploads");
-  await mkdir(uploadDirectory, { recursive: true });
-  const fileName = `${randomUUID()}.${rules.extension}`;
-  await writeFile(path.join(uploadDirectory, fileName), bytes, { flag: "wx" });
-
-  const url = `/uploads/${fileName}`;
   const images = await getSiteImages();
+  if (!hasRemoteMediaStorage()) {
+    return NextResponse.json(
+      { error: "Supabase Storage n'est pas configuré sur ce serveur." },
+      { status: 503 },
+    );
+  }
+
+  const uploaded = await uploadRemoteSiteMedia(key, bytes, file.type, rules.extension);
+  if (!uploaded) {
+    return NextResponse.json({ error: "Téléversement Supabase indisponible." }, { status: 503 });
+  }
+
+  const previousUrl = images[key];
+  const url = uploaded.url;
   const next = { ...images, [key]: url };
-  await saveSiteImages(next);
+  try {
+    await saveSiteImages(next);
+  } catch (error) {
+    await removeRemoteSiteMedia(url);
+    throw error;
+  }
+  if (previousUrl && previousUrl !== url) await removeRemoteSiteMedia(previousUrl);
 
   return NextResponse.json({ ok: true, url, images: next });
 }
