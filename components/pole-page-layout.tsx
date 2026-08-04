@@ -130,9 +130,9 @@ export function PolePageLayout({
               initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.55, delay: 0.2 }}
-              className="lg:col-span-5"
+              className="lg:col-span-5 lg:self-stretch"
             >
-              <div className="relative aspect-3/2 overflow-hidden rounded-4xl border border-white/10 bg-white shadow-2xl">
+              <div className="relative h-full min-h-80 overflow-hidden rounded-4xl border border-blue-400/20 bg-[#0A1220] shadow-2xl">
                 <Image
                   src={displayImage}
                   unoptimized={Boolean(siteImages[imageKey])}
