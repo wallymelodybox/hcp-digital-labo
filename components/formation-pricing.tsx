@@ -409,6 +409,32 @@ export function FormationPricing() {
   return (
     <section className="py-16 md:py-24" id="formules">
       <div className="mx-auto max-w-6xl px-5">
+        {bannerMedia ? (
+          <div className="formation-banner relative overflow-hidden rounded-2xl border border-emerald-300/20 bg-white shadow-[0_30px_100px_-45px_rgba(16,185,129,0.35)] sm:rounded-[2rem]">
+            <h2 className="sr-only">Maîtrisez l&apos;IA pour créer vos propres solutions digitales</h2>
+            {isVideoUrl(bannerMedia) ? (
+              <video
+                src={bannerMedia}
+                className="aspect-[1983/793] h-auto w-full bg-white object-contain"
+                autoPlay
+                muted
+                loop
+                playsInline
+                controls
+                preload="metadata"
+                aria-label="Présentation de la formation IA"
+              />
+            ) : (
+              <img
+                src={bannerMedia}
+                alt="Formations en intelligence artificielle"
+                width={1983}
+                height={793}
+                className="block h-auto w-full object-contain opacity-100"
+              />
+            )}
+          </div>
+        ) : (
         <div className="formation-banner relative isolate overflow-hidden rounded-[2rem] border border-emerald-300/15 bg-[#07130f] px-6 py-12 shadow-[0_30px_100px_-45px_rgba(16,185,129,0.5)] sm:px-10 md:py-16 lg:px-16">
           <div className="absolute inset-0 -z-20 bg-[radial-gradient(circle_at_82%_28%,rgba(16,185,129,0.28),transparent_27%),radial-gradient(circle_at_8%_90%,rgba(20,184,166,0.16),transparent_32%)]" />
           <div className="absolute inset-0 -z-10 opacity-20 [background-image:linear-gradient(rgba(110,231,183,0.18)_1px,transparent_1px),linear-gradient(90deg,rgba(110,231,183,0.18)_1px,transparent_1px)] [background-size:42px_42px] [mask-image:linear-gradient(to_right,black,transparent_72%)]" />
@@ -430,45 +456,22 @@ export function FormationPricing() {
               </div>
             </div>
 
-            <div className="relative mx-auto h-56 w-full max-w-sm overflow-hidden rounded-3xl border border-white/10 bg-black/25 sm:h-64" aria-hidden={!bannerMedia}>
-              {bannerMedia ? (
-                isVideoUrl(bannerMedia) ? (
-                  <video
-                    src={bannerMedia}
-                    className="h-full w-full object-cover"
-                    autoPlay
-                    muted
-                    loop
-                    playsInline
-                    preload="metadata"
-                    aria-label="Présentation de la formation IA"
-                  />
-                ) : (
-                  <img
-                    src={bannerMedia}
-                    alt="Présentation de la formation IA"
-                    className="h-full w-full object-cover"
-                  />
-                )
-              ) : (
-                <>
-                  <div className="absolute left-1/2 top-1/2 flex h-32 w-32 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border border-emerald-300/30 bg-emerald-400/10 shadow-[0_0_70px_rgba(52,211,153,0.3)] backdrop-blur-xl">
-                    <BrainCircuit className="h-14 w-14 text-emerald-300" strokeWidth={1.4} />
-                  </div>
-                  <div className="absolute left-3 top-5 flex h-16 w-16 rotate-[-7deg] items-center justify-center rounded-2xl border border-white/10 bg-white/[0.06] backdrop-blur-md">
-                    <Code2 className="h-7 w-7 text-teal-200" />
-                  </div>
-                  <div className="absolute bottom-6 right-2 flex h-16 w-16 rotate-[8deg] items-center justify-center rounded-2xl border border-white/10 bg-white/[0.06] backdrop-blur-md">
-                    <WandSparkles className="h-7 w-7 text-emerald-200" />
-                  </div>
-                  <div className="absolute right-4 top-3 rounded-full border border-emerald-300/20 bg-emerald-300/10 px-4 py-2 text-[10px] font-semibold tracking-[0.18em] text-emerald-200 uppercase">Créer</div>
-                  <div className="absolute bottom-4 left-4 rounded-full border border-white/10 bg-black/25 px-4 py-2 text-[10px] font-semibold tracking-[0.18em] text-white/70 uppercase">Automatiser</div>
-                </>
-              )}
-              {bannerMedia ? <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#07130f]/45 via-transparent to-transparent" /> : null}
+            <div className="relative mx-auto h-56 w-full max-w-sm overflow-hidden rounded-3xl border border-white/10 bg-black/25 sm:h-64" aria-hidden="true">
+              <div className="absolute left-1/2 top-1/2 flex h-32 w-32 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border border-emerald-300/30 bg-emerald-400/10 shadow-[0_0_70px_rgba(52,211,153,0.3)] backdrop-blur-xl">
+                <BrainCircuit className="h-14 w-14 text-emerald-300" strokeWidth={1.4} />
+              </div>
+              <div className="absolute left-3 top-5 flex h-16 w-16 rotate-[-7deg] items-center justify-center rounded-2xl border border-white/10 bg-white/[0.06] backdrop-blur-md">
+                <Code2 className="h-7 w-7 text-teal-200" />
+              </div>
+              <div className="absolute bottom-6 right-2 flex h-16 w-16 rotate-[8deg] items-center justify-center rounded-2xl border border-white/10 bg-white/[0.06] backdrop-blur-md">
+                <WandSparkles className="h-7 w-7 text-emerald-200" />
+              </div>
+              <div className="absolute right-4 top-3 rounded-full border border-emerald-300/20 bg-emerald-300/10 px-4 py-2 text-[10px] font-semibold tracking-[0.18em] text-emerald-200 uppercase">Créer</div>
+              <div className="absolute bottom-4 left-4 rounded-full border border-white/10 bg-black/25 px-4 py-2 text-[10px] font-semibold tracking-[0.18em] text-white/70 uppercase">Automatiser</div>
             </div>
           </div>
         </div>
+        )}
 
         {!selectedOffer ? (
           <>
