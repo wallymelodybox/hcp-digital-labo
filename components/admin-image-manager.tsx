@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
-import { Save, RotateCcw } from "lucide-react";
+import { ImagePlus, Loader2, RotateCcw, Save, Upload } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { PremiumCard } from "@/components/ui/premium-card";
 import { poles } from "@/lib/poles-data";
@@ -34,6 +34,7 @@ export function AdminImageManager() {
   const [images, setImages] = useState<Images>({});
   const [status, setStatus] = useState<"idle" | "loading" | "saving" | "success" | "error">("loading");
   const [message, setMessage] = useState("");
+  const [uploadingKey, setUploadingKey] = useState<string | null>(null);
 
   const items = useMemo(
     () => [
@@ -80,12 +81,42 @@ export function AdminImageManager() {
     setMessage("Images mises à jour.");
   }
 
-  function updateImage(id: string, value: string) {
-    setImages((current) => ({ ...current, [id]: value }));
-  }
-
   function resetImage(id: string) {
     setImages((current) => ({ ...current, [id]: "" }));
+  }
+
+  async function uploadFile(id: string, file: File) {
+    setUploadingKey(id);
+    setStatus("idle");
+    setMessage("");
+
+    const formData = new FormData();
+    formData.append("key", id);
+    formData.append("file", file);
+
+    try {
+      const response = await fetch("/api/hcp-bo-7x9k2m/site-images", {
+        method: "POST",
+        credentials: "same-origin",
+        body: formData,
+      });
+      const payload = await response.json().catch(() => ({}));
+
+      if (!response.ok) {
+        setStatus("error");
+        setMessage(payload.error || "Téléversement impossible.");
+        return;
+      }
+
+      setImages(payload.images || {});
+      setStatus("success");
+      setMessage("Le média a été remplacé avec succès.");
+    } catch {
+      setStatus("error");
+      setMessage("Téléversement impossible. Vérifiez votre connexion.");
+    } finally {
+      setUploadingKey(null);
+    }
   }
 
   return (
@@ -93,7 +124,7 @@ export function AdminImageManager() {
       <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
         <div>
           <h2 className="text-3xl font-semibold tracking-tight text-white">Images du site</h2>
-          <p className="mt-2 text-white/50">Modifiez les URLs des visuels principaux. Laissez vide pour revenir à l'image par défaut.</p>
+          <p className="mt-2 text-white/50">Choisissez un fichier depuis votre appareil pour remplacer chaque visuel.</p>
         </div>
         <Button onClick={save} disabled={status === "saving" || status === "loading"} className="gap-2 bg-emerald-500 text-white hover:bg-emerald-600">
           <Save className="h-4 w-4" />
@@ -139,18 +170,43 @@ export function AdminImageManager() {
                       Défaut
                     </Button>
                   </div>
-                  <label className="mt-5 block text-xs font-semibold uppercase tracking-widest text-white/40">
-                    {item.id === "formationPricingBanner" ? "URL directe de l’image ou de la vidéo" : "URL image"}
-                  </label>
-                  <input
-                    value={value}
-                    onChange={(event) => updateImage(item.id, event.target.value)}
-                    placeholder={item.fallback}
-                    className="mt-2 w-full rounded-xl border border-white/10 bg-black/20 px-4 py-3 text-sm text-white placeholder:text-white/25 focus:outline-none focus:ring-2 focus:ring-emerald-400/40"
-                  />
-                  {item.id === "formationPricingBanner" ? (
-                    <p className="mt-2 text-xs text-white/35">Vidéo compatible : MP4, WebM, OGG ou MOV. Utilisez une URL directe vers le fichier.</p>
-                  ) : null}
+                  <div className="mt-5 rounded-2xl border border-dashed border-white/15 bg-black/15 p-4">
+                    <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+                      <div className="flex items-center gap-3">
+                        <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-emerald-400/10 text-emerald-300">
+                          <ImagePlus className="h-5 w-5" />
+                        </div>
+                        <div>
+                          <div className="text-sm font-semibold text-white">Choisir un nouveau média</div>
+                          <div className="mt-1 text-xs text-white/40">
+                            {item.id === "formationPricingBanner"
+                              ? "Image 8 Mo max. ou vidéo 50 Mo max."
+                              : "JPG, PNG, WebP, GIF ou AVIF — 8 Mo max."}
+                          </div>
+                        </div>
+                      </div>
+
+                      <label
+                        htmlFor={`media-${item.id}`}
+                        className={`inline-flex cursor-pointer items-center justify-center gap-2 rounded-xl bg-emerald-500 px-4 py-2.5 text-sm font-semibold text-white transition hover:bg-emerald-600 ${uploadingKey === item.id ? "pointer-events-none opacity-60" : ""}`}
+                      >
+                        {uploadingKey === item.id ? <Loader2 className="h-4 w-4 animate-spin" /> : <Upload className="h-4 w-4" />}
+                        {uploadingKey === item.id ? "Envoi..." : "Parcourir"}
+                      </label>
+                      <input
+                        id={`media-${item.id}`}
+                        type="file"
+                        accept={item.id === "formationPricingBanner" ? "image/jpeg,image/png,image/webp,image/gif,image/avif,video/mp4,video/webm,video/ogg,video/quicktime" : "image/jpeg,image/png,image/webp,image/gif,image/avif"}
+                        className="sr-only"
+                        disabled={Boolean(uploadingKey)}
+                        onChange={(event) => {
+                          const file = event.target.files?.[0];
+                          if (file) void uploadFile(item.id, file);
+                          event.target.value = "";
+                        }}
+                      />
+                    </div>
+                  </div>
                 </div>
               </div>
             </PremiumCard>

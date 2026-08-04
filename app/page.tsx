@@ -109,7 +109,7 @@ export default function HomePage() {
                     alt="Espace de travail HCP Digital Labo"
                     fill
                     priority
-                    className="object-cover opacity-60 transition-transform duration-500 group-hover:scale-105"
+                    className="object-cover opacity-100 transition-transform duration-500 group-hover:scale-105"
                   />
                   <div className="absolute inset-0 bg-linear-to-t from-[#06090A] to-transparent" />
                 </div>
@@ -196,7 +196,7 @@ export default function HomePage() {
               <Link id={pole.id} key={pole.id} href={pole.slug} className="group scroll-mt-28">
                 <PremiumCard className="h-full p-0 transition hover:-translate-y-1 hover:border-emerald-400/35">
                   <div className="relative h-40 w-full overflow-hidden">
-                    <Image src={siteImages[pole.id] || pole.image} unoptimized={Boolean(siteImages[pole.id])} alt={pole.title} fill className="object-cover opacity-50 transition-transform duration-500 group-hover:scale-110" />
+                    <Image src={siteImages[pole.id] || pole.image} unoptimized={Boolean(siteImages[pole.id])} alt={pole.title} fill className="object-cover opacity-100 transition-transform duration-500 group-hover:scale-110" />
                     <div className="absolute inset-0 bg-linear-to-t from-[#06090A] to-transparent" />
                     <div className="absolute bottom-4 left-6 flex h-10 w-10 items-center justify-center rounded-2xl border border-white/10 bg-emerald-400/15 text-emerald-300 backdrop-blur-md">
                       <Icon className="h-5 w-5" />

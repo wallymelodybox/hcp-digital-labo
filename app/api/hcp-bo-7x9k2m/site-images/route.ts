@@ -1,6 +1,11 @@
 import { NextRequest, NextResponse } from "next/server";
 import { isAdminMutationRequest, isAdminRequest } from "@/lib/admin-auth";
 import { getSiteImages, saveSiteImages } from "@/lib/site-storage";
+import { mkdir, writeFile } from "fs/promises";
+import path from "path";
+import { randomUUID } from "crypto";
+
+export const runtime = "nodejs";
 
 function isAllowedImageUrl(value: unknown) {
   if (value === "") return true;
@@ -26,6 +31,33 @@ const allowedImageKeys = new Set([
   "livraison",
   "vtc",
 ]);
+
+const allowedFiles: Record<string, { extension: string; maxBytes: number; kind: "image" | "video" }> = {
+  "image/jpeg": { extension: "jpg", maxBytes: 8 * 1024 * 1024, kind: "image" },
+  "image/png": { extension: "png", maxBytes: 8 * 1024 * 1024, kind: "image" },
+  "image/webp": { extension: "webp", maxBytes: 8 * 1024 * 1024, kind: "image" },
+  "image/gif": { extension: "gif", maxBytes: 8 * 1024 * 1024, kind: "image" },
+  "image/avif": { extension: "avif", maxBytes: 8 * 1024 * 1024, kind: "image" },
+  "video/mp4": { extension: "mp4", maxBytes: 50 * 1024 * 1024, kind: "video" },
+  "video/webm": { extension: "webm", maxBytes: 50 * 1024 * 1024, kind: "video" },
+  "video/ogg": { extension: "ogv", maxBytes: 50 * 1024 * 1024, kind: "video" },
+  "video/quicktime": { extension: "mov", maxBytes: 50 * 1024 * 1024, kind: "video" },
+};
+
+function hasExpectedSignature(bytes: Uint8Array, mime: string) {
+  const ascii = (start: number, end: number) => Buffer.from(bytes.slice(start, end)).toString("ascii");
+  const hex = (end: number) => Buffer.from(bytes.slice(0, end)).toString("hex");
+
+  if (mime === "image/jpeg") return hex(3) === "ffd8ff";
+  if (mime === "image/png") return hex(8) === "89504e470d0a1a0a";
+  if (mime === "image/gif") return ["GIF87a", "GIF89a"].includes(ascii(0, 6));
+  if (mime === "image/webp") return ascii(0, 4) === "RIFF" && ascii(8, 12) === "WEBP";
+  if (mime === "image/avif") return ascii(4, 12).startsWith("ftypavi");
+  if (mime === "video/webm") return hex(4) === "1a45dfa3";
+  if (mime === "video/ogg") return ascii(0, 4) === "OggS";
+  if (mime === "video/mp4" || mime === "video/quicktime") return ascii(4, 8) === "ftyp";
+  return false;
+}
 
 export async function GET(req: NextRequest) {
   if (!isAdminRequest(req)) {
@@ -66,4 +98,48 @@ export async function PUT(req: NextRequest) {
 
   await saveSiteImages(next);
   return NextResponse.json(next);
+}
+
+export async function POST(req: NextRequest) {
+  if (!isAdminMutationRequest(req)) {
+    return NextResponse.json({ error: "Non autorisé." }, { status: 401 });
+  }
+
+  const contentLength = Number(req.headers.get("content-length") || 0);
+  if (!Number.isFinite(contentLength) || contentLength <= 0 || contentLength > 51 * 1024 * 1024) {
+    return NextResponse.json({ error: "Fichier trop volumineux ou taille inconnue." }, { status: 413 });
+  }
+
+  const formData = await req.formData().catch(() => null);
+  const key = formData?.get("key");
+  const file = formData?.get("file");
+
+  if (typeof key !== "string" || !allowedImageKeys.has(key) || !(file instanceof File)) {
+    return NextResponse.json({ error: "Fichier ou emplacement invalide." }, { status: 400 });
+  }
+
+  const rules = allowedFiles[file.type];
+  if (!rules || file.size <= 0 || file.size > rules.maxBytes) {
+    return NextResponse.json({ error: "Format non autorisé ou fichier trop volumineux." }, { status: 400 });
+  }
+  if (rules.kind === "video" && key !== "formationPricingBanner") {
+    return NextResponse.json({ error: "La vidéo est autorisée uniquement pour la bannière Formation IA." }, { status: 400 });
+  }
+
+  const bytes = new Uint8Array(await file.arrayBuffer());
+  if (!hasExpectedSignature(bytes, file.type)) {
+    return NextResponse.json({ error: "Le contenu du fichier ne correspond pas à son format." }, { status: 400 });
+  }
+
+  const uploadDirectory = path.join(process.cwd(), "public", "uploads");
+  await mkdir(uploadDirectory, { recursive: true });
+  const fileName = `${randomUUID()}.${rules.extension}`;
+  await writeFile(path.join(uploadDirectory, fileName), bytes, { flag: "wx" });
+
+  const url = `/uploads/${fileName}`;
+  const images = await getSiteImages();
+  const next = { ...images, [key]: url };
+  await saveSiteImages(next);
+
+  return NextResponse.json({ ok: true, url, images: next });
 }

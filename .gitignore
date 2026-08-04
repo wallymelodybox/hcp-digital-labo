@@ -10,6 +10,7 @@ node_modules/
 !.env.example
 data/contact-requests.json
 data/formation-registrations.json
+public/uploads/
 data/formation-attendance.json
 data/formation-certificates.json
 .DS_Store

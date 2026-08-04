@@ -228,7 +228,7 @@ export default function StrategiePage() {
                     unoptimized={Boolean(siteImages.strategie)}
                     alt="Stratégie et Analyse" 
                     fill
-                    className="object-cover transition-transform duration-500 group-hover:scale-105 opacity-60"
+                    className="object-cover opacity-100 transition-transform duration-500 group-hover:scale-105"
                   />
                   <div className="absolute inset-0 bg-linear-to-t from-[#06090A] to-transparent" />
                 </div>
@@ -565,5 +565,4 @@ export default function StrategiePage() {
     </div>
   );
 }
-
 
