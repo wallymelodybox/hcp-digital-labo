@@ -7,6 +7,7 @@ create table if not exists public.chat_conversations (
   visitor_email text,
   page_url text,
   status text not null default 'open' check (status in ('open', 'closed')),
+  agent_last_read_at timestamptz,
   created_at timestamptz not null default now(),
   updated_at timestamptz not null default now()
 );

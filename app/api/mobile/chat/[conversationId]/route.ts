@@ -37,8 +37,15 @@ export async function PATCH(request: NextRequest, { params }: { params: Promise<
   if (!client) return chatUnavailable();
   const { conversationId } = await params;
   const payload = await request.json().catch(() => null);
-  if (!['open', 'closed'].includes(payload?.status)) return Response.json({ error: "Statut invalide." }, { status: 400 });
-  const { error } = await client.from("chat_conversations").update({ status: payload.status, updated_at: new Date().toISOString() }).eq("id", conversationId);
+  const status = ['open', 'closed'].includes(payload?.status) ? payload.status : null;
+  const markRead = payload?.markRead === true;
+  if (!status && !markRead) return Response.json({ error: "Mise à jour invalide." }, { status: 400 });
+  const now = new Date().toISOString();
+  const { error } = await client.from("chat_conversations").update({
+    ...(status ? { status } : {}),
+    ...(markRead ? { agent_last_read_at: now } : {}),
+    updated_at: status ? now : undefined,
+  }).eq("id", conversationId);
   if (error) return Response.json({ error: "Mise à jour impossible." }, { status: 500 });
   return Response.json({ ok: true });
 }
