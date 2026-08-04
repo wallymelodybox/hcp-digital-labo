@@ -76,75 +76,72 @@ export function PolePageLayout({
       {/* Hero section */}
       <section className="relative overflow-hidden pt-14 pb-14 md:pt-20 md:pb-20">
         <div className="mx-auto max-w-6xl px-5">
-          <div className="grid gap-12 lg:grid-cols-12 lg:items-center">
-            <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.55 }}
-              className="lg:col-span-7"
-            >
-              <div className="flex items-center gap-4 mb-8">
-                <Link
-                  href="/"
-                  className="inline-flex items-center gap-2 text-sm text-white/60 transition-colors hover:text-blue-300"
-                >
-                  <ArrowLeft className="h-4 w-4" />
-                  Retour
-                </Link>
-                <GlowDivider />
+          <motion.div
+            initial={{ opacity: 0, y: -12 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.55 }}
+          >
+            <div className="flex items-center gap-4 mb-8">
+              <Link
+                href="/"
+                className="inline-flex items-center gap-2 text-sm text-white/60 transition-colors hover:text-blue-300"
+              >
+                <ArrowLeft className="h-4 w-4" />
+                Retour
+              </Link>
+              <GlowDivider />
+            </div>
+
+            <div className="flex items-center gap-6 mb-8">
+              <span className="text-6xl font-bold text-blue-400 lg:text-8xl tracking-tighter">
+                {number}
+              </span>
+              <div className="flex h-16 w-16 items-center justify-center rounded-3xl bg-blue-400/15 text-blue-300">
+                <Icon className="h-8 w-8 lg:h-10 lg:w-10" />
               </div>
+            </div>
 
-              <div className="flex items-center gap-6 mb-8">
-                <span className="text-6xl font-bold text-blue-400 lg:text-8xl tracking-tighter">
-                  {number}
-                </span>
-                <div className="flex h-16 w-16 items-center justify-center rounded-3xl bg-blue-400/15 text-blue-300">
-                  <Icon className="h-8 w-8 lg:h-10 lg:w-10" />
-                </div>
-              </div>
+            <h1 className="text-4xl font-bold leading-[1.1] tracking-tight text-white sm:text-5xl lg:text-7xl text-balance">
+              {title}
+            </h1>
 
-              <h1 className="text-4xl font-bold leading-[1.1] tracking-tight text-white sm:text-5xl lg:text-7xl text-balance">
-                {title}
-              </h1>
+            <p className="mt-8 max-w-2xl text-lg leading-relaxed text-white/70">
+              {description}
+            </p>
 
-              <p className="mt-8 max-w-2xl text-lg leading-relaxed text-white/70">
-                {description}
-              </p>
-
-              {/* Stats */}
-              <div className="mt-12 grid grid-cols-2 gap-4 border-t border-white/10 pt-10 md:grid-cols-3 max-w-2xl">
-                {stats.map((stat) => (
-                  <div key={stat.label} className="group rounded-2xl border border-white/10 bg-white/[0.035] px-5 py-4 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.06)]">
-                    <div className="text-2xl font-bold text-blue-300 lg:text-3xl tracking-tight">
-                      {stat.value}
-                    </div>
-                    <div className="mt-1 text-xs text-white/50 font-medium tracking-wide uppercase">
-                      {stat.label}
-                    </div>
+            {/* Stats */}
+            <div className="mt-12 grid grid-cols-2 gap-4 border-t border-white/10 pt-10 md:grid-cols-3 max-w-2xl">
+              {stats.map((stat) => (
+                <div key={stat.label} className="group rounded-2xl border border-white/10 bg-white/[0.035] px-5 py-4 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.06)]">
+                  <div className="text-2xl font-bold text-blue-300 lg:text-3xl tracking-tight">
+                    {stat.value}
                   </div>
-                ))}
-              </div>
-            </motion.div>
+                  <div className="mt-1 text-xs text-white/50 font-medium tracking-wide uppercase">
+                    {stat.label}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </motion.div>
 
-            <motion.div
-              initial={{ opacity: 0, x: 20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.55, delay: 0.2 }}
-              className="lg:col-span-5 lg:self-center"
-            >
-              <div className="relative aspect-3/2 w-full overflow-hidden rounded-4xl border border-blue-400/20 bg-[#0A1220] shadow-2xl">
-                <Image
-                  src={displayImage}
-                  unoptimized={Boolean(siteImages[imageKey])}
-                  alt={title}
-                  fill
-                  sizes="(max-width: 1023px) 100vw, 42vw"
-                  className="object-contain opacity-100"
-                  preload
-                />
-              </div>
-            </motion.div>
-          </div>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.55, delay: 0.2 }}
+            className="mt-14"
+          >
+            <div className="relative aspect-3/2 w-full overflow-hidden rounded-4xl border border-blue-400/20 bg-[#0A1220] shadow-2xl sm:aspect-video lg:aspect-3/2">
+              <Image
+                src={displayImage}
+                unoptimized={Boolean(siteImages[imageKey])}
+                alt={title}
+                fill
+                sizes="100vw"
+                className="object-contain opacity-100"
+                preload
+              />
+            </div>
+          </motion.div>
         </div>
       </section>
 
