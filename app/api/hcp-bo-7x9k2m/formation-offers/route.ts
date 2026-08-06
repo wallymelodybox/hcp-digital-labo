@@ -29,6 +29,7 @@ function cleanOffer(raw: unknown, index: number): FormationOffer | null {
     : [];
 
   const originalPrice = Number(item.originalPrice);
+  const flashSaleEndsAt = cleanText(item.flashSaleEndsAt);
 
   return {
     id: cleanText(item.id) || `formule-${index + 1}`,
@@ -37,10 +38,14 @@ function cleanOffer(raw: unknown, index: number): FormationOffer | null {
     tagline,
     price,
     originalPrice: Number.isFinite(originalPrice) && originalPrice > 0 ? originalPrice : undefined,
+    priceOnRequest: Boolean(item.priceOnRequest),
     duration,
     badge: cleanText(item.badge) || undefined,
     features,
     ctaLabel,
+    visible: Boolean(item.visible),
+    flashSaleEndsAt: flashSaleEndsAt && !Number.isNaN(Date.parse(flashSaleEndsAt)) ? flashSaleEndsAt : undefined,
+    featuredOnHome: Boolean(item.featuredOnHome),
   };
 }
 

@@ -7,10 +7,14 @@ export type FormationOffer = {
   tagline: string;
   price: number;
   originalPrice?: number;
+  priceOnRequest?: boolean;
   duration: string;
   badge?: string;
   features: string[];
   ctaLabel: string;
+  visible: boolean;
+  flashSaleEndsAt?: string;
+  featuredOnHome: boolean;
 };
 
 export const defaultFormationOffers: FormationOffer[] = [
@@ -33,6 +37,8 @@ export const defaultFormationOffers: FormationOffer[] = [
       "Support de formation",
     ],
     ctaLabel: "Choisir la formule Basique",
+    visible: false,
+    featuredOnHome: false,
   },
   {
     id: "intermediaire",
@@ -54,6 +60,8 @@ export const defaultFormationOffers: FormationOffer[] = [
       "Groupe privé d'accompagnement",
     ],
     ctaLabel: "Choisir la formule Intermédiaire",
+    visible: false,
+    featuredOnHome: false,
   },
   {
     id: "complete",
@@ -79,5 +87,38 @@ export const defaultFormationOffers: FormationOffer[] = [
       "Attestation ou certificat",
     ],
     ctaLabel: "Réserver ma place à 50 000 FCFA",
+    visible: true,
+    featuredOnHome: true,
+  },
+  {
+    id: "suivi-projet-digital",
+    level: "complete",
+    title: "Suivi de projet digital",
+    tagline: "Un accompagnement sur mesure après votre formation, pour aller jusqu'au bout de votre projet.",
+    price: 0,
+    priceOnRequest: true,
+    duration: "Sur devis",
+    features: [
+      "Accompagnement personnalisé selon votre projet",
+      "Points de suivi réguliers avec un expert",
+      "Aide à la mise en production",
+      "Conseils adaptés à votre secteur",
+    ],
+    ctaLabel: "Demander un devis",
+    visible: false,
+    featuredOnHome: false,
   },
 ];
+
+export function computeCountdown(target: string) {
+  const diffMs = new Date(target).getTime() - Date.now();
+  if (diffMs <= 0) return null;
+
+  const totalSeconds = Math.floor(diffMs / 1000);
+  return {
+    days: Math.floor(totalSeconds / 86_400),
+    hours: Math.floor((totalSeconds % 86_400) / 3_600),
+    minutes: Math.floor((totalSeconds % 3_600) / 60),
+    seconds: totalSeconds % 60,
+  };
+}

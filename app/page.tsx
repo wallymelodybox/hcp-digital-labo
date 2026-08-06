@@ -21,6 +21,7 @@ import { SecondaryButton } from "@/components/ui/secondary-button";
 import { SectionTitle } from "@/components/ui/section-title";
 import { ContactForm } from "@/components/contact-form";
 import { useSiteImages } from "@/hooks/use-site-images";
+import { HomeFeaturedFormation } from "@/components/home-featured-formation";
 
 const proofItems = [
   "Gouvernance et jalons clairs",
@@ -234,6 +235,8 @@ export default function HomePage() {
           })}
         </div>
       </section>
+
+      <HomeFeaturedFormation />
 
       <section className="bg-black/35 py-16">
         <div className="mx-auto max-w-6xl px-5">

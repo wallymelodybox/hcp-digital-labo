@@ -88,9 +88,40 @@ export function AdminFormationOffersManager() {
 
       <div className="grid gap-6">
         {offers.map((offer, index) => (
-          <PremiumCard key={offer.id} className="p-6">
+          <PremiumCard key={offer.id} className={`p-6 ${offer.visible ? "border-emerald-400/30" : "border-white/10 opacity-70"}`}>
             <div className="flex flex-col gap-5">
-              <div className="text-xs font-semibold uppercase tracking-widest text-white/35">Formule {index + 1}</div>
+              <div className="flex flex-wrap items-center justify-between gap-3">
+                <div className="text-xs font-semibold uppercase tracking-widest text-white/35">Formule {index + 1}</div>
+                <div className="flex flex-wrap items-center gap-4">
+                  <label className="flex items-center gap-2 text-xs font-semibold text-white/70">
+                    <input
+                      type="checkbox"
+                      checked={offer.visible}
+                      onChange={(event) => updateOffer(offer.id, { visible: event.target.checked })}
+                      className="h-4 w-4 rounded border-white/20 bg-black/20"
+                    />
+                    Visible sur le site
+                  </label>
+                  <label className="flex items-center gap-2 text-xs font-semibold text-white/70">
+                    <input
+                      type="checkbox"
+                      checked={offer.featuredOnHome}
+                      onChange={(event) => updateOffer(offer.id, { featuredOnHome: event.target.checked })}
+                      className="h-4 w-4 rounded border-white/20 bg-black/20"
+                    />
+                    Mise en avant sur l&apos;accueil
+                  </label>
+                  <label className="flex items-center gap-2 text-xs font-semibold text-white/70">
+                    <input
+                      type="checkbox"
+                      checked={Boolean(offer.priceOnRequest)}
+                      onChange={(event) => updateOffer(offer.id, { priceOnRequest: event.target.checked })}
+                      className="h-4 w-4 rounded border-white/20 bg-black/20"
+                    />
+                    Prix sur devis
+                  </label>
+                </div>
+              </div>
 
               <div className="grid gap-4 md:grid-cols-2">
                 <div>
@@ -160,6 +191,21 @@ export function AdminFormationOffersManager() {
                     className="mt-2 w-full rounded-xl border border-white/10 bg-black/20 px-4 py-3 text-sm text-white placeholder:text-white/25 focus:outline-none focus:ring-2 focus:ring-emerald-400/40"
                   />
                 </div>
+              </div>
+
+              <div>
+                <label className="text-xs font-semibold uppercase tracking-widest text-white/40">Fin de la vente flash (facultatif)</label>
+                <input
+                  type="datetime-local"
+                  value={offer.flashSaleEndsAt ? offer.flashSaleEndsAt.slice(0, 16) : ""}
+                  onChange={(event) =>
+                    updateOffer(offer.id, {
+                      flashSaleEndsAt: event.target.value ? new Date(event.target.value).toISOString() : undefined,
+                    })
+                  }
+                  className="mt-2 w-full max-w-xs rounded-xl border border-white/10 bg-black/20 px-4 py-3 text-sm text-white focus:outline-none focus:ring-2 focus:ring-emerald-400/40"
+                />
+                <p className="mt-1 text-xs text-white/35">Affiche un compte à rebours sur la carte tant que cette date n&apos;est pas dépassée.</p>
               </div>
 
               <div>

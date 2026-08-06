@@ -10,6 +10,7 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/
 import { defaultFormationOffers, type FormationOffer } from "@/lib/formation-offers";
 import type { FormationSession } from "@/lib/formation-sessions";
 import { useSiteImages } from "@/hooks/use-site-images";
+import { CountdownTimer } from "@/components/countdown-timer";
 
 type FormationSessionWithAvailability = FormationSession & { enrolled: number; remaining: number };
 
@@ -492,11 +493,22 @@ export function FormationPricing() {
                   <p className="mt-2 text-sm text-white/60">{offer.tagline}</p>
 
                   <div className="mt-6">
-                    {offer.originalPrice ? (
-                      <div className="text-sm text-white/40 line-through">{formatPrice(offer.originalPrice)}</div>
-                    ) : null}
-                    <div className="text-3xl font-bold text-blue-300">{formatPrice(offer.price)}</div>
+                    {offer.priceOnRequest ? (
+                      <div className="text-3xl font-bold text-blue-300">Sur devis</div>
+                    ) : (
+                      <>
+                        {offer.originalPrice ? (
+                          <div className="text-sm text-white/40 line-through">{formatPrice(offer.originalPrice)}</div>
+                        ) : null}
+                        <div className="text-3xl font-bold text-blue-300">{formatPrice(offer.price)}</div>
+                      </>
+                    )}
                     <div className="mt-1 text-xs text-white/45">{offer.duration}</div>
+                    {offer.flashSaleEndsAt ? (
+                      <div className="mt-4">
+                        <CountdownTimer target={offer.flashSaleEndsAt} />
+                      </div>
+                    ) : null}
                   </div>
 
                   <ul className="mt-6 flex-1 space-y-3">
@@ -543,7 +555,7 @@ export function FormationPricing() {
                     <tr className="bg-white/5 font-semibold text-white">
                       <td className="p-4">Prix</td>
                       {offers.map((offer) => (
-                        <td key={offer.id} className="p-4 text-center">{formatPrice(offer.price)}</td>
+                        <td key={offer.id} className="p-4 text-center">{offer.priceOnRequest ? "Sur devis" : formatPrice(offer.price)}</td>
                       ))}
                     </tr>
                   </tbody>
