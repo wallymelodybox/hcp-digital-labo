@@ -5,6 +5,7 @@
     "title": "Formation Basique",
     "tagline": "Pour découvrir et bien utiliser les outils d'intelligence artificielle.",
     "price": 20000,
+    "priceOnRequest": false,
     "duration": "4 à 6 heures",
     "features": [
       "Comprendre le fonctionnement de l'IA",
@@ -27,6 +28,7 @@
     "title": "Formation Intermédiaire",
     "tagline": "Pour créer des contenus et des solutions digitales avec l'IA.",
     "price": 35000,
+    "priceOnRequest": false,
     "duration": "1 à 2 jours",
     "badge": "Formule recommandée",
     "features": [
@@ -51,6 +53,7 @@
     "tagline": "Pour lancer un site, une application ou un projet SaaS avec l'IA.",
     "price": 50000,
     "originalPrice": 100000,
+    "priceOnRequest": false,
     "duration": "2 à 4 jours",
     "badge": "Vente flash",
     "features": [
